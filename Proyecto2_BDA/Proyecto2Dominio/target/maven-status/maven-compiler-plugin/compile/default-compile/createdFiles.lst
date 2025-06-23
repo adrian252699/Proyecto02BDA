@@ -1,0 +1,9 @@
+entidades\AdministradorDominio.class
+entidades\CarreraDominio.class
+entidades\BloqueoAdministradorAlumnoDominio.class
+entidades\AlumnoDominio.class
+entidades\ComputadoraDominio.class
+entidades\LaboratorioDominio.class
+entidades\UnidadAcademicaDominio.class
+entidades\ComputadoraLaboratorioDominio.class
+entidades\LaboratorioUnidadAcademicaDominio.class
