@@ -10,6 +10,7 @@
         <module>Proyecto2_BDA_Negocio</module>
         <module>Proyecto2_BDA_Presentacion</module>
         <module>Proyecto2BDA_Dominio</module>
+        <module>Proyecto2_BDA_DTOs</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

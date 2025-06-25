@@ -1,5 +1,9 @@
-Control\ControlNavegacion.class
-Paneles\SeleccionLaboratorio.class
+PanelesAdministrador\MenuAdministrador.class
+PanelesAdministrador\MenuAdministrador$2.class
 Paneles\PanelRegistroID$1.class
 Presentacion\Proyecto2_BDA_Presentacion.class
 Paneles\PanelRegistroID.class
+Paneles\SeleccionLaboratorio.class
+PanelesAdministrador\MenuAdministrador$1.class
+PanelesAdministrador\PanelListaLaboratorios.class
+ControlNavegacion\ControlNavegacion.class
