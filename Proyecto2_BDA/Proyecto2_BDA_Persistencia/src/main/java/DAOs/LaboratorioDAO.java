@@ -4,9 +4,9 @@
  */
 package DAOs;
 
-import DTOs.AgregarComputadoraDTO;
-import entidades.ComputadoraDominio;
-import interfaces.IComputadoraDAO;
+import DTOs.AgregarLaboratorioDTO;
+import entidades.LaboratorioDominio;
+import interfaces.ILaboratorioDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,50 +18,48 @@ import javax.persistence.criteria.CriteriaQuery;
  *
  * @author jalt2
  */
-public class ComputadoraDAO implements IComputadoraDAO{
+public class LaboratorioDAO implements ILaboratorioDAO{
 
     @Override
-    public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO nuevaComputadora) {
+    public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
         em.getTransaction().begin();
         
-        ComputadoraDominio computadoraGuardar = new ComputadoraDominio(nuevaComputadora.getId(), nuevaComputadora.getDireccionIP(), nuevaComputadora.getNumero(), nuevaComputadora.getEstatus());
+        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin());
         
-        em.persist(computadoraGuardar);
+        em.persist(laboratorioGuardar);
         
         em.getTransaction().commit();
         
         em.close();
-        
         fabrica.close();
         
-        return computadoraGuardar;
+        return laboratorioGuardar;
     }
 
     @Override
-    public List<ComputadoraDominio> consultarComputadoras() {
+    public List<LaboratorioDominio> consultarLaboratorios() {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         
-        CriteriaQuery<ComputadoraDominio> criteriaQuery = criteriaBuilder.createQuery(ComputadoraDominio.class);
+        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(LaboratorioDominio.class);
         
-        List<ComputadoraDominio> computadoras = em.createQuery(criteriaQuery).getResultList();
-         
-        for(ComputadoraDominio computadora : computadoras){
-            System.out.println(computadora.getDireccionIP());
-            System.out.println(computadora.getEstatus());
+        List<LaboratorioDominio> laboratorios = em.createQuery(criteriaQuery).getResultList();
+        
+        for(LaboratorioDominio laboratorio : laboratorios){
+            System.out.println(laboratorio.getNombreLaboratorio());
+            System.out.println(laboratorio.getHoraInicio());
+            System.out.println(laboratorio.getHoraFin());
         }
         
         em.close();
         fabrica.close();
         
-        return computadoras;
+        return laboratorios;
     }
-    
-    
     
 }

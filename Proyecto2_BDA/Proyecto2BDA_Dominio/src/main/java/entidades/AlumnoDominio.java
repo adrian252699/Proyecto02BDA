@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table (name = "alumnos")
 public class AlumnoDominio implements Serializable{ 
     @Id()
+    @Column(name = "idAlumno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     

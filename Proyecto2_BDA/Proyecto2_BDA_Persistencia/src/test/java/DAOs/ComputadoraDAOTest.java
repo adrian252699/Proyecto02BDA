@@ -25,9 +25,9 @@ public class ComputadoraDAOTest {
     public ComputadoraDAOTest() {
     }
 
-//    /**
-//     * Test of agregarComputadora method, of class ComputadoraDAO.
-//     */
+    /**
+     * Test of agregarComputadora method, of class ComputadoraDAO.
+     */
 //    @org.junit.jupiter.api.Test
 //    public void testAgregarComputadora() {
 //        
@@ -37,7 +37,7 @@ public class ComputadoraDAOTest {
 //        listaSoftware.add("Chrome");
 //        listaSoftware.add("Word");
 //        
-//        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO(1L,"01", "123.123.123.123", "Disponible", listaSoftware);
+//        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO("01", "123.123.123.123", "Disponible", listaSoftware);
 //        
 //        
 //        IComputadoraDAO dao = new ComputadoraDAO();
@@ -45,5 +45,13 @@ public class ComputadoraDAOTest {
 //        dao.agregarComputadora(nuevaComputadora);
 //        
 //    }
+    
+    @org.junit.jupiter.api.Test
+    public void testConsultarComputadoras() {
+        IComputadoraDAO dao = new ComputadoraDAO();
+        
+        dao.consultarComputadoras();
+        
+    }
     
 }

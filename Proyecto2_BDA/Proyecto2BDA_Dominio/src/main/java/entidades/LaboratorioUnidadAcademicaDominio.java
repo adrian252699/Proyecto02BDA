@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,8 @@ public class LaboratorioUnidadAcademicaDominio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idLaboratorioUnidad")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     //Relaciones 1:M de laboratorio y unidad academica

@@ -4,16 +4,15 @@
  */
 package interfaces;
 
-import DTOs.AgregarComputadoraDTO;
-import entidades.ComputadoraDominio;
+import DTOs.AgregarLaboratorioDTO;
+import entidades.LaboratorioDominio;
 import java.util.List;
 
 /**
  *
  * @author jalt2
  */
-public interface IComputadoraDAO {
-    public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO nuevaComputadora);
-    public List<ComputadoraDominio> consultarComputadoras();
-    
+public interface ILaboratorioDAO {
+    public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio);
+    public List<LaboratorioDominio> consultarLaboratorios();
 }
