@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,13 +27,20 @@ public class AlumnoDominio implements Serializable{
     private String password;
     
     //Atributos de la relacion con carrera (1 a 1)
-    //...
+    @OneToOne
+    @JoinColumn(name = "id_carrera", nullable = false)
+    private CarreraDominio carrera;
     
     //Atributos de la relacion con computadoras (1 a 1)
-    //...
+    
+    @OneToOne
+    @JoinColumn(name = "computadora_id")
+    private ComputadoraDominio computadora;
     
     //Atributos de la relacion con BloqueoAdminstradorAlumno (N:M)
-    //...
+    
+   //@ManyToMany
+   
     
     public AlumnoDominio() {
     }
@@ -42,8 +51,6 @@ public class AlumnoDominio implements Serializable{
         this.password = password;
     }
     
-    
-
     public int getId() {
         return id;
     }

@@ -6,11 +6,15 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,20 +30,26 @@ public class LaboratorioDominio implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(name = "nombreLaboratorio")
+    @Column(name = "nombreLaboratorio", nullable = false)
     private String nombreLaboratorio;
     
     @Column(name = "horaInicio")
     private Calendar horaInicio;
     
-    @Column(name = "horaFIn")
+    @Column(name = "horaFin")
     private Calendar horaFin;
     
     //Lista de reglas
     
-    //Relacion n:M con unidad academica
+    //Relacion n:1 con unidad academica
+    @ManyToOne
+    @JoinColumn(name = "unidadAcademica_id")
+    private UnidadAcademicaDominio unidadAcademica;
     
-    //Relacion N:M con computadora
+    
+    //Relacion 1:N con computadora
+    @OneToMany(mappedBy = "laboratorio")
+    private List<ComputadoraDominio> computadoras;
     
     public LaboratorioDominio() {
     }
@@ -50,8 +60,6 @@ public class LaboratorioDominio implements Serializable {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -84,9 +92,7 @@ public class LaboratorioDominio implements Serializable {
     public void setHoraFin(Calendar horaFin) {
         this.horaFin = horaFin;
     }
-    
-    
-    
+ 
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,6 +116,5 @@ public class LaboratorioDominio implements Serializable {
     @Override
     public String toString() {
         return "entidades.LaboratorioDominio[ id=" + id + " ]";
-    }
-    
+    } 
 }

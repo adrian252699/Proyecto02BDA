@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -37,8 +40,14 @@ public class ComputadoraDominio implements Serializable {
     //Lista de softwares
     
     //Relacion 1:1 con alumno
+    @OneToOne
+    @JoinColumn(name = "alumno_id")
+    private AlumnoDominio alumno;
     
-    //Realcion N:M con laboratorio
+    //Realcion N:1 con laboratorio
+    @ManyToOne
+    @JoinColumn(name = "laboratorio_id")
+    private LaboratorioDominio laboratorio;
     
     public ComputadoraDominio() {
     }
@@ -49,16 +58,13 @@ public class ComputadoraDominio implements Serializable {
         this.numeroComputadora = numeroComputadora;
         this.estatus = estatus;
     }
-    
-    
-    
+
     public ComputadoraDominio(Long id, String direccionIP, String numeroComputadora, String estatus) {
         this.id = id;
         this.direccionIP = direccionIP;
         this.numeroComputadora = numeroComputadora;
         this.estatus = estatus;
     }
-    
     
     public Long getId() {
         return id;
@@ -91,9 +97,7 @@ public class ComputadoraDominio implements Serializable {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,6 +121,5 @@ public class ComputadoraDominio implements Serializable {
     @Override
     public String toString() {
         return "entidades.ComputadoraDominio[ id=" + id + " ]";
-    }
-    
+    }   
 }

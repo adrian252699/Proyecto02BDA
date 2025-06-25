@@ -4,13 +4,17 @@
  */
 package entidades;
 
+
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +22,7 @@ import javax.persistence.Table;
  * @author jalt2
  */
 @Entity
-@Table(name = "carreraas")
+@Table(name = "carreras")
 public class CarreraDominio implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,7 +36,10 @@ public class CarreraDominio implements Serializable {
     @Column(name = "tiempoMax")
     private Calendar tiempoMax;
     
+    
     //Atributos de la relacion 1 a 1 con alumno
+    @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+    private List<AlumnoDominio> alumno;  
     
     public CarreraDominio() {
     }
@@ -42,15 +49,37 @@ public class CarreraDominio implements Serializable {
         this.nombreCarrera = nombreCarrera;
         this.tiempoMax = tiempoMax;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNombreCarrera() {
+        return nombreCarrera;
+    }
+
+    public void setNombreCarrera(String nombreCarrera) {
+        this.nombreCarrera = nombreCarrera;
+    }
+
+    public Calendar getTiempoMax() {
+        return tiempoMax;
+    }
+
+    public void setTiempoMax(Calendar tiempoMax) {
+        this.tiempoMax = tiempoMax;
+    }
+
+    public List<AlumnoDominio> getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(List<AlumnoDominio> alumno) {
+        this.alumno = alumno;
     }
 
     @Override

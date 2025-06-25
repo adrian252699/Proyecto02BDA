@@ -5,11 +5,14 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,10 +28,12 @@ public class UnidadAcademicaDominio implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(name = "nombreUnidad")
+    @Column(name = "nombreUnidad", nullable = false)
     private String nombreUnidad;
     
-    //Relacion N:M con laboratorio
+    //Relacion 1:N con laboratorio
+    @OneToMany(mappedBy = "unidadAcademica")
+    private List<LaboratorioDominio> laboratorios = new ArrayList<>();
 
     public UnidadAcademicaDominio() {
     }
@@ -37,9 +42,7 @@ public class UnidadAcademicaDominio implements Serializable {
         this.id = id;
         this.nombreUnidad = nombreUnidad;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -55,7 +58,6 @@ public class UnidadAcademicaDominio implements Serializable {
     public void setNombreUnidad(String nombreUnidad) {
         this.nombreUnidad = nombreUnidad;
     }
-    
     
     @Override
     public int hashCode() {
