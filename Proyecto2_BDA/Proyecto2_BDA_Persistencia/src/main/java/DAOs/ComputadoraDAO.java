@@ -27,8 +27,8 @@ public class ComputadoraDAO implements IComputadoraDAO{
         
         em.getTransaction().begin();
         
-        ComputadoraDominio computadoraGuardar = new ComputadoraDominio(nuevaComputadora.getId(), nuevaComputadora.getDireccionIP(), nuevaComputadora.getNumero(), nuevaComputadora.getEstatus());
-        
+        ComputadoraDominio computadoraGuardar = new ComputadoraDominio(nuevaComputadora.getDireccionIP(), nuevaComputadora.getNumero(), nuevaComputadora.getEstatus(), nuevaComputadora.getAlumno(), nuevaComputadora.getLaboratorio());
+                
         em.persist(computadoraGuardar);
         
         em.getTransaction().commit();

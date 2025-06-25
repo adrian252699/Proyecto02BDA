@@ -2,8 +2,10 @@ DAOs\ComputadoraDAO.class
 DAOs\UnidadAcademicaDAO.class
 interfaces\IComputadoraDAO.class
 DAOs\NewMain.class
+interfaces\IAlumnoDAO.class
 interfaces\ICarreraDAO.class
 DAOs\CarreraDAO.class
 DAOs\LaboratorioDAO.class
 interfaces\ILaboratorioDAO.class
+DAOs\AlumnoDAO.class
 interfaces\IUnidadAcademicaDAO.class

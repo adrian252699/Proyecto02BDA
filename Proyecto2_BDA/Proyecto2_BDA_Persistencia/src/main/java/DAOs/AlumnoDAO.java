@@ -4,9 +4,9 @@
  */
 package DAOs;
 
-import DTOs.AgregarCarreraDTO;
-import entidades.CarreraDominio;
-import interfaces.ICarreraDAO;
+import DTOs.NuevoAlumnoDTO;
+import entidades.AlumnoDominio;
+import interfaces.IAlumnoDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,38 +15,38 @@ import javax.persistence.Persistence;
  *
  * @author jalt2
  */
-public class CarreraDAO implements ICarreraDAO{
+public class AlumnoDAO implements IAlumnoDAO{
 
     @Override
-    public CarreraDominio agregarCarrera(AgregarCarreraDTO nuevaCarrera) {
+    public AlumnoDominio consultarAlumnoId(Long idAlumno) {
+        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+        EntityManager em = fabrica.createEntityManager();
+        
+        AlumnoDominio alumno = em.find(AlumnoDominio.class, idAlumno);
+        
+        em.close();
+        fabrica.close();
+        
+        return alumno;
+    }
+
+    @Override
+    public AlumnoDominio agregarAlumno(NuevoAlumnoDTO nuevoAlumno) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
         em.getTransaction().begin();
         
-        CarreraDominio carreraGuardar = new CarreraDominio(nuevaCarrera.getNombre(), nuevaCarrera.getTiempoMax());
+        AlumnoDominio alumnoGuardar = new AlumnoDominio(nuevoAlumno.getNombre(), nuevoAlumno.getPassword(), nuevoAlumno.getCarrera());
         
-        em.persist(carreraGuardar);
+        em.persist(alumnoGuardar);
         
         em.getTransaction().commit();
         
         em.close();
         fabrica.close();
         
-        return carreraGuardar;
-    }
-
-    @Override
-    public CarreraDominio consultarCarreraId(Long id) {
-        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
-        EntityManager em = fabrica.createEntityManager();
-        
-        CarreraDominio carrera = em.find(CarreraDominio.class, id);
-        
-        em.close();
-        fabrica.close();
-        
-        return carrera;
+        return alumnoGuardar;
     }
     
 }

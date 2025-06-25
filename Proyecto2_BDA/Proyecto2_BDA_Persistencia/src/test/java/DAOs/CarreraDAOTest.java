@@ -21,15 +21,15 @@ public class CarreraDAOTest {
     /**
      * Test of agregarCarrera method, of class CarreraDAO.
      */
-//    @Test
-//    public void testAgregarCarrera() {
-//        
-//        AgregarCarreraDTO nuevaCarrera = new AgregarCarreraDTO("Diseño Grafico", 4L);
-//        
-//        ICarreraDAO dao = new CarreraDAO();
-//        
-//        dao.agregarCarrera(nuevaCarrera);
-//        
-//    }
+    @Test
+    public void testAgregarCarrera() {
+        
+        AgregarCarreraDTO nuevaCarrera = new AgregarCarreraDTO("Diseño Grafico", 4L);
+        
+        ICarreraDAO dao = new CarreraDAO();
+        
+        dao.agregarCarrera(nuevaCarrera);
+        
+    }
     
 }

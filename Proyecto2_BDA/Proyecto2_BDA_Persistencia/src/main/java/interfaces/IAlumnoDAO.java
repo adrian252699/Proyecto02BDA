@@ -4,14 +4,14 @@
  */
 package interfaces;
 
-import DTOs.AgregarCarreraDTO;
-import entidades.CarreraDominio;
+import DTOs.NuevoAlumnoDTO;
+import entidades.AlumnoDominio;
 
 /**
  *
  * @author jalt2
  */
-public interface ICarreraDAO {
-    public CarreraDominio agregarCarrera(AgregarCarreraDTO nuevaCarrera);
-    public CarreraDominio consultarCarreraId(Long id);
+public interface IAlumnoDAO {
+    public AlumnoDominio consultarAlumnoId(Long idAlumno);
+    public AlumnoDominio agregarAlumno(NuevoAlumnoDTO nuevoAlumno);
 }

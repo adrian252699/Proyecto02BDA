@@ -46,8 +46,15 @@ public class AlumnoDominio implements Serializable{
     public AlumnoDominio() {
     }
 
-    public AlumnoDominio(int id, String nombreCompleto, String password) {
-        this.id = id;
+    public AlumnoDominio(String nombreCompleto, String password, CarreraDominio carrera) {
+        this.nombreCompleto = nombreCompleto;
+        this.password = password;
+        this.carrera = carrera;
+    }
+    
+    
+    
+    public AlumnoDominio(String nombreCompleto, String password) {
         this.nombreCompleto = nombreCompleto;
         this.password = password;
     }

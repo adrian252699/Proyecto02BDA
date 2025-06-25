@@ -52,6 +52,16 @@ public class ComputadoraDominio implements Serializable {
     
     public ComputadoraDominio() {
     }
+
+    public ComputadoraDominio(String direccionIP, String numeroComputadora, String estatus, AlumnoDominio alumno, LaboratorioDominio laboratorio) {
+        this.direccionIP = direccionIP;
+        this.numeroComputadora = numeroComputadora;
+        this.estatus = estatus;
+        this.alumno = alumno;
+        this.laboratorio = laboratorio;
+    }
+    
+    
     
     //Sin id ni lista de software
     public ComputadoraDominio(String direccionIP, String numeroComputadora, String estatus) {

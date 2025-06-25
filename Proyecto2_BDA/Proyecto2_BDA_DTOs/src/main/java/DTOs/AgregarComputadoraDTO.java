@@ -4,6 +4,8 @@
  */
 package DTOs;
 
+import entidades.AlumnoDominio;
+import entidades.LaboratorioDominio;
 import java.util.List;
 
 /**
@@ -11,41 +13,31 @@ import java.util.List;
  * @author jalt2
  */
 public class AgregarComputadoraDTO {
-    private Long id;
     private String numero;
     private String direccionIP;
     private String estatus;
     private List<String> listaSoftWare;
+    private LaboratorioDominio laboratorio;
+    private AlumnoDominio alumno;
 
     public AgregarComputadoraDTO() {
     }
 
-    public AgregarComputadoraDTO(Long id, String numero, String direccionIP, String estatus, List<String> listaSoftWare) {
-        this.id = id;
+    public AgregarComputadoraDTO(String numero, String direccionIP, String estatus, List<String> listaSoftWare, LaboratorioDominio laboratorio, AlumnoDominio alumno) {
         this.numero = numero;
         this.direccionIP = direccionIP;
         this.estatus = estatus;
         this.listaSoftWare = listaSoftWare;
+        this.laboratorio = laboratorio;
+        this.alumno = alumno;
     }
-    
-    
-    
+
     public AgregarComputadoraDTO(String numero, String direccionIP, String estatus, List<String> listaSoftWare) {
         this.numero = numero;
         this.direccionIP = direccionIP;
         this.estatus = estatus;
         this.listaSoftWare = listaSoftWare;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    
     
     public String getNumero() {
         return numero;
@@ -77,6 +69,22 @@ public class AgregarComputadoraDTO {
 
     public void setListaSoftWare(List<String> listaSoftWare) {
         this.listaSoftWare = listaSoftWare;
+    }
+
+    public LaboratorioDominio getLaboratorio() {
+        return laboratorio;
+    }
+
+    public void setLaboratorio(LaboratorioDominio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
+
+    public AlumnoDominio getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(AlumnoDominio alumno) {
+        this.alumno = alumno;
     }
     
     
