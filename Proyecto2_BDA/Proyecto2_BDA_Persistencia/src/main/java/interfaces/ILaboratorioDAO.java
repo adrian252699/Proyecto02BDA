@@ -15,4 +15,5 @@ import java.util.List;
 public interface ILaboratorioDAO {
     public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio);
     public List<LaboratorioDominio> consultarLaboratorios();
+    public LaboratorioDominio consultarLaboratorioId(Long idLaboratorio);
 }

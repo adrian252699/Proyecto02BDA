@@ -59,6 +59,15 @@ public class LaboratorioDominio implements Serializable {
     public LaboratorioDominio() {
     }
 
+    public LaboratorioDominio(String nombreLaboratorio, Calendar horaInicio, Calendar horaFin, UnidadAcademicaDominio unidadAcademica) {
+        this.nombreLaboratorio = nombreLaboratorio;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.unidadAcademica = unidadAcademica;
+    }
+    
+    
+    
     public LaboratorioDominio(String nombreLaboratorio, Calendar horaInicio, Calendar horaFin) {
         this.nombreLaboratorio = nombreLaboratorio;
         this.horaInicio = horaInicio;
@@ -105,14 +114,32 @@ public class LaboratorioDominio implements Serializable {
     public void setHoraFin(Calendar horaFin) {
         this.horaFin = horaFin;
     }
- 
+
+    public UnidadAcademicaDominio getUnidadAcademica() {
+        return unidadAcademica;
+    }
+
+    public void setUnidadAcademica(UnidadAcademicaDominio unidadAcademica) {
+        this.unidadAcademica = unidadAcademica;
+    }
+
+    public List<ComputadoraDominio> getComputadoras() {
+        return computadoras;
+    }
+
+    public void setComputadoras(List<ComputadoraDominio> computadoras) {
+        this.computadoras = computadoras;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

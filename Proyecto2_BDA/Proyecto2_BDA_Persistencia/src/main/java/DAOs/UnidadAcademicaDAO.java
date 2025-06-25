@@ -4,9 +4,10 @@
  */
 package DAOs;
 
-import DTOs.AgregarLaboratorioDTO;
+import DTOs.NuevaUnidadAcademicaDTO;
 import entidades.LaboratorioDominio;
-import interfaces.ILaboratorioDAO;
+import entidades.UnidadAcademicaDominio;
+import interfaces.IUnidadAcademicaDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,61 +19,66 @@ import javax.persistence.criteria.CriteriaQuery;
  *
  * @author jalt2
  */
-public class LaboratorioDAO implements ILaboratorioDAO{
+public class UnidadAcademicaDAO implements IUnidadAcademicaDAO{
 
     @Override
-    public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio) {
+    public UnidadAcademicaDominio agregarUnidadAcademica(NuevaUnidadAcademicaDTO nuevaUnidad) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
         em.getTransaction().begin();
         
-        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin(),nuevoLaboratorio.getUnidadAcademica());
+        UnidadAcademicaDominio unidadAcademicaGuardar = new UnidadAcademicaDominio(nuevaUnidad.getNombre());
         
-        em.persist(laboratorioGuardar);
+        if (nuevaUnidad.getLaboratorios()!=null && nuevaUnidad.getLaboratorios().isEmpty()) {
+            unidadAcademicaGuardar.setLaboratorios(nuevaUnidad.getLaboratorios());
+        }
+        
+        em.persist(unidadAcademicaGuardar);
         
         em.getTransaction().commit();
         
         em.close();
         fabrica.close();
         
-        return laboratorioGuardar;
+        return unidadAcademicaGuardar;
     }
 
     @Override
-    public List<LaboratorioDominio> consultarLaboratorios() {
+    public List<UnidadAcademicaDominio> consultarUnidadesAcademicas() {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         
-        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(LaboratorioDominio.class);
+        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(UnidadAcademicaDominio.class);
         
-        List<LaboratorioDominio> laboratorios = em.createQuery(criteriaQuery).getResultList();
+        List<UnidadAcademicaDominio> unidadesAcademicas = em.createQuery(criteriaQuery).getResultList();
         
-        for(LaboratorioDominio laboratorio : laboratorios){
-            System.out.println(laboratorio.getNombreLaboratorio());
-            System.out.println(laboratorio.getHoraInicio());
-            System.out.println(laboratorio.getHoraFin());
+        for(UnidadAcademicaDominio unidad : unidadesAcademicas){
+            System.out.println(unidad.getNombreUnidad());
+            for(LaboratorioDominio laboratorio : unidad.getLaboratorios()){
+                laboratorio.getNombreLaboratorio();
+            }
         }
         
         em.close();
         fabrica.close();
         
-        return laboratorios;
+        return unidadesAcademicas;
     }
 
     @Override
-    public LaboratorioDominio consultarLaboratorioId(Long idLaboratorio) {
+    public UnidadAcademicaDominio consultarUnidadesAcademicasId(Long id) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
         
-        LaboratorioDominio laboratorio = em.find(LaboratorioDominio.class, idLaboratorio);
+        UnidadAcademicaDominio unidadAcademica = em.find(UnidadAcademicaDominio.class, id);
         
         em.close();
         fabrica.close();
         
-        return laboratorio;
+        return unidadAcademica;
     }
     
 }

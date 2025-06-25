@@ -34,13 +34,17 @@ public class UnidadAcademicaDominio implements Serializable {
     
     //Relacion 1:N con laboratorio
     @OneToMany(mappedBy = "unidadAcademica")
-    private List<LaboratorioDominio> laboratorios = new ArrayList<>();
+    private List<LaboratorioDominio> laboratorios;
 
     public UnidadAcademicaDominio() {
     }
 
-    public UnidadAcademicaDominio(Long id, String nombreUnidad) {
-        this.id = id;
+    public UnidadAcademicaDominio(String nombreUnidad, List<LaboratorioDominio> laboratorios) {
+        this.nombreUnidad = nombreUnidad;
+        this.laboratorios = laboratorios;
+    }
+    
+    public UnidadAcademicaDominio(String nombreUnidad) {
         this.nombreUnidad = nombreUnidad;
     }
 
@@ -59,6 +63,16 @@ public class UnidadAcademicaDominio implements Serializable {
     public void setNombreUnidad(String nombreUnidad) {
         this.nombreUnidad = nombreUnidad;
     }
+
+    public List<LaboratorioDominio> getLaboratorios() {
+        return laboratorios;
+    }
+
+    public void setLaboratorios(List<LaboratorioDominio> laboratorios) {
+        this.laboratorios = laboratorios;
+    }
+    
+    
     
     @Override
     public int hashCode() {

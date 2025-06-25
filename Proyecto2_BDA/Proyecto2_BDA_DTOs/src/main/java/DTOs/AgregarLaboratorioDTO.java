@@ -4,6 +4,7 @@
  */
 package DTOs;
 
+import entidades.UnidadAcademicaDominio;
 import java.util.Calendar;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Calendar;
  * @author jalt2
  */
 public class AgregarLaboratorioDTO {
+    private UnidadAcademicaDominio UnidadAcademica;
     private String nombre;
     private Calendar horaInicio;
     private Calendar horaFin;
@@ -18,12 +20,13 @@ public class AgregarLaboratorioDTO {
     public AgregarLaboratorioDTO() {
     }
 
-    public AgregarLaboratorioDTO(String nombre, Calendar horaInicio, Calendar horaFin) {
+    public AgregarLaboratorioDTO(UnidadAcademicaDominio UnidadAcademica, String nombre, Calendar horaInicio, Calendar horaFin) {
+        this.UnidadAcademica = UnidadAcademica;
         this.nombre = nombre;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -47,6 +50,16 @@ public class AgregarLaboratorioDTO {
     public void setHoraFin(Calendar horaFin) {
         this.horaFin = horaFin;
     }
+
+    public UnidadAcademicaDominio getUnidadAcademica() {
+        return UnidadAcademica;
+    }
+
+    public void setUnidadAcademica(UnidadAcademicaDominio UnidadAcademica) {
+        this.UnidadAcademica = UnidadAcademica;
+    }
+
+    
     
     
 }

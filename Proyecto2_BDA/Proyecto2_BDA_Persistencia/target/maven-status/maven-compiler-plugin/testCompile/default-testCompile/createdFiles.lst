@@ -1,3 +1,4 @@
-DAOs\CarreraDAOTest.class
 DAOs\LaboratorioDAOTest.class
 DAOs\ComputadoraDAOTest.class
+DAOs\CarreraDAOTest.class
+DAOs\UnidadAcademicaDAOTest.class
