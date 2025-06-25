@@ -1,5 +1,7 @@
 DAOs\ComputadoraDAO.class
-DAOs\LaboratorioDAO.class
 interfaces\IComputadoraDAO.class
-interfaces\ILaboratorioDAO.class
 DAOs\NewMain.class
+interfaces\ICarreraDAO.class
+DAOs\CarreraDAO.class
+DAOs\LaboratorioDAO.class
+interfaces\ILaboratorioDAO.class
