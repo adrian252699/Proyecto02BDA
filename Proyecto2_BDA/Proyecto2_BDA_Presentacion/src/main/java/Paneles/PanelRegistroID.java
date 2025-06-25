@@ -4,7 +4,7 @@
  */
 package Paneles;
 
-import Control.ControlNavegacion;
+import ControlNavegacion.ControlNavegacion;
 
 /**
  *
