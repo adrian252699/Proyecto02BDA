@@ -18,24 +18,24 @@ import javax.persistence.criteria.CriteriaQuery;
  *
  * @author jalt2
  */
-public class LaboratorioDAO implements ILaboratorioDAO{
+public class LaboratorioDAO implements ILaboratorioDAO {
 
     @Override
     public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
-        
+
         em.getTransaction().begin();
-        
-        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin(),nuevoLaboratorio.getUnidadAcademica());
-        
+
+        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin(), nuevoLaboratorio.getUnidadAcademica());
+
         em.persist(laboratorioGuardar);
-        
+
         em.getTransaction().commit();
-        
+
         em.close();
         fabrica.close();
-        
+
         return laboratorioGuardar;
     }
 
@@ -43,22 +43,22 @@ public class LaboratorioDAO implements ILaboratorioDAO{
     public List<LaboratorioDominio> consultarLaboratorios() {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
-        
+
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        
+
         CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(LaboratorioDominio.class);
-        
+
         List<LaboratorioDominio> laboratorios = em.createQuery(criteriaQuery).getResultList();
-        
-        for(LaboratorioDominio laboratorio : laboratorios){
+
+        for (LaboratorioDominio laboratorio : laboratorios) {
             System.out.println(laboratorio.getNombreLaboratorio());
             System.out.println(laboratorio.getHoraInicio());
             System.out.println(laboratorio.getHoraFin());
         }
-        
+
         em.close();
         fabrica.close();
-        
+
         return laboratorios;
     }
 
@@ -66,13 +66,34 @@ public class LaboratorioDAO implements ILaboratorioDAO{
     public LaboratorioDominio consultarLaboratorioId(Long idLaboratorio) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
-        
+
         LaboratorioDominio laboratorio = em.find(LaboratorioDominio.class, idLaboratorio);
-        
+
+        em.close();
+        fabrica.close();
+
+        return laboratorio;
+    }
+
+    public LaboratorioDominio editarLaboratorio(Long idLaboratorio, AgregarLaboratorioDTO dto) {
+        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+        EntityManager em = fabrica.createEntityManager();
+
+        LaboratorioDominio laboratorio = em.find(LaboratorioDominio.class, idLaboratorio);
+
+        if (laboratorio != null) {
+            laboratorio.setNombreLaboratorio(dto.getNombre());
+            laboratorio.setHoraInicio(dto.getHoraInicio());
+            laboratorio.setHoraFin(dto.getHoraFin());
+            laboratorio.setUnidadAcademica(dto.getUnidadAcademica());
+        }
+        em.getTransaction().commit();
         em.close();
         fabrica.close();
         
         return laboratorio;
     }
+
+
     
 }
