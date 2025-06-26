@@ -29,8 +29,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuBarAdmin = new javax.swing.JMenuBar();
         laboratorios = new javax.swing.JMenu();
         menuListaLab = new javax.swing.JMenuItem();
+        menuAgregarLaboratorio = new javax.swing.JMenuItem();
+        menuEditarLaboratorio = new javax.swing.JMenuItem();
         computadoras = new javax.swing.JMenu();
         menuListaPCs = new javax.swing.JMenuItem();
+        bloqueo = new javax.swing.JMenu();
+        menuListaBloqueos = new javax.swing.JMenuItem();
+        menuAgregarBloqueo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +48,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
             }
         });
         laboratorios.add(menuListaLab);
+
+        menuAgregarLaboratorio.setText("Agregar laboratorio");
+        laboratorios.add(menuAgregarLaboratorio);
+
+        menuEditarLaboratorio.setText("menuEditarLaboratorio");
+        laboratorios.add(menuEditarLaboratorio);
 
         menuBarAdmin.add(laboratorios);
 
@@ -57,6 +68,16 @@ public class MenuAdministrador extends javax.swing.JFrame {
         computadoras.add(menuListaPCs);
 
         menuBarAdmin.add(computadoras);
+
+        bloqueo.setText("Bloqueo");
+
+        menuListaBloqueos.setText("Lista bloqueos");
+        bloqueo.add(menuListaBloqueos);
+
+        menuAgregarBloqueo.setText("Agregar bloqueo");
+        bloqueo.add(menuAgregarBloqueo);
+
+        menuBarAdmin.add(bloqueo);
 
         setJMenuBar(menuBarAdmin);
 
@@ -87,9 +108,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu bloqueo;
     private javax.swing.JMenu computadoras;
     private javax.swing.JMenu laboratorios;
+    private javax.swing.JMenuItem menuAgregarBloqueo;
+    private javax.swing.JMenuItem menuAgregarLaboratorio;
     private javax.swing.JMenuBar menuBarAdmin;
+    private javax.swing.JMenuItem menuEditarLaboratorio;
+    private javax.swing.JMenuItem menuListaBloqueos;
     private javax.swing.JMenuItem menuListaLab;
     private javax.swing.JMenuItem menuListaPCs;
     // End of variables declaration//GEN-END:variables

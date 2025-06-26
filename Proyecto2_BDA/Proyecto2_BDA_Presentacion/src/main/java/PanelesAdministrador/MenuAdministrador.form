@@ -17,6 +17,16 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuListaLabMouseClicked"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAgregarLaboratorio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar laboratorio"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuEditarLaboratorio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="menuEditarLaboratorio"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="computadoras">
@@ -31,6 +41,23 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuListaPCsMouseClicked"/>
               </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="bloqueo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bloqueo"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuListaBloqueos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lista bloqueos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAgregarBloqueo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar bloqueo"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

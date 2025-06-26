@@ -33,6 +33,8 @@ public class PanelRegistroID extends javax.swing.JPanel {
         labelID = new javax.swing.JLabel();
         BtnConfirmar = new javax.swing.JButton();
         CampoId = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -40,11 +42,12 @@ public class PanelRegistroID extends javax.swing.JPanel {
         labelTitulo.setText("¡Bienvenido!");
         add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 210, 91));
 
-        labelID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelID.setText("Ingrese ID");
-        add(labelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+        labelID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelID.setText("Ingrese su ID");
+        add(labelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 120, 40));
 
-        BtnConfirmar.setBackground(new java.awt.Color(0, 0, 0));
+        BtnConfirmar.setBackground(new java.awt.Color(153, 204, 255));
+        BtnConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         BtnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         BtnConfirmar.setText("Continuar");
         BtnConfirmar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,8 +55,15 @@ public class PanelRegistroID extends javax.swing.JPanel {
                 BtnConfirmarMouseClicked(evt);
             }
         });
-        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 110, 30));
-        add(CampoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 280, 40));
+        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 80, -1));
+        add(CampoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 160, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Ingrese su contraseña");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+
+        jPasswordField1.setText("jPasswordField1");
+        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 252, 160, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConfirmarMouseClicked
@@ -71,6 +81,8 @@ public class PanelRegistroID extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirmar;
     private javax.swing.JTextField CampoId;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
