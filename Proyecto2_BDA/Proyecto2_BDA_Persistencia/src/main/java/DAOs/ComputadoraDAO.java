@@ -61,6 +61,19 @@ public class ComputadoraDAO implements IComputadoraDAO{
         
         return computadoras;
     }
+
+    @Override
+    public ComputadoraDominio consultarComputadoraId(Long id) {
+       EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+       EntityManager em = fabrica.createEntityManager();
+       
+       ComputadoraDominio computadora = em.find(ComputadoraDominio.class, id);
+       
+       em.close();
+       fabrica.close();
+       
+       return computadora;
+    }
     
     
     

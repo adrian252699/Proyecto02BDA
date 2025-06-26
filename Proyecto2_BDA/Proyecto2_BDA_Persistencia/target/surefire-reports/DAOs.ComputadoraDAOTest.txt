@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: DAOs.ComputadoraDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.007 s -- in DAOs.ComputadoraDAOTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.117 s -- in DAOs.ComputadoraDAOTest

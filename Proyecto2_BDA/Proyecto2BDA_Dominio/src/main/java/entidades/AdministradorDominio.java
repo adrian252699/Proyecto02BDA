@@ -35,8 +35,8 @@ public class AdministradorDominio implements Serializable {
     public AdministradorDominio() {
     }
 
-    public AdministradorDominio(Long id, String claveAdmin) {
-        this.id = id;
+    public AdministradorDominio(String claveAdmin) {
+        
         this.claveAdmin = claveAdmin;
     }
     

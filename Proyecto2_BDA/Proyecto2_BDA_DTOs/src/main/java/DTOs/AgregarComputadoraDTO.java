@@ -23,6 +23,16 @@ public class AgregarComputadoraDTO {
     public AgregarComputadoraDTO() {
     }
 
+    public AgregarComputadoraDTO(String numero, String direccionIP, String estatus, List<String> listaSoftWare, LaboratorioDominio laboratorio) {
+        this.numero = numero;
+        this.direccionIP = direccionIP;
+        this.estatus = estatus;
+        this.listaSoftWare = listaSoftWare;
+        this.laboratorio = laboratorio;
+    }
+    
+    
+    
     public AgregarComputadoraDTO(String numero, String direccionIP, String estatus, List<String> listaSoftWare, LaboratorioDominio laboratorio, AlumnoDominio alumno) {
         this.numero = numero;
         this.direccionIP = direccionIP;

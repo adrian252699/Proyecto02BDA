@@ -19,7 +19,7 @@ public class AlumnoDominio implements Serializable{
     @Id()
     @Column(name = "idAlumno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
     @Column(name = "nombreCompleto")
     private String nombreCompleto;
@@ -51,6 +51,13 @@ public class AlumnoDominio implements Serializable{
         this.password = password;
         this.carrera = carrera;
     }
+
+    public AlumnoDominio(String nombreCompleto, String password, CarreraDominio carrera, ComputadoraDominio computadora) {
+        this.nombreCompleto = nombreCompleto;
+        this.password = password;
+        this.carrera = carrera;
+        this.computadora = computadora;
+    }
     
     
     
@@ -59,11 +66,11 @@ public class AlumnoDominio implements Serializable{
         this.password = password;
     }
     
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -82,6 +89,25 @@ public class AlumnoDominio implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public CarreraDominio getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(CarreraDominio carrera) {
+        this.carrera = carrera;
+    }
+    
+
+    public ComputadoraDominio getComputadora() {
+        return computadora;
+    }
+
+    public void setComputadora(ComputadoraDominio computadora) {
+        this.computadora = computadora;
+    }
+    
+    
 
     @Override
     public String toString() {

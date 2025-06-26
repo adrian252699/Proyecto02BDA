@@ -15,5 +15,6 @@ import java.util.List;
 public interface IComputadoraDAO {
     public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO nuevaComputadora);
     public List<ComputadoraDominio> consultarComputadoras();
+    public ComputadoraDominio consultarComputadoraId(Long id);
     
 }

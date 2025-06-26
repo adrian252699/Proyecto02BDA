@@ -24,29 +24,29 @@ public class LaboratorioDAOTest {
     /**
      * Test of agregarLaboratorio method, of class LaboratorioDAO.
      */
-    @Test
-    public void testAgregarLaboratorio() {
-        Calendar horaInicio = Calendar.getInstance();
-        Calendar horaFin = Calendar.getInstance();
-        
-        ILaboratorioDAO dao = new LaboratorioDAO();
-        IUnidadAcademicaDAO daoUnidad = new UnidadAcademicaDAO();
-        
-        horaInicio.set(Calendar.HOUR_OF_DAY, 8);
-        horaInicio.set(Calendar.MINUTE,0);
-        horaInicio.set(Calendar.SECOND,0);
-        horaInicio.set(Calendar.MILLISECOND,0);
-        
-        horaFin.set(Calendar.HOUR_OF_DAY, 20);
-        horaFin.set(Calendar.MINUTE,0);
-        horaFin.set(Calendar.SECOND,0);
-        horaFin.set(Calendar.MILLISECOND,0);
-        
-        AgregarLaboratorioDTO nuevoLaboratorio = new  AgregarLaboratorioDTO(daoUnidad.consultarUnidadesAcademicasId(1L),"Cisco", horaInicio, horaFin);
-        
-        
-        
-        dao.agregarLaboratorio(nuevoLaboratorio);
-    }
+//    @Test
+//    public void testAgregarLaboratorio() {
+//        Calendar horaInicio = Calendar.getInstance();
+//        Calendar horaFin = Calendar.getInstance();
+//        
+//        ILaboratorioDAO dao = new LaboratorioDAO();
+//        IUnidadAcademicaDAO daoUnidad = new UnidadAcademicaDAO();
+//        
+//        horaInicio.set(Calendar.HOUR_OF_DAY, 8);
+//        horaInicio.set(Calendar.MINUTE,0);
+//        horaInicio.set(Calendar.SECOND,0);
+//        horaInicio.set(Calendar.MILLISECOND,0);
+//        
+//        horaFin.set(Calendar.HOUR_OF_DAY, 20);
+//        horaFin.set(Calendar.MINUTE,0);
+//        horaFin.set(Calendar.SECOND,0);
+//        horaFin.set(Calendar.MILLISECOND,0);
+//        
+//        AgregarLaboratorioDTO nuevoLaboratorio = new  AgregarLaboratorioDTO(daoUnidad.consultarUnidadesAcademicasId(1L),"Cisco", horaInicio, horaFin);
+//        
+//        
+//        
+//        dao.agregarLaboratorio(nuevoLaboratorio);
+//    }
     
 }

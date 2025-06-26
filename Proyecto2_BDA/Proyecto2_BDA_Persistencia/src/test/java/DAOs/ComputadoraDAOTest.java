@@ -6,7 +6,9 @@ package DAOs;
 
 import DTOs.AgregarComputadoraDTO;
 import entidades.ComputadoraDominio;
+import interfaces.IAlumnoDAO;
 import interfaces.IComputadoraDAO;
+import interfaces.ILaboratorioDAO;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -28,23 +30,26 @@ public class ComputadoraDAOTest {
     /**
      * Test of agregarComputadora method, of class ComputadoraDAO.
      */
-//    @org.junit.jupiter.api.Test
-//    public void testAgregarComputadora() {
-//        
-//        List<String> listaSoftware = new ArrayList();
-//        
-//        listaSoftware.add("Excel");
-//        listaSoftware.add("Chrome");
-//        listaSoftware.add("Word");
-//        
-//        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO("01", "123.123.123.123", "Disponible", listaSoftware);
-//        
-//        
-//        IComputadoraDAO dao = new ComputadoraDAO();
-//        
-//        dao.agregarComputadora(nuevaComputadora);
-//        
-//    }
+    @org.junit.jupiter.api.Test
+    public void testAgregarComputadora() {
+        
+        List<String> listaSoftware = new ArrayList();
+        
+        listaSoftware.add("Excel");
+        listaSoftware.add("Chrome");
+        listaSoftware.add("Word");
+        
+        ILaboratorioDAO daoLab = new LaboratorioDAO();
+        IAlumnoDAO daoAlumno = new AlumnoDAO();
+        
+        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO("11", "192.168.0.101", "Disponible", listaSoftware,daoLab.consultarLaboratorioId(1L));
+        
+        
+        IComputadoraDAO dao = new ComputadoraDAO();
+        
+        dao.agregarComputadora(nuevaComputadora);
+        
+    }
     
     @org.junit.jupiter.api.Test
     public void testConsultarComputadoras() {

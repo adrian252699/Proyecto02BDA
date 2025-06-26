@@ -109,6 +109,24 @@ public class ComputadoraDominio implements Serializable {
         this.estatus = estatus;
     }
 
+    public AlumnoDominio getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(AlumnoDominio alumno) {
+        this.alumno = alumno;
+    }
+
+    public LaboratorioDominio getLaboratorio() {
+        return laboratorio;
+    }
+
+    public void setLaboratorio(LaboratorioDominio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
