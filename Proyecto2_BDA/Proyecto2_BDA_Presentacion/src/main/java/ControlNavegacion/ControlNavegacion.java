@@ -39,7 +39,7 @@ public class ControlNavegacion {
     public void iniciarSistema() {
         valoresDefault();
     }
-    //------------------------------------flujo Admin------------------------------------
+    //------------------------------------flujo Admin---------------------------------------
     public void mostrarListadoLaboratoriosAdmin(){
         listadoLaboratorio = new ListadoLaboratoriosAdmin(this);
         menuAdmin.cambiarPanel(listadoLaboratorio);
@@ -60,14 +60,7 @@ public class ControlNavegacion {
         framePrincipal.dispose();
         menuAdmin.setVisible(true);
     }
-
-    public void cambiarPanel(JPanel jpanel) {
-        framePrincipal.getContentPane().removeAll();
-        framePrincipal.setContentPane(jpanel);
-        framePrincipal.repaint();
-        framePrincipal.revalidate();
-    }
-
+    
     public void mostrarPantallaAgregarLaboratorio() {
         AgregarLaboratorioUnidad panel = new AgregarLaboratorioUnidad(this);
         cambiarPanel(panel);
@@ -77,9 +70,9 @@ public class ControlNavegacion {
         AgregarLaboratorio panel = new AgregarLaboratorio(this);
         cambiarPanel(panel);
     } 
-    //------------------------------------flujo Admin------------------------------------
+    //------------------------------------flujo Admin---------------------------------------
     
-    //------------------------------------flujo Apartar------------------------------------
+    //------------------------------------flujo Apartar-------------------------------------
     
     public void mostrarPantallaSeleccionLaboratorio(){
         seleccionLaboratorio = new SeleccionLaboratorio(this);
@@ -106,7 +99,10 @@ public class ControlNavegacion {
     
     
     
-    //------------------------------------flujo Apartar------------------------------------
+    //------------------------------------flujo Apartar-----------------------------------------
+    
+    
+    //------------------------------------Metodos auxiliares------------------------------------
     public void valoresDefault(){
         framePrincipal = new JFrame();
         framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,14 +113,22 @@ public class ControlNavegacion {
         framePrincipal.setVisible(true);
     }
     
-    public void cambiarPanel(JFrame frame, JPanel panelActual){
-        frame.getContentPane().removeAll();
-        frame.setContentPane(panelActual);
-        frame.repaint();
-        frame.revalidate();
+//    public void cambiarPanel(JFrame frame, JPanel panelActual){
+//        frame.getContentPane().removeAll();
+//        frame.setContentPane(panelActual);
+//        frame.repaint();
+//        frame.revalidate();
+//    }
+    
+     public void cambiarPanel(JPanel jpanel) {
+        framePrincipal.getContentPane().removeAll();
+        framePrincipal.setContentPane(jpanel);
+        framePrincipal.repaint();
+        framePrincipal.revalidate();
     }
- 
-    //----------------------Errores (JOptionPane)----------------------
+    //------------------------------------Metodos auxiliares------------------------------------
+    
+    //------------------------------------Errores (JOptionPane)---------------------------------
     public boolean validarCredenciales(String idTextField, String password) {
         //Mientras
         String idAdmin ="12345";

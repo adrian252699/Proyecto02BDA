@@ -5,6 +5,7 @@
 package DAOs;
 
 import DTOs.NuevoAdministradorDTO;
+import Conexion.ConexionBD;
 import entidades.AdministradorDominio;
 import interfaces.IAdministradorDAO;
 import java.util.List;
@@ -13,19 +14,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
  * @author jalt2
  */
 public class AdministradorDAO implements IAdministradorDAO {
-
+    
+    private static AdministradorDAO instanciaAdministradoDAO;
+    
+    public static AdministradorDAO getInstanciaDAO() {
+        if (instanciaAdministradoDAO == null) {
+            instanciaAdministradoDAO = new AdministradorDAO();
+        }
+        return instanciaAdministradoDAO;
+    }
     @Override
     public AdministradorDominio agregarAdministrador(NuevoAdministradorDTO nuevoAdministrador) {
-        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
-        EntityManager em = fabrica.createEntityManager();
-
+        EntityManager em = ConexionBD.crearConexion();
         em.getTransaction().begin();
 
         AdministradorDominio administradorGuardar = new AdministradorDominio(nuevoAdministrador.getClaveAdministrador());
@@ -33,7 +39,7 @@ public class AdministradorDAO implements IAdministradorDAO {
         em.getTransaction().commit();
 
         em.close();
-        fabrica.close();
+        ConexionBD.cerrar();
 
         return administradorGuardar;
     }

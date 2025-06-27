@@ -19,8 +19,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
      */
     public MenuAdministrador(ControlNavegacion control) {
         this.control = control;
-        initComponents();
         valoresDefault();
+        initComponents();
+        
     }
 
     /**
@@ -44,6 +45,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         ListadoBloqueos = new javax.swing.JMenuItem();
         menuAgregarBloqueo = new javax.swing.JMenuItem();
         menuDesbloquearAlumno = new javax.swing.JMenuItem();
+        menuConfiguracion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,6 +108,18 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         menuBarAdmin.add(bloqueo);
 
+        menuConfiguracion.setText("Configuracion");
+        menuConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConfiguracionActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Cerrar Sesion");
+        menuConfiguracion.add(jMenuItem1);
+
+        menuBarAdmin.add(menuConfiguracion);
+
         setJMenuBar(menuBarAdmin);
 
         pack();
@@ -133,6 +148,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         control.mostrarListadoComputadorasAdmin();
     }//GEN-LAST:event_listadoComputadorasActionPerformed
 
+    private void menuConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConfiguracionActionPerformed
+        // TODO add your handling code here:
+        control.iniciarSistema();
+    }//GEN-LAST:event_menuConfiguracionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Laboratorios;
@@ -140,11 +160,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu ListadoComputadoras;
     private javax.swing.JMenu bloqueo;
     private javax.swing.JPanel contenidoActual;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem listadoComputadoras;
     private javax.swing.JMenuItem listadoLaboratorios;
     private javax.swing.JMenuItem menuAgregarBloqueo;
     private javax.swing.JMenuItem menuAgregarLaboratorio;
     private javax.swing.JMenuBar menuBarAdmin;
+    private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenuItem menuDesbloquearAlumno;
     private javax.swing.JMenuItem menuEditarLaboratorio;
     // End of variables declaration//GEN-END:variables
@@ -153,7 +175,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         setTitle("Menu Administrador");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setSize(1040, 660);
+        setSize(1040, 650);
     }
     
     public void cambiarPanel(JPanel panel){

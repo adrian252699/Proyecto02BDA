@@ -81,7 +81,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
         BtnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BtnEditar.setForeground(new java.awt.Color(255, 255, 255));
         BtnEditar.setText("Editar");
-        add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 120, 40));
+        add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, 120, 40));
 
         BtnAgregar.setBackground(new java.awt.Color(0, 0, 0));
         BtnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -92,7 +92,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
                 BtnAgregarMouseClicked(evt);
             }
         });
-        add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 120, 40));
+        add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 120, 40));
 
         BtnEliminar.setBackground(new java.awt.Color(0, 0, 0));
         BtnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -103,7 +103,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
                 BtnEliminarMouseClicked(evt);
             }
         });
-        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 120, 40));
+        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, 120, 40));
 
         BtnCerrarSesion.setBackground(new java.awt.Color(0, 0, 0));
         BtnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -114,7 +114,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
                 BtnCerrarSesionMouseClicked(evt);
             }
         });
-        add(BtnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 140, 40));
+        add(BtnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 140, 40));
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         labelTitulo.setText("Listado Computadoras");
@@ -140,7 +140,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
                 BtnSalirMouseClicked(evt);
             }
         });
-        add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 40));
+        add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 560, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAtrasPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAtrasPaginaMouseClicked

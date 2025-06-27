@@ -1,1 +1,7 @@
 com\mycompany\proyecto2_bda_negocio\Proyecto2_BDA_Negocio.class
+Interfacez\IEstudianteBO.class
+BOs\ComputadoraBO.class
+BOs\EstudianteBO.class
+BOs\LaboratorioBO.class
+DTOs\ComputadoraDTO.class
+DTOs\LabortatorioDTO.class
