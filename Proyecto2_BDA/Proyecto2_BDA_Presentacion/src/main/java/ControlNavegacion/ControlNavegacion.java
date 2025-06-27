@@ -19,28 +19,38 @@ import javax.swing.JPanel;
 public class ControlNavegacion {
 
     //Paneles de modulo Administrador
-    MenuAdministrador menuAdmin;
-
+    private MenuAdministrador menuAdmin;
+    private ListadoLaboratoriosAdmin listadoLaboratorio;
+    private ListadoComputadorasAdmin listadoComputadoras;
+    private ListadoBloqueos listadoBloqueos;
     //Paneles Generales
-    JFrame framePrincipal;
+    private JFrame framePrincipal;
 
     public void iniciarSistema() {
         valoresDefault();
-        PanelRegistroID login = new PanelRegistroID(this);
-        framePrincipal.add(login);
-        framePrincipal.setVisible(true);
+    }
+    
+    public void mostrarListadoLaboratoriosAdmin(){
+        listadoLaboratorio = new ListadoLaboratoriosAdmin(this);
+       
+        menuAdmin.cambiarPanel(listadoLaboratorio);
+    }
+    
+    public void mostrarListadoComputadorasAdmin(){
+        listadoComputadoras = new ListadoComputadorasAdmin(this);
+        menuAdmin.cambiarPanel(listadoComputadoras);
+    }
+    
+    public void mostrarPantallaBloqueosAdmin(){
+        listadoBloqueos = new ListadoBloqueos(this);
+        menuAdmin.cambiarPanel(listadoBloqueos);
     }
 
     public void mostrarPantallaAdminisrador() {
         menuAdmin = new MenuAdministrador(this);
         framePrincipal.dispose();
         menuAdmin.setVisible(true);
-    }
 
-    public void valoresDefault() {
-        framePrincipal = new JFrame();
-        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        framePrincipal.setSize(1050, 650);
     }
 
     public void cambiarFrame(JPanel jpanel) {
@@ -58,8 +68,24 @@ public class ControlNavegacion {
     public void mostrarPantallaFormularioLaboratorio() {
         AgregarLaboratorio panel = new AgregarLaboratorio(this);
         cambiarFrame(panel);
+    } 
+    public void valoresDefault(){
+        framePrincipal = new JFrame();
+        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framePrincipal.setSize(1050,650);
+        framePrincipal.setLocationRelativeTo(null);
+        PanelRegistroID login = new PanelRegistroID(this);
+        framePrincipal.add(login);
+        framePrincipal.setVisible(true);
     }
-
+    
+    public void cambiarPanel(JFrame frame, JPanel panelActual){
+        frame.getContentPane().removeAll();
+        frame.setContentPane(panelActual);
+        frame.repaint();
+        frame.revalidate();
+    }
+ 
     //----------------------Errores (JOptionPane)----------------------
     public boolean validarCredenciales(String idTextField, String password) {
         //Mientras

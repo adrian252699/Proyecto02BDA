@@ -5,6 +5,8 @@
 package PanelesAdministrador;
 
 import ControlNavegacion.ControlNavegacion;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,6 +20,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador(ControlNavegacion control) {
         this.control = control;
         initComponents();
+        valoresDefault();
     }
 
     /**
@@ -29,34 +32,35 @@ public class MenuAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenidoActual = new javax.swing.JPanel();
         menuBarAdmin = new javax.swing.JMenuBar();
-        laboratorios = new javax.swing.JMenu();
-        menuListaLab = new javax.swing.JMenuItem();
+        Laboratorios = new javax.swing.JMenu();
+        listadoLaboratorios = new javax.swing.JMenuItem();
         menuAgregarLaboratorio = new javax.swing.JMenuItem();
         menuEditarLaboratorio = new javax.swing.JMenuItem();
-        computadoras = new javax.swing.JMenu();
-        menuListaPCs = new javax.swing.JMenuItem();
+        ListadoComputadoras = new javax.swing.JMenu();
+        listadoComputadoras = new javax.swing.JMenuItem();
         bloqueo = new javax.swing.JMenu();
-        menuListaBloqueos = new javax.swing.JMenuItem();
+        ListadoBloqueos = new javax.swing.JMenuItem();
         menuAgregarBloqueo = new javax.swing.JMenuItem();
         menuDesbloquearAlumno = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        laboratorios.setText("Laboratorios");
+        contenidoActual.setMaximumSize(new java.awt.Dimension(1050, 620));
+        contenidoActual.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(contenidoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1030, 620));
 
-        menuListaLab.setText("Lista de Laboratorios");
-        menuListaLab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuListaLabMouseClicked(evt);
-            }
-        });
-        menuListaLab.addActionListener(new java.awt.event.ActionListener() {
+        Laboratorios.setText("Laboratorios");
+
+        listadoLaboratorios.setText("Lista de Laboratorios");
+        listadoLaboratorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuListaLabActionPerformed(evt);
+                listadoLaboratoriosActionPerformed(evt);
             }
         });
-        laboratorios.add(menuListaLab);
+        Laboratorios.add(listadoLaboratorios);
 
         menuAgregarLaboratorio.setText("Agregar laboratorio");
         menuAgregarLaboratorio.addActionListener(new java.awt.event.ActionListener() {
@@ -64,29 +68,34 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 menuAgregarLaboratorioActionPerformed(evt);
             }
         });
-        laboratorios.add(menuAgregarLaboratorio);
+        Laboratorios.add(menuAgregarLaboratorio);
 
         menuEditarLaboratorio.setText("menuEditarLaboratorio");
-        laboratorios.add(menuEditarLaboratorio);
+        Laboratorios.add(menuEditarLaboratorio);
 
-        menuBarAdmin.add(laboratorios);
+        menuBarAdmin.add(Laboratorios);
 
-        computadoras.setText("Computadoras");
+        ListadoComputadoras.setText("Computadoras");
 
-        menuListaPCs.setText("Lista de Computadoras");
-        menuListaPCs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuListaPCsMouseClicked(evt);
+        listadoComputadoras.setText("Lista de Computadoras");
+        listadoComputadoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoComputadorasActionPerformed(evt);
             }
         });
-        computadoras.add(menuListaPCs);
+        ListadoComputadoras.add(listadoComputadoras);
 
-        menuBarAdmin.add(computadoras);
+        menuBarAdmin.add(ListadoComputadoras);
 
         bloqueo.setText("Bloqueo");
 
-        menuListaBloqueos.setText("Registro de bloqueos");
-        bloqueo.add(menuListaBloqueos);
+        ListadoBloqueos.setText("Listado Bloqueos");
+        ListadoBloqueos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoBloqueosActionPerformed(evt);
+            }
+        });
+        bloqueo.add(ListadoBloqueos);
 
         menuAgregarBloqueo.setText("Agregar bloqueo");
         bloqueo.add(menuAgregarBloqueo);
@@ -98,52 +107,60 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         setJMenuBar(menuBarAdmin);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 627, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuListaPCsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuListaPCsMouseClicked
-        // TODO add your handling code here:
-        //llamar a Metodo en control para mostrar la pantalla de listaLaboratorio, tendra que ser diferente a la que esta en el package Paneles
-        //(crear nuevo panel en este package para mostrar la lista con los botones Agregar, editar, eliminar
-    }//GEN-LAST:event_menuListaPCsMouseClicked
-
-    private void menuListaLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuListaLabMouseClicked
-        // TODO add your handling code here:
-        //lo mismo de arriba la vdd
-    }//GEN-LAST:event_menuListaLabMouseClicked
 
     private void menuAgregarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarLaboratorioActionPerformed
         control.mostrarPantallaAgregarLaboratorio();
 // TODO add your handling code here:
     }//GEN-LAST:event_menuAgregarLaboratorioActionPerformed
 
-    private void menuListaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListaLabActionPerformed
+    private void listadoLaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoLaboratoriosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuListaLabActionPerformed
+        
+        control.mostrarListadoLaboratoriosAdmin();
+    }//GEN-LAST:event_listadoLaboratoriosActionPerformed
+
+    private void ListadoBloqueosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoBloqueosActionPerformed
+        // TODO add your handling code here:
+        control.mostrarPantallaBloqueosAdmin();
+    }//GEN-LAST:event_ListadoBloqueosActionPerformed
+
+    private void listadoComputadorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoComputadorasActionPerformed
+
+        // TODO add your handling code here:
+        
+        control.mostrarListadoComputadorasAdmin();
+    }//GEN-LAST:event_listadoComputadorasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Laboratorios;
+    private javax.swing.JMenuItem ListadoBloqueos;
+    private javax.swing.JMenu ListadoComputadoras;
     private javax.swing.JMenu bloqueo;
-    private javax.swing.JMenu computadoras;
-    private javax.swing.JMenu laboratorios;
+    private javax.swing.JPanel contenidoActual;
+    private javax.swing.JMenuItem listadoComputadoras;
+    private javax.swing.JMenuItem listadoLaboratorios;
     private javax.swing.JMenuItem menuAgregarBloqueo;
     private javax.swing.JMenuItem menuAgregarLaboratorio;
     private javax.swing.JMenuBar menuBarAdmin;
     private javax.swing.JMenuItem menuDesbloquearAlumno;
     private javax.swing.JMenuItem menuEditarLaboratorio;
-    private javax.swing.JMenuItem menuListaBloqueos;
-    private javax.swing.JMenuItem menuListaLab;
-    private javax.swing.JMenuItem menuListaPCs;
     // End of variables declaration//GEN-END:variables
+    
+    public void valoresDefault(){
+        setTitle("Menu Administrador");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setSize(1040, 660);
+    }
+    
+    public void cambiarPanel(JPanel panel){
+        contenidoActual.removeAll();
+        contenidoActual.add(panel, BorderLayout.CENTER);
+        contenidoActual.revalidate();
+        contenidoActual.repaint();
+    }
+
 }

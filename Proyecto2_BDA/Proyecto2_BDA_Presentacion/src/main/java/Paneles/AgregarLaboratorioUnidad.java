@@ -94,7 +94,7 @@ public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         AgregarLaboratorio panelAgregarLaboratorio = new AgregarLaboratorio(control);
-    control.cambiarFrame(panelAgregarLaboratorio);
+        control.cambiarFrame(panelAgregarLaboratorio);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnContinuarActionPerformed
 

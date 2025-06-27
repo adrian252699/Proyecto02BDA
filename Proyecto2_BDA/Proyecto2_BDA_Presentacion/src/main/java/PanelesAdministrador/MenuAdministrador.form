@@ -4,18 +4,17 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBarAdmin">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="laboratorios">
+        <Menu class="javax.swing.JMenu" name="Laboratorios">
           <Properties>
             <Property name="text" type="java.lang.String" value="Laboratorios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuListaLab">
+            <MenuItem class="javax.swing.JMenuItem" name="listadoLaboratorios">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lista de Laboratorios"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuListaLabMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuListaLabActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listadoLaboratoriosActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuAgregarLaboratorio">
@@ -33,17 +32,17 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="computadoras">
+        <Menu class="javax.swing.JMenu" name="ListadoComputadoras">
           <Properties>
             <Property name="text" type="java.lang.String" value="Computadoras"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuListaPCs">
+            <MenuItem class="javax.swing.JMenuItem" name="listadoComputadoras">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lista de Computadoras"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuListaPCsMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listadoComputadorasActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -53,10 +52,13 @@
             <Property name="text" type="java.lang.String" value="Bloqueo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuListaBloqueos">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoBloqueos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro de bloqueos"/>
+                <Property name="text" type="java.lang.String" value="Listado Bloqueos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoBloqueosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuAgregarBloqueo">
               <Properties>
@@ -93,16 +95,23 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1050" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="627" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="contenidoActual">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1050, 620]"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="0" width="1030" height="620"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+    </Container>
+  </SubComponents>
 </Form>
