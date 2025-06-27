@@ -74,9 +74,11 @@ public class PanelRegistroID extends javax.swing.JPanel {
             //esto manda directamente al menu administrador
            control.mostrarPantallaAdminisrador();
         }else{
-            control.mostrarErrorCredenciales();
+            //el validarCredenciales regresa false asi que entra el flujo de un estudiante
+            // esto se cambiara con las consultas para saber si es estudiante o administrador
+            control.mostrarPantallaSeleccionLaboratorio();
         }
-        //control.errorCredenciales----- este sera un JOptionPane 
+        //control.errorCredenciales----- este sera un JOptionPane no se si ponerlo aqui o ya lo cubre el control.validarCredenciales
         //diciendo q las credenciales son incorrectas
     }//GEN-LAST:event_BtnConfirmarMouseClicked
 

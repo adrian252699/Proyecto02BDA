@@ -2,18 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Paneles;
+package PanelesApartar;
+
+import ControlNavegacion.ControlNavegacion;
 
 /**
  *
  * @author HP
  */
 public class SeleccionLaboratorio extends javax.swing.JPanel {
-
+    ControlNavegacion control;
     /**
      * Creates new form SeleccionLaboratorio
      */
-    public SeleccionLaboratorio() {
+    public SeleccionLaboratorio(ControlNavegacion control) {
+        this.control = control;
         initComponents();
     }
 
@@ -29,6 +32,7 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        BtnContinuar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -45,16 +49,30 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 580, 460));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 520, 460));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Laboratorios");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 200, 60));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 200, 60));
+
+        BtnContinuar.setText("Continuar");
+        BtnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnContinuarMouseClicked(evt);
+            }
+        });
+        add(BtnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuarMouseClicked
+        // TODO add your handling code here:
+        control.mostrarPantallaSeleccionComputadora();
+    }//GEN-LAST:event_BtnContinuarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
