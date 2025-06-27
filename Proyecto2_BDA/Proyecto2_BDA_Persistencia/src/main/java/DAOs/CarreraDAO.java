@@ -16,7 +16,16 @@ import javax.persistence.Persistence;
  * @author jalt2
  */
 public class CarreraDAO implements ICarreraDAO{
+    
+    private static CarreraDAO instanciaCarreraDAO;
 
+        public static CarreraDAO getInstanciaDAO() {
+            if (instanciaCarreraDAO == null) {
+                instanciaCarreraDAO = new CarreraDAO();
+            }
+            return instanciaCarreraDAO;
+        }
+        
     @Override
     public CarreraDominio agregarCarrera(AgregarCarreraDTO nuevaCarrera) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");

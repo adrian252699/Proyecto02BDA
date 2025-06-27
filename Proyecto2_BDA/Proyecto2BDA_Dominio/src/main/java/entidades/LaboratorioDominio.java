@@ -155,6 +155,8 @@ public class LaboratorioDominio implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.LaboratorioDominio[ id=" + id + " ]";
-    } 
+        return "LaboratorioDominio{" + "id=" + id + ", nombreLaboratorio=" + nombreLaboratorio + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", unidadAcademica=" + unidadAcademica + ", computadoras=" + computadoras + '}';
+    }
+
+    
 }

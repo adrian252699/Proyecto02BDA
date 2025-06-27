@@ -6,6 +6,7 @@ package interfaces;
 
 import DTOs.AgregarComputadoraDTO;
 import entidades.ComputadoraDominio;
+import entidades.LaboratorioDominio;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
 public interface IComputadoraDAO {
     public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO nuevaComputadora);
     public List<ComputadoraDominio> consultarComputadoras();
+    public List<ComputadoraDominio> consultarComputadorasPorLab(LaboratorioDominio laboratorio);
     public ComputadoraDominio consultarComputadoraId(Long id);
     
 }

@@ -4,6 +4,8 @@
  */
 package ControlNavegacion;
 
+import CasoAdministrador.CasoAdministrador;
+import DTOs.AgregarLaboratorioDTO;
 import Paneles.AgregarLaboratorio;
 import Paneles.AgregarLaboratorioUnidad;
 import Paneles.PanelRegistroID;
@@ -12,6 +14,7 @@ import PanelesAdministrador.*;
 import PanelesApartar.ConfirmarApartado;
 import PanelesApartar.SeleccionComputadora;
 import PanelesApartar.SeleccionTiempoApartado;
+import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -27,15 +30,26 @@ public class ControlNavegacion {
     private ListadoLaboratoriosAdmin listadoLaboratorio;
     private ListadoComputadorasAdmin listadoComputadoras;
     private ListadoBloqueos listadoBloqueos;
+    private ResumenLaboratorio confirmarLaboratorio;
+    
+    //Casos 
+    //Admin
+    private CasoAdministrador casoAdmin;
+    
+
+    //DTOs Temporales para creacion
+    private AgregarLaboratorioDTO laboratorioTemporal;
+    
     
     //Paneles Apartar
     private SeleccionLaboratorio seleccionLaboratorio;
     private SeleccionComputadora seleccionComputadora;
     private SeleccionTiempoApartado seleccionTiempoApartado;
     private ConfirmarApartado confirmarApartado;
+    
     //Paneles Generales
     private JFrame framePrincipal;
-
+    
     public void iniciarSistema() {
         valoresDefault();
     }
@@ -63,14 +77,55 @@ public class ControlNavegacion {
     
     public void mostrarPantallaAgregarLaboratorio() {
         AgregarLaboratorioUnidad panel = new AgregarLaboratorioUnidad(this);
-        cambiarPanel(panel);
+        menuAdmin.cambiarPanel(panel);
     }
 
     public void mostrarPantallaFormularioLaboratorio() {
         AgregarLaboratorio panel = new AgregarLaboratorio(this);
-        cambiarPanel(panel);
+        menuAdmin.cambiarPanel(panel);
     } 
+    
+    public void mostrarPantallaConfirmarLaboratorio(){
+        confirmarLaboratorio = new ResumenLaboratorio(this);
+        menuAdmin.cambiarPanel(confirmarLaboratorio);
+    }
+    
     //------------------------------------flujo Admin---------------------------------------
+    
+    //------------------------------------crear Lab Admin---------------------------------------}
+    
+    public void setUnidadLab(String unidadAcademica){
+        if(casoAdmin!= null){
+            casoAdmin.setUnidad(unidadAcademica);
+            return;
+        }
+        casoAdmin = new CasoAdministrador();
+        casoAdmin.setUnidad(unidadAcademica);
+    }
+    public void setHorarioLab(Calendar fechaInicioLab, Calendar fechaFinLab){
+        casoAdmin.setHorarioLab(fechaInicioLab,fechaFinLab);
+    }
+//    public void setAdminCambios(){
+//        casoAdmin.setAdminCambios()
+//    }
+    public void guardarLaboratorio(){
+        mostrarExitoGuardarLab();
+        mostrarListadoLaboratoriosAdmin();
+    }
+    public void setLaboratorioTemporal(){
+        laboratorioTemporal = casoAdmin.getLaboratorioTemporal();
+    }
+    public AgregarLaboratorioDTO getLaboratorioTemporal(){
+        return casoAdmin.getLaboratorioTemporal();
+    }
+    
+    
+    
+    
+    
+    
+    
+    //------------------------------------crear Lab Admin---------------------------------------
     
     //------------------------------------flujo Apartar-------------------------------------
     
@@ -111,6 +166,8 @@ public class ControlNavegacion {
         PanelRegistroID login = new PanelRegistroID(this);
         framePrincipal.add(login);
         framePrincipal.setVisible(true);
+        casoAdmin = new CasoAdministrador();
+        
     }
     
 //    public void cambiarPanel(JFrame frame, JPanel panelActual){
@@ -151,7 +208,9 @@ public class ControlNavegacion {
         return mostrarErrorCredenciales();
         }
         
-    
+    public void mostrarExitoGuardarLab(){
+        JOptionPane.showMessageDialog(menuAdmin, "laboratorio Guardado Con exito", "Exito", JOptionPane.YES_OPTION);
+    }
 
     public boolean mostrarErrorCredenciales() {
         JOptionPane.showMessageDialog(framePrincipal, "Credenciales Incorrectas", "Eror", JOptionPane.ERROR_MESSAGE);

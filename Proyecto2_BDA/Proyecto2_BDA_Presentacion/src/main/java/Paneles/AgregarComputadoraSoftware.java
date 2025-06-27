@@ -28,24 +28,10 @@ public class AgregarComputadoraSoftware extends javax.swing.JPanel {
 
         jCheckBox1 = new javax.swing.JCheckBox();
 
-        jCheckBox1.setText("jCheckBox1");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
-                .addComponent(jCheckBox1)
-                .addGap(116, 116, 116))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jCheckBox1)
-                .addContainerGap(174, Short.MAX_VALUE))
-        );
+        jCheckBox1.setText("jCheckBox1");
+        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

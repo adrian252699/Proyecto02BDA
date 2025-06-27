@@ -26,7 +26,7 @@ public class ComputadoraLaboratorioDominio implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    //Relacion 1:M de computadora y laboratorio
+    //Relacion 0:N de computadora y laboratorio
     
     public Long getId() {
         return id;

@@ -20,7 +20,15 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author jalt2
  */
 public class UnidadAcademicaDAO implements IUnidadAcademicaDAO{
+    
+    private static UnidadAcademicaDAO instanciaUnidadAcademicaDAO;
 
+        public static UnidadAcademicaDAO getInstanciaDAO() {
+            if (instanciaUnidadAcademicaDAO == null) {
+                instanciaUnidadAcademicaDAO = new UnidadAcademicaDAO();
+            }
+            return instanciaUnidadAcademicaDAO;
+        }
     @Override
     public UnidadAcademicaDominio agregarUnidadAcademica(NuevaUnidadAcademicaDTO nuevaUnidad) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");

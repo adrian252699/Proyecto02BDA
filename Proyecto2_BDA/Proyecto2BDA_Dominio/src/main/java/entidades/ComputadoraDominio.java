@@ -149,6 +149,8 @@ public class ComputadoraDominio implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.ComputadoraDominio[ id=" + id + " ]";
-    }   
+        return "ComputadoraDominio{" + "id=" + id + ", direccionIP=" + direccionIP + ", numeroComputadora=" + numeroComputadora + ", estatus=" + estatus + ", alumno=" + alumno + ", laboratorio=" + laboratorio + '}';
+    }
+
+      
 }

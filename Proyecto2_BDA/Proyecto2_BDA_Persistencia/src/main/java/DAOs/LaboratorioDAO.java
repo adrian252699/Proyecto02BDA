@@ -4,13 +4,16 @@
  */
 package DAOs;
 
+import Conexion.ConexionBD;
 import DTOs.AgregarLaboratorioDTO;
 import entidades.LaboratorioDominio;
 import interfaces.ILaboratorioDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -19,7 +22,16 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author jalt2
  */
 public class LaboratorioDAO implements ILaboratorioDAO {
+    
+    private static LaboratorioDAO instanciaLaboratoioDAO;
 
+        public static LaboratorioDAO getInstanciaDAO() {
+            if (instanciaLaboratoioDAO == null) {
+                instanciaLaboratoioDAO = new LaboratorioDAO();
+            }
+            return instanciaLaboratoioDAO;
+        }
+        
     @Override
     public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO nuevoLaboratorio) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
@@ -41,23 +53,34 @@ public class LaboratorioDAO implements ILaboratorioDAO {
 
     @Override
     public List<LaboratorioDominio> consultarLaboratorios() {
-        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
-        EntityManager em = fabrica.createEntityManager();
-
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-
-        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(LaboratorioDominio.class);
-
-        List<LaboratorioDominio> laboratorios = em.createQuery(criteriaQuery).getResultList();
-
-        for (LaboratorioDominio laboratorio : laboratorios) {
-            System.out.println(laboratorio.getNombreLaboratorio());
-            System.out.println(laboratorio.getHoraInicio());
-            System.out.println(laboratorio.getHoraFin());
-        }
-
-        em.close();
-        fabrica.close();
+       // EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+       List<LaboratorioDominio> laboratorios = new ArrayList<>();
+       try{
+           EntityManager em = ConexionBD.crearConexion();
+           String comando = "Select e from LaboratorioDominio e";
+           TypedQuery<LaboratorioDominio> query = em.createQuery(comando, LaboratorioDominio.class);
+           laboratorios = query.getResultList();
+           return laboratorios;
+       }catch(Exception ex){
+           System.out.println("Error en consultar LaboratoriosDAO: " +ex.getMessage());
+       }finally{
+           ConexionBD.cerrar();
+       }
+        
+//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+//
+//        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(LaboratorioDominio.class);
+//
+//        List<LaboratorioDominio> laboratorios = em.createQuery(criteriaQuery).getResultList();
+//
+//        for (LaboratorioDominio laboratorio : laboratorios) {
+//            System.out.println(laboratorio.getNombreLaboratorio());
+//            System.out.println(laboratorio.getHoraInicio());
+//            System.out.println(laboratorio.getHoraFin());
+//        }
+//
+//        em.close();
+//        fabrica.close();
 
         return laboratorios;
     }

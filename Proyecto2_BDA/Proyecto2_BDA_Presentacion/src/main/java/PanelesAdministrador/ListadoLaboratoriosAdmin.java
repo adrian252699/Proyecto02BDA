@@ -154,6 +154,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
 
     private void BtnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgregarMouseClicked
         // TODO add your handling code here:
+        control.mostrarPantallaAgregarLaboratorio();
     }//GEN-LAST:event_BtnAgregarMouseClicked
 
     private void BtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarMouseClicked

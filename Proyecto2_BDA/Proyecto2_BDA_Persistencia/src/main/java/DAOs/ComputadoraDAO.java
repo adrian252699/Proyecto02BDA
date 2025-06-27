@@ -4,13 +4,17 @@
  */
 package DAOs;
 
+import Conexion.ConexionBD;
 import DTOs.AgregarComputadoraDTO;
 import entidades.ComputadoraDominio;
+import entidades.LaboratorioDominio;
 import interfaces.IComputadoraDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -19,7 +23,15 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author jalt2
  */
 public class ComputadoraDAO implements IComputadoraDAO{
+    
+    private static ComputadoraDAO instanciaComputadoraDAO;
 
+        public static ComputadoraDAO getInstanciaDAO() {
+            if (instanciaComputadoraDAO == null) {
+                instanciaComputadoraDAO = new  ComputadoraDAO();
+            }
+            return instanciaComputadoraDAO;
+        }
     @Override
     public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO nuevaComputadora) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
@@ -41,15 +53,59 @@ public class ComputadoraDAO implements IComputadoraDAO{
     }
 
     @Override
+    public List<ComputadoraDominio> consultarComputadorasPorLab(LaboratorioDominio laboratorio) {
+       // EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+       List<ComputadoraDominio> computadoras = new ArrayList<>();
+               //getResultList();
+       try{
+           EntityManager em = ConexionBD.crearConexion();
+           String comando = "Select pc from ComputadoraDominio where pc.laboratorio_id = :id";
+           TypedQuery<ComputadoraDominio> query = em.createQuery(comando, ComputadoraDominio.class);
+           query.setParameter("laboratorio_id", laboratorio.getId());
+           computadoras = query.getResultList();
+           
+       }catch(Exception ex){
+           
+       }
+       
+        
+//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+//        
+//        CriteriaQuery<ComputadoraDominio> criteriaQuery = criteriaBuilder.createQuery(ComputadoraDominio.class);
+//        
+//        
+//         
+//        for(ComputadoraDominio computadora : computadoras){
+//            System.out.println(computadora.getDireccionIP());
+//            System.out.println(computadora.getEstatus());
+//        }
+//        
+//        em.close();
+//        fabrica.close();
+        
+        return computadoras;
+    }
+    @Override
     public List<ComputadoraDominio> consultarComputadoras() {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
-        EntityManager em = fabrica.createEntityManager();
+        List<ComputadoraDominio> computadoras = new ArrayList<>();
+//       try{
+           EntityManager em = ConexionBD.crearConexion();
+//           String comando = "Select pc from ComputadoraDominio where pc.laboratorio_id = :id";
+//           TypedQuery<ComputadoraDominio> query = em.createQuery(comando, ComputadoraDominio.class);
+//           query.setParameter("laboratorio_id", laboratorio.getId());
+//           computadoras = query.getResultList();
+//           
+//       }catch(Exception ex){
+//           
+//       }
+       
         
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         
         CriteriaQuery<ComputadoraDominio> criteriaQuery = criteriaBuilder.createQuery(ComputadoraDominio.class);
         
-        List<ComputadoraDominio> computadoras = em.createQuery(criteriaQuery).getResultList();
+        
          
         for(ComputadoraDominio computadora : computadoras){
             System.out.println(computadora.getDireccionIP());

@@ -23,7 +23,7 @@ PanelesAdministrador\ListadoLaboratoriosAdmin$5.class
 PanelesAdministrador\ListadoComputadorasAdmin$6.class
 PanelesAdministrador\MenuAdministrador$5.class
 PanelesAdministrador\MenuAdministrador$2.class
-Paneles\AgregarLaboratorioUnidad$2.class
+PanelesAdministrador\ResumenLaboratorio$1.class
 PanelesAdministrador\ListadoComputadorasAdmin$3.class
 portero\catalogoComputadoras$1.class
 PanelesAdministrador\ListadoBloqueos$1.class
@@ -32,6 +32,7 @@ ControlNavegacion\ControlNavegacion.class
 Paneles\AgregarComputadora.class
 PanelesAdministrador\MenuAdministrador.class
 PanelesAdministrador\ListadoBloqueos$4.class
+PanelesApartar\CasoApartar.class
 Paneles\AgregarComputadoraSoftware.class
 portero\catalogoComputadoras$2.class
 PanelesAdministrador\ListadoLaboratoriosAdmin$6.class
@@ -48,6 +49,8 @@ computadora\computadoraDisponible.class
 Paneles\AgregarComputadoraNumero$1.class
 Paneles\AgregarComputadoraNumero.class
 PanelesAdministrador\ListadoBloqueos.class
+Paneles\AgregarLaboratorio$1.class
+PanelesAdministrador\ResumenLaboratorio.class
 portero\catalogoComputadoras.class
 PanelesAdministrador\ListadoComputadorasAdmin$5.class
 PanelesAdministrador\ListadoLaboratoriosAdmin.class
