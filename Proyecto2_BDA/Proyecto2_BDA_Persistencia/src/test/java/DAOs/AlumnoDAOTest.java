@@ -18,36 +18,36 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AlumnoDAOTest {
     
-    public AlumnoDAOTest() {
-    }
-
-    /**
-     * Test of consultarAlumnoId method, of class AlumnoDAO.
-     */
-    @Test
-    public void testConsultarAlumnoId() {
-    }
-
-    /**
-     * Test of agregarAlumno method, of class AlumnoDAO.
-     */
-    @Test
-    public void testAgregarAlumno() {
-        IAlumnoDAO dao = new AlumnoDAO();
-        ICarreraDAO daoCarrera = new CarreraDAO();
-        
-        NuevoAlumnoDTO nuevoAlumno = new NuevoAlumnoDTO("Hector", "98765", daoCarrera.consultarCarreraId(1L));
-        
-        dao.agregarAlumno(nuevoAlumno);
-    }
-    
-    @Test
-    public void testAsignarComputadora(){
-        IAlumnoDAO daoAlumno = new AlumnoDAO();
-        IComputadoraDAO daoComputadora = new ComputadoraDAO();
-        ReservarAlumnoComputadoraDTO alumnoComputadora = new ReservarAlumnoComputadoraDTO(daoAlumno.consultarAlumnoId(2L), daoComputadora.consultarComputadoraId(4L));
-        
-        daoAlumno.reservarComputadora(alumnoComputadora);
-    }
+//    public AlumnoDAOTest() {
+//    }
+//
+//    /**
+//     * Test of consultarAlumnoId method, of class AlumnoDAO.
+//     */
+//    @Test
+//    public void testConsultarAlumnoId() {
+//    }
+//
+//    /**
+//     * Test of agregarAlumno method, of class AlumnoDAO.
+//     */
+//    @Test
+//    public void testAgregarAlumno() {
+//        IAlumnoDAO dao = new AlumnoDAO();
+//        ICarreraDAO daoCarrera = new CarreraDAO();
+//        
+//        NuevoAlumnoDTO nuevoAlumno = new NuevoAlumnoDTO("Hector", "98765", daoCarrera.consultarCarreraId(1L));
+//        
+//        dao.agregarAlumno(nuevoAlumno);
+//    }
+//    
+//    @Test
+//    public void testAsignarComputadora(){
+//        IAlumnoDAO daoAlumno = new AlumnoDAO();
+//        IComputadoraDAO daoComputadora = new ComputadoraDAO();
+//        ReservarAlumnoComputadoraDTO alumnoComputadora = new ReservarAlumnoComputadoraDTO(daoAlumno.consultarAlumnoId(2L), daoComputadora.consultarComputadoraId(4L));
+//        
+//        daoAlumno.reservarComputadora(alumnoComputadora);
+//    }
     
 }

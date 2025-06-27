@@ -5,16 +5,73 @@
 
 package ControlNavegacion;
 
+import Paneles.PanelRegistroID;
+import PanelesAdministrador.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author $Luis Carlos Manjarrez Gonzalez
  */
 public class ControlNavegacion {
+    //Paneles de modulo Administrador
+    MenuAdministrador menuAdmin;
     
-    public boolean validarCredenciales(String idTextField){
+    //Paneles Generales
+    JFrame framePrincipal;
+    
+    public void iniciarSistema(){
+        valoresDefault();
+        PanelRegistroID login = new PanelRegistroID(this);
+        framePrincipal.add(login);
+        framePrincipal.setVisible(true);
+    }
+            
+    public void mostrarPantallaAdminisrador(){
+        menuAdmin = new MenuAdministrador(this);
+        framePrincipal.dispose();
+        menuAdmin.setVisible(true);
+    }
+    public void valoresDefault(){
+        framePrincipal = new JFrame();
+        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framePrincipal.setSize(1050,650);
+    }
+    public void cambiarFrame(JPanel jpanel){
+        framePrincipal.getContentPane().removeAll();
+        framePrincipal.setContentPane(jpanel);
+        framePrincipal.repaint();
+        framePrincipal.revalidate();
+    }
+    //----------------------Errores (JOptionPane)----------------------
+    public boolean validarCredenciales(String idTextField, String password){
+        //Mientras
+        String idAdmin ="12345";
+        String passwordAdmin ="admin1";
+        String idAlumno ="54321";
+        String passwordAlumno ="alumno1";
+        
+        if(idTextField.equals(idTextField)&& passwordAdmin.equals(password)){
+            //no recuerdo si las validaciones van aqui o deben de ir enun lugar especifico
+            return true;
+        }
+        else{
+            // aqui mostraremos la pantalla para cuando se registre un alumno
+            //mostrarPantallaSeleccionarComputadora();
+            return false;
+            
+        }
+        // esta validacion es por minetras, deberemos hacer una consulta pa ver si esta en Admin
+        // o si estan en Estudiantes buscandolos por id
+        //no recuerdo si las validaciones van aqui o en negocio
         //implementar validacion tanto de ParseLong (contenga carracteres numericos)
         // y verificar en BD
-        return true;
+    }
+    public boolean mostrarErrorCredenciales(){
+        JOptionPane.showMessageDialog(framePrincipal, "Credenciales Incorrectas", "Eror", JOptionPane.ERROR_MESSAGE);
+        return false;
     }
 
 }

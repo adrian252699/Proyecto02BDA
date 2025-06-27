@@ -34,7 +34,7 @@ public class PanelRegistroID extends javax.swing.JPanel {
         BtnConfirmar = new javax.swing.JButton();
         CampoId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        CampoPassword = new javax.swing.JPasswordField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,17 +61,20 @@ public class PanelRegistroID extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Ingrese su contraseña");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
-
-        jPasswordField1.setText("jPasswordField1");
-        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 252, 160, 30));
+        add(CampoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 252, 160, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConfirmarMouseClicked
         // TODO add your handling code here:
+        System.out.println("ID que va a control    :" + CampoId.getText());
+        System.out.println("Password que va a control    :" + CampoPassword.getText());
         
-        if(control.validarCredenciales(CampoId.getText())){
+        if(control.validarCredenciales(CampoId.getText(),CampoPassword.getText())){
             //como la implementacion de control.validarCredenciales no esta terminada regresa true
-            //control.mostrarPantallaSeleccionLab;
+            //esto manda directamente al menu administrador
+           control.mostrarPantallaAdminisrador();
+        }else{
+            control.mostrarErrorCredenciales();
         }
         //control.errorCredenciales----- este sera un JOptionPane 
         //diciendo q las credenciales son incorrectas
@@ -81,8 +84,8 @@ public class PanelRegistroID extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirmar;
     private javax.swing.JTextField CampoId;
+    private javax.swing.JPasswordField CampoPassword;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables

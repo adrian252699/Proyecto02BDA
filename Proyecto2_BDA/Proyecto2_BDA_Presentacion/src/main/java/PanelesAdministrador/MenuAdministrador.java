@@ -4,16 +4,19 @@
  */
 package PanelesAdministrador;
 
+import ControlNavegacion.ControlNavegacion;
+
 /**
  *
  * @author HP
  */
 public class MenuAdministrador extends javax.swing.JFrame {
-
-    /**
+    ControlNavegacion control;
+   /**
      * Creates new form MenuAdministrador
      */
-    public MenuAdministrador() {
+    public MenuAdministrador(ControlNavegacion control) {
+        this.control = control;
         initComponents();
     }
 

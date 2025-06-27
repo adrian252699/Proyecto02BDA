@@ -30,33 +30,33 @@ public class ComputadoraDAOTest {
     /**
      * Test of agregarComputadora method, of class ComputadoraDAO.
      */
-    @org.junit.jupiter.api.Test
-    public void testAgregarComputadora() {
-        
-        List<String> listaSoftware = new ArrayList();
-        
-        listaSoftware.add("Excel");
-        listaSoftware.add("Chrome");
-        listaSoftware.add("Word");
-        
-        ILaboratorioDAO daoLab = new LaboratorioDAO();
-        IAlumnoDAO daoAlumno = new AlumnoDAO();
-        
-        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO("11", "192.168.0.101", "Disponible", listaSoftware,daoLab.consultarLaboratorioId(1L));
-        
-        
-        IComputadoraDAO dao = new ComputadoraDAO();
-        
-        dao.agregarComputadora(nuevaComputadora);
-        
-    }
-    
-    @org.junit.jupiter.api.Test
-    public void testConsultarComputadoras() {
-        IComputadoraDAO dao = new ComputadoraDAO();
-        
-        dao.consultarComputadoras();
-        
-    }
+//    @org.junit.jupiter.api.Test
+//    public void testAgregarComputadora() {
+//        
+//        List<String> listaSoftware = new ArrayList();
+//        
+//        listaSoftware.add("Excel");
+//        listaSoftware.add("Chrome");
+//        listaSoftware.add("Word");
+//        
+//        ILaboratorioDAO daoLab = new LaboratorioDAO();
+//        IAlumnoDAO daoAlumno = new AlumnoDAO();
+//        
+//        AgregarComputadoraDTO nuevaComputadora = new AgregarComputadoraDTO("11", "192.168.0.101", "Disponible", listaSoftware,daoLab.consultarLaboratorioId(1L));
+//        
+//        
+//        IComputadoraDAO dao = new ComputadoraDAO();
+//        
+//        dao.agregarComputadora(nuevaComputadora);
+//        
+//    }
+//    
+//    @org.junit.jupiter.api.Test
+//    public void testConsultarComputadoras() {
+//        IComputadoraDAO dao = new ComputadoraDAO();
+//        
+//        dao.consultarComputadoras();
+//        
+//    }
     
 }

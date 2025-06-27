@@ -1,4 +1,88 @@
 -------------------------------------------------------------------------------
 Test set: DAOs.ComputadoraDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.117 s -- in DAOs.ComputadoraDAOTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.258 s <<< FAILURE! -- in DAOs.ComputadoraDAOTest
+DAOs.ComputadoraDAOTest.testAgregarComputadora -- Time elapsed: 0.151 s <<< ERROR!
+javax.persistence.PersistenceException: 
+Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+Error Code: 1045
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at DAOs.LaboratorioDAO.consultarLaboratorioId(LaboratorioDAO.java:67)
+	at DAOs.ComputadoraDAOTest.testAgregarComputadora(ComputadoraDAOTest.java:45)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+Error Code: 1045
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:333)
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:328)
+	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:140)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:172)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:810)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:261)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 12 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:191)
+	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:100)
+	... 17 more
+
+DAOs.ComputadoraDAOTest.testConsultarComputadoras -- Time elapsed: 0.097 s <<< ERROR!
+javax.persistence.PersistenceException: 
+Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+Error Code: 1045
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at DAOs.ComputadoraDAO.consultarComputadoras(ComputadoraDAO.java:45)
+	at DAOs.ComputadoraDAOTest.testConsultarComputadoras(ComputadoraDAOTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+Error Code: 1045
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:333)
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:328)
+	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:140)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:172)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:810)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:261)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
+	... 12 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:191)
+	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:100)
+	... 17 more
+

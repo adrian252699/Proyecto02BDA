@@ -4,6 +4,8 @@
 
 package Presentacion;
 
+import ControlNavegacion.ControlNavegacion;
+
 /**
  *
  * @author jalt2
@@ -11,6 +13,7 @@ package Presentacion;
 public class Proyecto2_BDA_Presentacion {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ControlNavegacion prueba = new ControlNavegacion();
+        prueba.iniciarSistema();
     }
 }
