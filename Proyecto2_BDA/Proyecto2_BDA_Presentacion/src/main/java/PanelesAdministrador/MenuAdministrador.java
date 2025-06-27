@@ -39,6 +39,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         bloqueo = new javax.swing.JMenu();
         menuListaBloqueos = new javax.swing.JMenuItem();
         menuAgregarBloqueo = new javax.swing.JMenuItem();
+        menuDesbloquearAlumno = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,11 +85,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         bloqueo.setText("Bloqueo");
 
-        menuListaBloqueos.setText("Lista bloqueos");
+        menuListaBloqueos.setText("Registro de bloqueos");
         bloqueo.add(menuListaBloqueos);
 
         menuAgregarBloqueo.setText("Agregar bloqueo");
         bloqueo.add(menuAgregarBloqueo);
+
+        menuDesbloquearAlumno.setText("Desbloquear alumno");
+        bloqueo.add(menuDesbloquearAlumno);
 
         menuBarAdmin.add(bloqueo);
 
@@ -136,6 +140,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAgregarBloqueo;
     private javax.swing.JMenuItem menuAgregarLaboratorio;
     private javax.swing.JMenuBar menuBarAdmin;
+    private javax.swing.JMenuItem menuDesbloquearAlumno;
     private javax.swing.JMenuItem menuEditarLaboratorio;
     private javax.swing.JMenuItem menuListaBloqueos;
     private javax.swing.JMenuItem menuListaLab;

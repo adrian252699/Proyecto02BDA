@@ -55,12 +55,17 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuListaBloqueos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista bloqueos"/>
+                <Property name="text" type="java.lang.String" value="Registro de bloqueos"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuAgregarBloqueo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar bloqueo"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuDesbloquearAlumno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Desbloquear alumno"/>
               </Properties>
             </MenuItem>
           </SubComponents>
