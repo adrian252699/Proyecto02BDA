@@ -4,11 +4,14 @@
  */
 package Paneles;
 
+import ControlNavegacion.ControlNavegacion;
+
 /**
  *
  * @author Sandra
  */
 public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
+    private ControlNavegacion control;
 
     /**
      * Creates new form AgregarLaboratorioUnidad
@@ -17,6 +20,10 @@ public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
         initComponents();
     }
 
+    public AgregarLaboratorioUnidad(ControlNavegacion control) {
+        this.control = control;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +47,11 @@ public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
         btnContinuar.setBackground(new java.awt.Color(153, 204, 255));
         btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
 
@@ -79,6 +91,12 @@ public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        AgregarLaboratorio panelAgregarLaboratorio = new AgregarLaboratorio(control);
+    control.cambiarFrame(panelAgregarLaboratorio);
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

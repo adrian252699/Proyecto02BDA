@@ -4,16 +4,23 @@
  */
 package Paneles;
 
+import ControlNavegacion.ControlNavegacion;
+
 /**
  *
  * @author Sandra
  */
 public class AgregarLaboratorio extends javax.swing.JPanel {
+    ControlNavegacion control;
 
     /**
      * Creates new form AgregarLaboratorio
      */
     public AgregarLaboratorio() {
+        initComponents();
+    }
+    public AgregarLaboratorio(ControlNavegacion control) {
+        this.control = control;
         initComponents();
     }
 

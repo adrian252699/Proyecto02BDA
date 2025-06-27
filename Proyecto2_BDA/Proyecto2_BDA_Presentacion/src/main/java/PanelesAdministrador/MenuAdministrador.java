@@ -50,9 +50,19 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 menuListaLabMouseClicked(evt);
             }
         });
+        menuListaLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListaLabActionPerformed(evt);
+            }
+        });
         laboratorios.add(menuListaLab);
 
         menuAgregarLaboratorio.setText("Agregar laboratorio");
+        menuAgregarLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAgregarLaboratorioActionPerformed(evt);
+            }
+        });
         laboratorios.add(menuAgregarLaboratorio);
 
         menuEditarLaboratorio.setText("menuEditarLaboratorio");
@@ -108,6 +118,15 @@ public class MenuAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         //lo mismo de arriba la vdd
     }//GEN-LAST:event_menuListaLabMouseClicked
+
+    private void menuAgregarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarLaboratorioActionPerformed
+        control.mostrarPantallaAgregarLaboratorio();
+// TODO add your handling code here:
+    }//GEN-LAST:event_menuAgregarLaboratorioActionPerformed
+
+    private void menuListaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListaLabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuListaLabActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,7 @@ package interfaces;
 
 import DTOs.NuevoAdministradorDTO;
 import entidades.AdministradorDominio;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,6 @@ import entidades.AdministradorDominio;
  */
 public interface IAdministradorDAO {
     public AdministradorDominio agregarAdministrador(NuevoAdministradorDTO nuevoAdministrador);
+    public AdministradorDominio consultarAdinistrador(Long id);
+    public List<AdministradorDominio> consultarAdministradores();
 }
