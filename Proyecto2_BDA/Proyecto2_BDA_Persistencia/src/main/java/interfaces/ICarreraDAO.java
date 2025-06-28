@@ -14,4 +14,5 @@ import entidades.CarreraDominio;
 public interface ICarreraDAO {
     public CarreraDominio agregarCarrera(AgregarCarreraDTO nuevaCarrera);
     public CarreraDominio consultarCarreraId(Long id);
+    public CarreraDominio consultarCarrera();
 }

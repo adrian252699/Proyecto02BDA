@@ -7,6 +7,8 @@ package DAOs;
 import DTOs.AgregarCarreraDTO;
 import entidades.CarreraDominio;
 import interfaces.ICarreraDAO;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -57,5 +59,22 @@ public class CarreraDAO implements ICarreraDAO{
         
         return carrera;
     }
-    
+
+    public List<CarreraDominio> consultarCarreras() {
+        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+        EntityManager em = fabrica.createEntityManager();
+
+        List<CarreraDominio> carreras = new ArrayList<>();
+        try {
+            String jpql = "SELECT c FROM CarreraDominio c";
+            carreras = em.createQuery(jpql, CarreraDominio.class).getResultList();
+        } catch (Exception e) {
+            System.out.println("Error al consultar todas las carreras: " + e.getMessage());
+        } finally {
+            em.close();
+            fabrica.close();
+        }
+
+        return carreras;
+    } 
 }

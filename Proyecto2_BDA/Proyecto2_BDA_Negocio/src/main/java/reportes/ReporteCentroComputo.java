@@ -22,7 +22,7 @@ public class ReporteCentroComputo {
     }
 
     /**
-     * Obtiene todas las ventas en formato DTO.
+     * Obtiene todas los laboratorios en formato DTO.
      */
     public List<LaboratorioDominio> obtenerTodosLaboratorios() {
         return laboratorioDAO.consultarLaboratorios();
