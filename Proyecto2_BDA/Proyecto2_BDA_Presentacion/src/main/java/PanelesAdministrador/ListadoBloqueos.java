@@ -4,18 +4,18 @@
  */
 package PanelesAdministrador;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 
 /**
  *
  * @author HP
  */
 public class ListadoBloqueos extends javax.swing.JPanel {
-    ControlNavegacion control;
+    ControlAdmin control;
     /**
      * Creates new form ListaComputadorasAdmin
      */
-    public ListadoBloqueos(ControlNavegacion control) {
+    public ListadoBloqueos(ControlAdmin control) {
         this.control = control;
         valoresDefault();
         initComponents();

@@ -6,6 +6,7 @@ package DAOs;
 
 import Conexion.ConexionBD;
 import DTOs.AgregarComputadoraDTO;
+import entidades.AlumnoDominio;
 import entidades.ComputadoraDominio;
 import entidades.LaboratorioDominio;
 import interfaces.IComputadoraDAO;
@@ -38,6 +39,15 @@ public class ComputadoraDAO implements IComputadoraDAO{
         EntityManager em = fabrica.createEntityManager();
         
         em.getTransaction().begin();
+            AlumnoDominio alumno = null;
+        if (nuevaComputadora.getAlumno() != null && nuevaComputadora.getAlumno().getId() != null) {
+            alumno = em.find(AlumnoDominio.class, nuevaComputadora.getAlumno().getId());
+        }
+
+        LaboratorioDominio laboratorio = null;
+        if (nuevaComputadora.getLaboratorio() != null && nuevaComputadora.getLaboratorio().getId() != null) {
+            laboratorio = em.find(LaboratorioDominio.class, nuevaComputadora.getLaboratorio().getId());
+        }
         
         ComputadoraDominio computadoraGuardar = new ComputadoraDominio(nuevaComputadora.getDireccionIP(), nuevaComputadora.getNumero(), nuevaComputadora.getEstatus(), nuevaComputadora.getAlumno(), nuevaComputadora.getLaboratorio());
                 

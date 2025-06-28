@@ -6,6 +6,13 @@ package ControlNavegacion;
 
 import CasoAdministrador.CasoAdministrador;
 import DTOs.AgregarLaboratorioDTO;
+import DTOs.NuevaUnidadAcademicaDTO;
+import FabricaBOs.FabricaObjetosNegocio;
+import Interfacez.IAlumnoBO;
+import Interfacez.IComputadoraBO;
+import Interfacez.ILaboratorioBO;
+import Interfacez.IUnidadAcademicaBO;
+import Paneles.AgregarComputadora;
 import Paneles.AgregarLaboratorio;
 import Paneles.AgregarLaboratorioUnidad;
 import Paneles.PanelRegistroID;
@@ -14,7 +21,11 @@ import PanelesAdministrador.*;
 import PanelesApartar.ConfirmarApartado;
 import PanelesApartar.SeleccionComputadora;
 import PanelesApartar.SeleccionTiempoApartado;
+import entidades.ComputadoraDominio;
+import entidades.LaboratorioDominio;
+import entidades.UnidadAcademicaDominio;
 import java.util.Calendar;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,7 +34,7 @@ import javax.swing.JPanel;
  *
  * @author $Luis Carlos Manjarrez Gonzalez
  */
-public class ControlNavegacion {
+public class ControlAdmin {
 
     //Paneles de modulo Administrador
     private MenuAdministrador menuAdmin;
@@ -31,6 +42,17 @@ public class ControlNavegacion {
     private ListadoComputadorasAdmin listadoComputadoras;
     private ListadoBloqueos listadoBloqueos;
     private ResumenLaboratorio confirmarLaboratorio;
+    private SeleccionarUnidad listadoUnidades;
+    private PanelRegistroID login;
+    private AgregarComputadora agregarComputadora;
+    
+    //FabricaBOs
+    private FabricaObjetosNegocio ManejadorBO;
+    //ObjetosBOs
+    private IAlumnoBO alumnoBO;
+    private IComputadoraBO computadoraBO;
+    private ILaboratorioBO laboratorioBO;
+    private IUnidadAcademicaBO unidadAcademicaBO;
     
     //Casos 
     //Admin
@@ -39,6 +61,7 @@ public class ControlNavegacion {
 
     //DTOs Temporales para creacion
     private AgregarLaboratorioDTO laboratorioTemporal;
+    private NuevaUnidadAcademicaDTO unidadTemporal;
     
     
     //Paneles Apartar
@@ -50,9 +73,16 @@ public class ControlNavegacion {
     //Paneles Generales
     private JFrame framePrincipal;
     
-//    public void iniciarSistema() {
-//        valoresDefault();
-//    }
+    public void iniciar(){
+        valoresDefault();
+        
+    }
+    public void valoresDefault(){
+        this.casoAdmin = new CasoAdministrador();
+        menuAdmin = new MenuAdministrador(this);
+        menuAdmin.setVisible(true);
+    }
+    
     //------------------------------------flujo Admin---------------------------------------
     public void mostrarListadoLaboratoriosAdmin(){
         listadoLaboratorio = new ListadoLaboratoriosAdmin(this);
@@ -79,21 +109,57 @@ public class ControlNavegacion {
         AgregarLaboratorioUnidad panel = new AgregarLaboratorioUnidad(this);
         menuAdmin.cambiarPanel(panel);
     }
+    
+    public void mostrarPantallaSeleccionarUnidad() {
+        listadoUnidades = new SeleccionarUnidad(this);
+        menuAdmin.cambiarPanel(listadoUnidades);
+    }
 
     public void mostrarPantallaFormularioLaboratorio() {
         AgregarLaboratorio panel = new AgregarLaboratorio(this);
         menuAdmin.cambiarPanel(panel);
     } 
-    
     public void mostrarPantallaConfirmarLaboratorio(){
         confirmarLaboratorio = new ResumenLaboratorio(this);
         menuAdmin.cambiarPanel(confirmarLaboratorio);
+    }
+    public void mostrarPantallaAgregarComputadora(){
+        agregarComputadora = new AgregarComputadora(this);
+        menuAdmin.cambiarPanel(confirmarLaboratorio);
+    }
+    public List<LaboratorioDominio> cargarLaboratrios(){
+        return laboratorioBO.consultarLaboratorios();
+    }
+    public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long id){
+        return laboratorioBO.consultarLaboratoriosUnidadAcademica(id);
+    }
+    public List<UnidadAcademicaDominio> cargarUnidadesAcademicas(){
+         return unidadAcademicaBO.consultarLaboratorios();
+    }
+    
+    public List<ComputadoraDominio> cargarComputadoras(){
+         return computadoraBO.consultarComputadoras();
+    }
+    
+    
+
+    public ControlAdmin() {
+        this.alumnoBO = FabricaObjetosNegocio.crearAlumnoBO();
+        this.laboratorioBO = FabricaObjetosNegocio.crearLaboratorioBO();
+        this.computadoraBO = FabricaObjetosNegocio.crearComputadoraBO();
+        this.unidadAcademicaBO = FabricaObjetosNegocio.crearUnidadAcademicaBO();
+    
     }
     
     //------------------------------------flujo Admin---------------------------------------
     
     //------------------------------------crear Lab Admin---------------------------------------}
     
+    public void setUnidadAcademica(UnidadAcademicaDominio unidadAcademica){
+        NuevaUnidadAcademicaDTO unidadTemporal = new NuevaUnidadAcademicaDTO(unidadAcademica.getNombreUnidad());
+        this.unidadTemporal= unidadTemporal;
+        
+    }
     public void setUnidadLab(String unidadAcademica){
         if(casoAdmin!= null){
             casoAdmin.setUnidad(unidadAcademica);
@@ -145,17 +211,8 @@ public class ControlNavegacion {
         confirmarApartado = new ConfirmarApartado(this);
         cambiarPanel(confirmarApartado);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //------------------------------------flujo Apartar-----------------------------------------
-    
+
+    //------------------------------------flujo Apartar-------------------------------------
     
     //------------------------------------Metodos auxiliares------------------------------------
 //    public void valoresDefault(){

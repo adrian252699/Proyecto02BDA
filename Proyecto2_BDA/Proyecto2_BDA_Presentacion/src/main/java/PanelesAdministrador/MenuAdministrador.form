@@ -27,7 +27,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuEditarLaboratorio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="menuEditarLaboratorio"/>
+                <Property name="text" type="java.lang.String" value="EditarLaboratorio"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -43,6 +43,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listadoComputadorasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="agregarComputadora">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar Computadora"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarComputadoraActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

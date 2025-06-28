@@ -4,13 +4,15 @@
  */
 package PanelesAdministrador;
 
-import ControlNavegacion.ControlNavegacion;
 import DAOs.BloqueoDAO;
 import DAOs.CarreraDAO;
 import DAOs.LaboratorioDAO;
 import entidades.BloqueoDominio;
 import entidades.CarreraDominio;
 import entidades.LaboratorioDominio;
+
+import ControlNavegacion.ControlAdmin;
+
 import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -24,11 +26,11 @@ import reportes.PDFCentroComputo;
  * @author HP
  */
 public class MenuAdministrador extends javax.swing.JFrame {
-    ControlNavegacion control;
+    ControlAdmin control;
    /**
      * Creates new form MenuAdministrador
      */
-    public MenuAdministrador(ControlNavegacion control) {
+    public MenuAdministrador(ControlAdmin control) {
         this.control = control;
         valoresDefault();
         initComponents();
@@ -52,6 +54,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuEditarLaboratorio = new javax.swing.JMenuItem();
         ListadoComputadoras = new javax.swing.JMenu();
         listadoComputadoras = new javax.swing.JMenuItem();
+        agregarComputadora = new javax.swing.JMenuItem();
         bloqueo = new javax.swing.JMenu();
         ListadoBloqueos = new javax.swing.JMenuItem();
         menuAgregarBloqueo = new javax.swing.JMenuItem();
@@ -88,7 +91,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         });
         Laboratorios.add(menuAgregarLaboratorio);
 
-        menuEditarLaboratorio.setText("menuEditarLaboratorio");
+        menuEditarLaboratorio.setText("EditarLaboratorio");
         Laboratorios.add(menuEditarLaboratorio);
 
         menuBarAdmin.add(Laboratorios);
@@ -102,6 +105,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
             }
         });
         ListadoComputadoras.add(listadoComputadoras);
+
+        agregarComputadora.setText("Agregar Computadora");
+        agregarComputadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarComputadoraActionPerformed(evt);
+            }
+        });
+        ListadoComputadoras.add(agregarComputadora);
 
         menuBarAdmin.add(ListadoComputadoras);
 
@@ -169,13 +180,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuAgregarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarLaboratorioActionPerformed
-        control.mostrarPantallaAgregarLaboratorio();
+        control.mostrarPantallaSeleccionarUnidad();
 // TODO add your handling code here:
     }//GEN-LAST:event_menuAgregarLaboratorioActionPerformed
 
     private void listadoLaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoLaboratoriosActionPerformed
         // TODO add your handling code here:
-        
         control.mostrarListadoLaboratoriosAdmin();
     }//GEN-LAST:event_listadoLaboratoriosActionPerformed
 
@@ -277,11 +287,17 @@ public class MenuAdministrador extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_menuBloqueosActionPerformed
 
+    private void agregarComputadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarComputadoraActionPerformed
+        // TODO add your handling code here:
+        control.mostrarPantallaAgregarComputadora();
+    }//GEN-LAST:event_agregarComputadoraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Laboratorios;
     private javax.swing.JMenuItem ListadoBloqueos;
     private javax.swing.JMenu ListadoComputadoras;
+    private javax.swing.JMenuItem agregarComputadora;
     private javax.swing.JMenu bloqueo;
     private javax.swing.JPanel contenidoActual;
     private javax.swing.JMenuItem jMenuItem1;

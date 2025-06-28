@@ -4,19 +4,19 @@
  */
 package Paneles;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 
 /**
  *
  * @author Sandra
  */
 public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
-    private ControlNavegacion control;
+    private ControlAdmin control;
 
     /**
      * Creates new form AgregarLaboratorioUnidad
      */
-  public AgregarLaboratorioUnidad(ControlNavegacion control) {
+  public AgregarLaboratorioUnidad(ControlAdmin control) {
         this.control = control;
         initComponents();
     }

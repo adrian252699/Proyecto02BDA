@@ -4,18 +4,18 @@
  */
 package PanelesApartar;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 
 /**
  *
  * @author HP
  */
 public class SeleccionTiempoApartado extends javax.swing.JPanel {
-    private ControlNavegacion control;  
+    private ControlAdmin control;  
     /**
      * Creates new form SeleccionTiempoApartado
      */
-    public SeleccionTiempoApartado(ControlNavegacion control) {
+    public SeleccionTiempoApartado(ControlAdmin control) {
         this.control = control;
         initComponents();
     }

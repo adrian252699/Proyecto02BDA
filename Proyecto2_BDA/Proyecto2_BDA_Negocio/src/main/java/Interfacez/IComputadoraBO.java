@@ -4,6 +4,7 @@
  */
 package Interfacez;
 
+import DTOs.AgregarComputadoraDTO;
 import entidades.ComputadoraDominio;
 import entidades.LaboratorioDominio;
 import java.util.List;
@@ -14,5 +15,6 @@ import java.util.List;
  */
 public interface IComputadoraBO {
     public List<ComputadoraDominio> consultarComputadorasPorLaboratorio(LaboratorioDominio laboratorio);
-    
+    public List<ComputadoraDominio> consultarComputadoras();
+    public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO computadora);
 }

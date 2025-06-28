@@ -5,6 +5,7 @@
 
 package BOs;
 
+import DTOs.AgregarComputadoraDTO;
 import Interfacez.IComputadoraBO;
 import entidades.ComputadoraDominio;
 import entidades.LaboratorioDominio;
@@ -25,6 +26,16 @@ public class ComputadoraBO implements IComputadoraBO{
     @Override
     public List<ComputadoraDominio> consultarComputadorasPorLaboratorio(LaboratorioDominio laboratorio) {
         return this.daoComputadora.consultarComputadorasPorLab(laboratorio);
+    }
+    @Override
+    public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO computadora){
+        daoComputadora.agregarComputadora(computadora);
+        ComputadoraDominio pcAgregada = new ComputadoraDominio(computadora.getDireccionIP(), computadora.getNumero(), computadora.getEstatus(), computadora.getAlumno(), computadora.getLaboratorio());
+        return pcAgregada;
+    }
+    @Override
+    public List<ComputadoraDominio> consultarComputadoras(){
+        return daoComputadora.consultarComputadoras();
     }
     
     

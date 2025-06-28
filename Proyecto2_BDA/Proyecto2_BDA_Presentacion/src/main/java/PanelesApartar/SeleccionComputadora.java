@@ -5,7 +5,7 @@
 package PanelesApartar;
 
 import ControlNavegacion.ControlFlujoApartar;
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 import Interfacez.IComputadoraBO;
 import entidades.ComputadoraDominio;
 import javax.swing.table.DefaultTableModel;

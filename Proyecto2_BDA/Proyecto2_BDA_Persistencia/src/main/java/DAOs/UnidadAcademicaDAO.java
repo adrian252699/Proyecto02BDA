@@ -5,21 +5,23 @@
 package DAOs;
 
 import DTOs.NuevaUnidadAcademicaDTO;
-import entidades.LaboratorioDominio;
 import entidades.UnidadAcademicaDominio;
 import interfaces.IUnidadAcademicaDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
  * @author jalt2
  */
 public class UnidadAcademicaDAO implements IUnidadAcademicaDAO{
+    private List<UnidadAcademicaDominio> unidadesAcademicas = new ArrayList<>();
     
     private static UnidadAcademicaDAO instanciaUnidadAcademicaDAO;
 
@@ -37,11 +39,10 @@ public class UnidadAcademicaDAO implements IUnidadAcademicaDAO{
         em.getTransaction().begin();
         
         UnidadAcademicaDominio unidadAcademicaGuardar = new UnidadAcademicaDominio(nuevaUnidad.getNombre());
-        
         if (nuevaUnidad.getLaboratorios()!=null && nuevaUnidad.getLaboratorios().isEmpty()) {
             unidadAcademicaGuardar.setLaboratorios(nuevaUnidad.getLaboratorios());
         }
-        
+   
         em.persist(unidadAcademicaGuardar);
         
         em.getTransaction().commit();
@@ -54,26 +55,22 @@ public class UnidadAcademicaDAO implements IUnidadAcademicaDAO{
 
     @Override
     public List<UnidadAcademicaDominio> consultarUnidadesAcademicas() {
-        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
-        EntityManager em = fabrica.createEntityManager();
-        
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        
-        CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(UnidadAcademicaDominio.class);
-        
-        List<UnidadAcademicaDominio> unidadesAcademicas = em.createQuery(criteriaQuery).getResultList();
-        
-        for(UnidadAcademicaDominio unidad : unidadesAcademicas){
-            System.out.println(unidad.getNombreUnidad());
-            for(LaboratorioDominio laboratorio : unidad.getLaboratorios()){
-                laboratorio.getNombreLaboratorio();
-            }
-        }
-        
-        em.close();
-        fabrica.close();
-        
-        return unidadesAcademicas;
+           EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
+           EntityManager em = fabrica.createEntityManager();
+
+           CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+           CriteriaQuery<UnidadAcademicaDominio> criteriaQuery = criteriaBuilder.createQuery(UnidadAcademicaDominio.class);
+           Root<UnidadAcademicaDominio> root = criteriaQuery.from(UnidadAcademicaDominio.class);
+           criteriaQuery.select(root);
+
+           List<UnidadAcademicaDominio> unidadesAcademicas = em.createQuery(criteriaQuery).getResultList();
+           for (UnidadAcademicaDominio unidad : unidadesAcademicas) {
+                System.out.println("Unidad: " + unidad.getNombreUnidad() + " | ID: " + unidad.getId());
+           }
+           em.close();
+           fabrica.close();
+
+            return unidadesAcademicas;
     }
 
     @Override

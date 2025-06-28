@@ -7,6 +7,7 @@ package DAOs;
 import Conexion.ConexionBD;
 import DTOs.AgregarLaboratorioDTO;
 import entidades.LaboratorioDominio;
+import entidades.UnidadAcademicaDominio;
 import interfaces.ILaboratorioDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +40,8 @@ public class LaboratorioDAO implements ILaboratorioDAO {
         EntityManager em = fabrica.createEntityManager();
 
         em.getTransaction().begin();
-
-        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin(), nuevoLaboratorio.getUnidadAcademica());
-
+        UnidadAcademicaDominio unidad= em.find(UnidadAcademicaDominio.class, nuevoLaboratorio.getUnidadAcademica().getId());
+        LaboratorioDominio laboratorioGuardar = new LaboratorioDominio(nuevoLaboratorio.getNombre(), nuevoLaboratorio.getHoraInicio(), nuevoLaboratorio.getHoraFin(), unidad);
         em.persist(laboratorioGuardar);
 
         em.getTransaction().commit();

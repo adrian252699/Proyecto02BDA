@@ -3,6 +3,7 @@ Conexion\ConexionBD.class
 DAOs\NewMain.class
 Exception\PersistenciaException.class
 DAOs\LaboratorioDAO.class
+interfaces\IBloqueoDAO.class
 interfaces\ILaboratorioDAO.class
 DAOs\AlumnoDAO.class
 DAOs\UnidadAcademicaDAO.class
@@ -13,3 +14,4 @@ interfaces\IAdministradorDAO.class
 DAOs\CarreraDAO.class
 DAOs\AdministradorDAO.class
 interfaces\IUnidadAcademicaDAO.class
+DAOs\BloqueoDAO.class

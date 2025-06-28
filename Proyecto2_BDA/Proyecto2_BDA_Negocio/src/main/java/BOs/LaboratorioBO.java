@@ -5,6 +5,7 @@
 
 package BOs;
 
+import DTOs.AgregarLaboratorioDTO;
 import Interfacez.ILaboratorioBO;
 import entidades.LaboratorioDominio;
 import interfaces.ILaboratorioDAO;
@@ -24,6 +25,17 @@ public class LaboratorioBO implements ILaboratorioBO{
     @Override
     public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica) {
         return this.daoLaboratorio.consultarLaboratoriosUnidadAcademica(idUnidadAcademica);
+    }
+    @Override
+    public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO laboratorio){
+        System.out.println("Lab que entra a la BO:  " + laboratorio.toString());
+        daoLaboratorio.agregarLaboratorio(laboratorio);
+        LaboratorioDominio labAgregado = new LaboratorioDominio(laboratorio.getNombre(), laboratorio.getHoraInicio(), laboratorio.getHoraFin(), laboratorio.getUnidadAcademica());
+        return labAgregado;
+    }
+    @Override
+    public List<LaboratorioDominio> consultarLaboratorios(){
+        return daoLaboratorio.consultarLaboratorios();
     }
     
 }

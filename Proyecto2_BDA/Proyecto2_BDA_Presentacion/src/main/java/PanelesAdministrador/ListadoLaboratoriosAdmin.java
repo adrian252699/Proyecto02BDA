@@ -4,14 +4,13 @@
  */
 package PanelesAdministrador;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 import DAOs.LaboratorioDAO;
 import javax.swing.JFileChooser;
 import reportes.PDFCentroComputo;
-import reportes.ReporteCentroComputo;
-import DTOs.LaboratorioDTO;
 import entidades.LaboratorioDominio;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -19,14 +18,16 @@ import java.util.List;
  * @author HP
  */
 public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
-    ControlNavegacion control;
+    ControlAdmin control;
     /**
      * Creates new form ListaComputadorasAdmin
      */
-    public ListadoLaboratoriosAdmin(ControlNavegacion control) {
+    public ListadoLaboratoriosAdmin(ControlAdmin control) {
         this.control = control;
-        valoresDefault();
+        
         initComponents();
+        valoresDefault();
+        cargarTabla();
     }
 
     /**
@@ -39,7 +40,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaLaboratorios = new javax.swing.JTable();
         BtnAtrasPagina = new javax.swing.JButton();
         BtnSIgPagina = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
@@ -50,12 +51,11 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         labelFiltros = new javax.swing.JLabel();
         labelFiltroLaboratorio = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        BtnSalir = new javax.swing.JButton();
         btnGenerarReporte = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaLaboratorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,7 +66,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
                 "Unidad Academica", "ID Laboratorio", "nombre", "Horario"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaLaboratorios);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 1010, 330));
 
@@ -90,7 +90,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         BtnEditar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BtnEditar.setForeground(new java.awt.Color(255, 255, 255));
         BtnEditar.setText("Editar");
-        add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 120, 40));
+        add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 120, 40));
 
         BtnAgregar.setBackground(new java.awt.Color(0, 0, 0));
         BtnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -112,7 +112,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
                 BtnEliminarMouseClicked(evt);
             }
         });
-        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 120, 40));
+        add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, 120, 40));
 
         BtnCerrarSesion.setBackground(new java.awt.Color(0, 0, 0));
         BtnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -140,27 +140,16 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidad Nainari", "Unidad Centro" }));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 20, 30));
 
-        BtnSalir.setBackground(new java.awt.Color(0, 0, 0));
-        BtnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BtnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        BtnSalir.setText("Salir");
-        BtnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnSalirMouseClicked(evt);
-            }
-        });
-        add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 520, 120, 40));
-
         btnGenerarReporte.setBackground(new java.awt.Color(0, 0, 0));
         btnGenerarReporte.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
-        btnGenerarReporte.setText("Generar reporte");
+        btnGenerarReporte.setText("Generar reporte de laboratorios");
         btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarReporteActionPerformed(evt);
             }
         });
-        add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, 40));
+        add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 290, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAtrasPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAtrasPaginaMouseClicked
@@ -185,11 +174,6 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCerrarSesionMouseClicked
 
-    private void BtnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSalirMouseClicked
-        // TODO add your handling code here:
-        control.mostrarPantallaAdminisrador();
-    }//GEN-LAST:event_BtnSalirMouseClicked
-
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         
 // TODO add your handling code here:
@@ -203,29 +187,39 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
     private javax.swing.JButton BtnEditar;
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnSIgPagina;
-    private javax.swing.JButton BtnSalir;
     private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFiltroLaboratorio;
     private javax.swing.JLabel labelFiltros;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTable tablaLaboratorios;
     // End of variables declaration//GEN-END:variables
 
-//    public ArrayList<String> cargarLaboratorios(){
-//       //control.cargarUnidadesAcademicas(); sin filtros aun
-    //dudas con la unidad academica, la obtendremos cuando el admin inicie sesion o la seleccionara???
+    public List<LaboratorioDominio> cargarLaboratorios(){
+       return control.cargarLaboratrios(); 
+//    dudas con la unidad academica, la obtendremos cuando el admin inicie sesion o la seleccionara???
+        
+    }
     
-    
-//       ArrayList<String> listaUnidades = new ArrayList<>();
-//       listaUnidades.set(1, "Unidada Nainari");
-//       return 
-//    }
+     public void cargarTabla(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaLaboratorios.getModel();
+        modeloTabla.setRowCount(0); 
+        for(LaboratorioDominio lab : control.cargarLaboratrios()){
+            modeloTabla.addRow(new Object[]{
+                lab.getUnidadAcademica().getNombreUnidad(),
+                lab.getId(),
+                lab.getNombreLaboratorio(),
+                (lab.getHoraInicio().toString()+ "-"+ lab.getHoraFin().toString())
+                
+            });
+        }
+     }
+        
     //creo q no se ocupa aun
    // public ArrayList<String>
     public void valoresDefault(){
-        setSize(1040, 620);
+        setSize(1030, 620);
         setVisible(true);
     }
 

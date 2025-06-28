@@ -24,14 +24,21 @@ public class UnidadAcademicaDAOTest {
     /**
      * Test of agregarUnidadAcademica method, of class UnidadAcademicaDAO.
      */
+    // Ya Sirve como  insertPara la BD
 //    @Test
 //    public void testAgregarUnidadAcademica() {
 ////        List<LaboratorioDominio> laboratorios = Arrays.asList(new LaboratorioDominio(nombreLaboratorio, horaInicio, horaFin))
-//        NuevaUnidadAcademicaDTO nuevaUnidad = new NuevaUnidadAcademicaDTO("Nainari");
+//        NuevaUnidadAcademicaDTO nuevaUnidad = new NuevaUnidadAcademicaDTO("Centro");
+//        
+//        NuevaUnidadAcademicaDTO nuevaUnidad1 = new NuevaUnidadAcademicaDTO("Guaymas");
+//        
+//        NuevaUnidadAcademicaDTO nuevaUnidad2 = new NuevaUnidadAcademicaDTO("Nainari");
 //        
 //        IUnidadAcademicaDAO dao = new UnidadAcademicaDAO();
 //        
 //        dao.agregarUnidadAcademica(nuevaUnidad);
+//        dao.agregarUnidadAcademica(nuevaUnidad1);
+//        dao.agregarUnidadAcademica(nuevaUnidad2);
 //    }
     
 }

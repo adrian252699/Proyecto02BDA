@@ -4,6 +4,7 @@
  */
 package Interfacez;
 
+import DTOs.AgregarLaboratorioDTO;
 import entidades.LaboratorioDominio;
 import java.util.List;
 
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface ILaboratorioBO {
     public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica);
+    public List<LaboratorioDominio> consultarLaboratorios();
+    public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO laboratorio);
 }

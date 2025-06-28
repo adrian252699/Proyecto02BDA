@@ -4,7 +4,7 @@
  */
 package PanelesAdministrador;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 import DTOs.AgregarLaboratorioDTO;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -14,12 +14,12 @@ import java.util.Calendar;
  * @author HP
  */
 public class ResumenLaboratorio extends javax.swing.JPanel {
-    private ControlNavegacion control;
+    private ControlAdmin control;
     private AgregarLaboratorioDTO laboratorioTemporal;
     /**
      * Creates new form ResumenLaboratorio
      */
-    public ResumenLaboratorio(ControlNavegacion control) {
+    public ResumenLaboratorio(ControlAdmin control) {
         this.control = control;
         initComponents();
         valoresDefault();

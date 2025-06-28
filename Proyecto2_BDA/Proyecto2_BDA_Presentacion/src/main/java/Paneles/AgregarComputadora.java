@@ -4,17 +4,26 @@
  */
 package Paneles;
 
+import ControlNavegacion.ControlAdmin;
+import entidades.LaboratorioDominio;
+import entidades.UnidadAcademicaDominio;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Sandra
  */
 public class AgregarComputadora extends javax.swing.JPanel {
-
+    private ControlAdmin control;
     /**
      * Creates new form AgregarComputadora
      */
-    public AgregarComputadora() {
+    public AgregarComputadora(ControlAdmin control) {
+        this.control = control;
         initComponents();
+        valoresDefault();
+        listenerComboUnidad();
     }
 
     /**
@@ -42,12 +51,17 @@ public class AgregarComputadora extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 19, -1, -1));
 
         comboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxUnidadActionPerformed(evt);
+            }
+        });
         add(comboBoxUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 99, -1, -1));
 
         comboBoxLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(comboBoxLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 152, -1, -1));
 
-        comboBoxTipoPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxTipoPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Portero", "Administrador", " " }));
         add(comboBoxTipoPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 203, -1, -1));
 
         jLabel2.setText("Seleccione una unidad academica");
@@ -63,6 +77,10 @@ public class AgregarComputadora extends javax.swing.JPanel {
         add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 271, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboBoxUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUnidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxUnidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
@@ -74,4 +92,36 @@ public class AgregarComputadora extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
+
+    private void valoresDefault(){
+        DefaultComboBoxModel modeloUnidad = new DefaultComboBoxModel();
+         for(UnidadAcademicaDominio lab : control.cargarUnidadesAcademicas()){
+            modeloUnidad. addElement(new Object[]{
+                lab.getNombreUnidad()
+            });
+            comboBoxUnidad.setModel(modeloUnidad);
+        }
+//         listenerComboUnidad();
+     }
+    
+    public void actualizarComboLaboratorio(List<UnidadAcademicaDominio> listaUnidades){
+        
+    }
+    public void listenerComboUnidad(){
+        comboBoxUnidad.addActionListener(e -> {
+            UnidadAcademicaDominio seleccionada = (UnidadAcademicaDominio) comboBoxUnidad.getSelectedItem();
+
+            if (seleccionada != null) {
+                // Consulta los laboratorios de esa unidad
+                List<LaboratorioDominio> laboratorios = control.consultarLaboratoriosUnidadAcademica(seleccionada.getId());
+
+                // Actualiza el segundo combo
+                DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+                for (LaboratorioDominio lab : laboratorios) {
+                    modelo.addElement(lab.getNombreLaboratorio());
+                }
+                comboBoxLaboratorio.setModel(modelo);
+            }
+        });
+            }
 }

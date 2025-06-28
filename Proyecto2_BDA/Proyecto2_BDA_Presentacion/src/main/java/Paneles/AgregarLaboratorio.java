@@ -4,7 +4,7 @@
  */
 package Paneles;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 import java.util.Calendar;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Calendar;
  * @author Sandra
  */
 public class AgregarLaboratorio extends javax.swing.JPanel {
-    private ControlNavegacion control;
+    private ControlAdmin control;
     
 
     /**
@@ -21,7 +21,7 @@ public class AgregarLaboratorio extends javax.swing.JPanel {
     public AgregarLaboratorio() {
         initComponents();
     }
-    public AgregarLaboratorio(ControlNavegacion control) {
+    public AgregarLaboratorio(ControlAdmin control) {
         this.control = control;
         initComponents();
     }

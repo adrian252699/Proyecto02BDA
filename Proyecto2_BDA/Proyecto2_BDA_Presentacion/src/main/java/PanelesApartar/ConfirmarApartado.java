@@ -4,18 +4,18 @@
  */
 package PanelesApartar;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
 
 /**
  *
  * @author HP
  */
 public class ConfirmarApartado extends javax.swing.JPanel {
-    private ControlNavegacion control;
+    private ControlAdmin control;
     /**
      * Creates new form ConfirmarApartado
      */
-    public ConfirmarApartado(ControlNavegacion control) {
+    public ConfirmarApartado(ControlAdmin control) {
         this.control = control;
         initComponents();
     }

@@ -41,12 +41,32 @@ public class LaboratorioDAOTest {
 //        horaFin.set(Calendar.MINUTE,0);
 //        horaFin.set(Calendar.SECOND,0);
 //        horaFin.set(Calendar.MILLISECOND,0);
+//        int cont =0;
+//        String nombreLab0 ="CISCO ";
+//        String nombreLab1 ="Laboratorio 2";
+//        String nombreLab2 ="Laboratorio 1";
+//        for (UnidadAcademicaDominio unidad : daoUnidad.consultarUnidadesAcademicas()) {
+//                System.out.println("Unidad: " + unidad.getNombreUnidad() + " | ID: " + unidad.getId());
+//           }
+//        String nombre = nombreLab0;
+//        for(UnidadAcademicaDominio dominio: daoUnidad.consultarUnidadesAcademicas()){
+//            
+//            AgregarLaboratorioDTO nuevoLaboratorio = new  AgregarLaboratorioDTO();
+//            nuevoLaboratorio.setNombre(nombre);
+//            nuevoLaboratorio.setHoraInicio(horaInicio);
+//            nuevoLaboratorio.setHoraFin(horaFin);
+//            nuevoLaboratorio.setUnidadAcademica(dominio);
+//            cont++;
+//            if (cont == 1) {
+//                nombre= nombreLab1;
+//            }else if(cont== 2){
+//                nombre= nombreLab2;
+//            }
+//            dao.agregarLaboratorio(nuevoLaboratorio);
+//            System.out.println("Se agrego el laboratorio en la BD:" + nuevoLaboratorio.toString());
+//        }  
 //        
-//        AgregarLaboratorioDTO nuevoLaboratorio = new  AgregarLaboratorioDTO(daoUnidad.consultarUnidadesAcademicasId(1L),"Cisco", horaInicio, horaFin);
-//        
-//        
-//        
-//        dao.agregarLaboratorio(nuevoLaboratorio);
 //    }
-    
-}
+//    
+    }
+

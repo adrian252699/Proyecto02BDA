@@ -6,7 +6,8 @@ package Presentacion;
 
 import Conexion.ConexionBD;
 import ControlNavegacion.ControlFlujoApartar;
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
+import DTOs.AgregarCarreraDTO;
 import javax.persistence.EntityManager;
 
 /**
@@ -17,11 +18,10 @@ public class Proyecto2_BDA_Presentacion {
 
     public static void main(String[] args) {
         //crear BD
+//        EntityManager manejador = ConexionBD.getEntityManager();
         
-        EntityManager manejador = ConexionBD.getEntityManager();
-
-//        ControlFlujoApartar prueba = new ControlFlujoApartar();
-//        
-//        prueba.valoresDefault();
+        ControlAdmin prueba = new ControlAdmin();
+        
+        prueba.iniciar();
     }
 }

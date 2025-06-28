@@ -59,7 +59,8 @@ public class CarreraDAO implements ICarreraDAO{
         
         return carrera;
     }
-
+    
+  @Override
     public List<CarreraDominio> consultarCarreras() {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();

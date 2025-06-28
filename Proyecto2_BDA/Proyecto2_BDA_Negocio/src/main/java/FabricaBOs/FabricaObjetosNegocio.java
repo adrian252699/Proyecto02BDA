@@ -7,15 +7,19 @@ package FabricaBOs;
 import BOs.AlumnoBO;
 import BOs.ComputadoraBO;
 import BOs.LaboratorioBO;
+import BOs.UnidadesAcademicasBO;
 import DAOs.AlumnoDAO;
 import DAOs.ComputadoraDAO;
 import DAOs.LaboratorioDAO;
+import DAOs.UnidadAcademicaDAO;
 import Interfacez.IAlumnoBO;
 import Interfacez.IComputadoraBO;
 import Interfacez.ILaboratorioBO;
+import Interfacez.IUnidadAcademicaBO;
 import interfaces.IAlumnoDAO;
 import interfaces.IComputadoraDAO;
 import interfaces.ILaboratorioDAO;
+import interfaces.IUnidadAcademicaDAO;
 
 /**
  *
@@ -40,6 +44,13 @@ public class FabricaObjetosNegocio {
         ILaboratorioBO laboratorioBO = new LaboratorioBO(daoLaboratorio);
         
         return laboratorioBO;
+        
+    }
+    public static IUnidadAcademicaBO crearUnidadAcademicaBO(){
+        IUnidadAcademicaDAO daoUnidad = UnidadAcademicaDAO.getInstanciaDAO();
+        IUnidadAcademicaBO unidadBO = new UnidadesAcademicasBO(daoUnidad);
+        
+        return unidadBO;
         
     }
 }

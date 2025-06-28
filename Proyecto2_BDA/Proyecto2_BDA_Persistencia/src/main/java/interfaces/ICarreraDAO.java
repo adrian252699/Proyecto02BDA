@@ -6,6 +6,7 @@ package interfaces;
 
 import DTOs.AgregarCarreraDTO;
 import entidades.CarreraDominio;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,5 @@ import entidades.CarreraDominio;
 public interface ICarreraDAO {
     public CarreraDominio agregarCarrera(AgregarCarreraDTO nuevaCarrera);
     public CarreraDominio consultarCarreraId(Long id);
-    public CarreraDominio consultarCarrera();
+    public List<CarreraDominio> consultarCarreras();
 }

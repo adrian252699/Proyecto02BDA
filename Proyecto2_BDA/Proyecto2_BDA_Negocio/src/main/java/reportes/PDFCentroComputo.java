@@ -58,7 +58,7 @@ public class PDFCentroComputo {
             System.out.println("Reporte generado en: " + rutaArchivo);
 
         } catch (IOException e) {
-            throw new RuntimeException("Error al generar el PDF", e);
+            throw new RuntimeException("Error al generar el PDF: "+ e.getLocalizedMessage());
         }
     }
 

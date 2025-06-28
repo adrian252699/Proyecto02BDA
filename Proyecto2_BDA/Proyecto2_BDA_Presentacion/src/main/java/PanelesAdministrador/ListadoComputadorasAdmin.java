@@ -4,21 +4,24 @@
  */
 package PanelesAdministrador;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlAdmin;
+import entidades.ComputadoraDominio;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author HP
  */
 public class ListadoComputadorasAdmin extends javax.swing.JPanel {
-    ControlNavegacion control;
+    ControlAdmin control;
     /**
      * Creates new form ListaComputadorasAdmin
      */
-    public ListadoComputadorasAdmin(ControlNavegacion control) {
+    public ListadoComputadorasAdmin(ControlAdmin control) {
         this.control = control;
-        valoresDefault();
         initComponents();
+        cargarTabla();
+        valoresDefault();
     }
 
     /**
@@ -31,7 +34,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaComputadoras = new javax.swing.JTable();
         BtnAtrasPagina = new javax.swing.JButton();
         BtnSIgPagina = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
@@ -46,7 +49,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaComputadoras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,7 +60,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
                 "ID Computadora", "Unidad Academica", "Laboratorio", "Numero de computadora"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaComputadoras);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 1010, 330));
 
@@ -180,10 +183,10 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
     private javax.swing.JButton BtnSalir;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFiltroLaboratorio;
     private javax.swing.JLabel labelFiltros;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTable tablaComputadoras;
     // End of variables declaration//GEN-END:variables
 
 //    public ArrayList<String> cargarUnidadesAcademicas(){
@@ -194,6 +197,18 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
 //    }
     //creo q no se ocupa aun
    // public ArrayList<String>
+    public void cargarTabla(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaComputadoras.getModel();
+        modeloTabla.setRowCount(0); 
+        for(ComputadoraDominio pc : control.cargarComputadoras()){
+            modeloTabla.addRow(new Object[]{
+                pc.getId(),
+                pc.getLaboratorio().getUnidadAcademica().getNombreUnidad(),
+                pc.getLaboratorio().getNombreLaboratorio(),
+                pc.getNumeroComputadora()               
+            });
+        }
+     }
     public void valoresDefault(){
         setSize(1040, 620);
         setVisible(true);
