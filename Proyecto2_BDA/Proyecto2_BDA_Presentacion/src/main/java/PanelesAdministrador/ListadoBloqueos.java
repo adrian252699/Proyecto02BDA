@@ -42,6 +42,7 @@ public class ListadoBloqueos extends javax.swing.JPanel {
         labelFiltroLaboratorio = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         BtnSalir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,7 +92,7 @@ public class ListadoBloqueos extends javax.swing.JPanel {
                 BtnAgregarMouseClicked(evt);
             }
         });
-        add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 160, 40));
+        add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 160, 40));
 
         BtnCerrarSesion.setBackground(new java.awt.Color(0, 0, 0));
         BtnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -129,6 +130,12 @@ public class ListadoBloqueos extends javax.swing.JPanel {
             }
         });
         add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 120, 40));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Generar reporte");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAtrasPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAtrasPaginaMouseClicked
@@ -161,6 +168,7 @@ public class ListadoBloqueos extends javax.swing.JPanel {
     private javax.swing.JButton BtnEditar;
     private javax.swing.JButton BtnSIgPagina;
     private javax.swing.JButton BtnSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

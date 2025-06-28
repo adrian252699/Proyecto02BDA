@@ -5,6 +5,14 @@
 package PanelesAdministrador;
 
 import ControlNavegacion.ControlNavegacion;
+import DAOs.LaboratorioDAO;
+import javax.swing.JFileChooser;
+import reportes.PDFCentroComputo;
+import reportes.ReporteCentroComputo;
+import DTOs.LaboratorioDTO;
+import entidades.LaboratorioDominio;
+import java.util.List;
+
 
 /**
  *
@@ -43,6 +51,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         labelFiltroLaboratorio = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         BtnSalir = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,6 +150,17 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
             }
         });
         add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 520, 120, 40));
+
+        btnGenerarReporte.setBackground(new java.awt.Color(0, 0, 0));
+        btnGenerarReporte.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnGenerarReporte.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarReporte.setText("Generar reporte");
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarReporteActionPerformed(evt);
+            }
+        });
+        add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAtrasPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAtrasPaginaMouseClicked
@@ -170,6 +190,35 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
         control.mostrarPantallaAdminisrador();
     }//GEN-LAST:event_BtnSalirMouseClicked
 
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        try {
+        // Seleccionar la ruta para guardar el PDF
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar reporte como...");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+
+            // Obtener los datos
+            LaboratorioDAO laboratorioDAO = LaboratorioDAO.getInstanciaDAO();
+            List<LaboratorioDominio> laboratorios = laboratorioDAO.consultarLaboratorios();
+
+            // Crear el reporte
+            PDFCentroComputo reporte = new PDFCentroComputo();
+            reporte.setLaboratoriosReporte(laboratorios);
+            reporte.generarReporte(ruta.endsWith(".pdf") ? ruta : ruta + ".pdf");
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Reporte generado con éxito.");
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al generar el reporte:\n" + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;
@@ -179,6 +228,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnSIgPagina;
     private javax.swing.JButton BtnSalir;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
