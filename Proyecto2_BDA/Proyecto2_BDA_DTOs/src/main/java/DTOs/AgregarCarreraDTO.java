@@ -12,12 +12,12 @@ import java.util.Calendar;
  */
 public class AgregarCarreraDTO {
     private String nombre;
-    private Long tiempoMax;
+    private int tiempoMax;
 
     public AgregarCarreraDTO() {
     }
 
-    public AgregarCarreraDTO(String nombre, Long tiempoMax) {
+    public AgregarCarreraDTO(String nombre, int tiempoMax) {
         this.nombre = nombre;
         this.tiempoMax = tiempoMax;
     }
@@ -30,13 +30,19 @@ public class AgregarCarreraDTO {
         this.nombre = nombre;
     }
 
-    public Long getTiempoMax() {
+    public int getTiempoMax() {
         return tiempoMax;
     }
 
-    public void setTiempoMax(Long tiempoMax) {
+    public void setTiempoMax(int tiempoMax) {
         this.tiempoMax = tiempoMax;
     }
+
+    @Override
+    public String toString() {
+        return "AgregarCarreraDTO{" + "nombre=" + nombre + ", tiempoMax=" + tiempoMax + '}';
+    }
+    
     
     
 }

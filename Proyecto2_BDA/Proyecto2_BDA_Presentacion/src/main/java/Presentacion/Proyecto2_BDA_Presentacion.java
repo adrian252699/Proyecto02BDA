@@ -4,8 +4,10 @@
 
 package Presentacion;
 
+import Conexion.ConexionBD;
 import ControlNavegacion.ControlFlujoApartar;
 import ControlNavegacion.ControlNavegacion;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -14,8 +16,12 @@ import ControlNavegacion.ControlNavegacion;
 public class Proyecto2_BDA_Presentacion {
 
     public static void main(String[] args) {
-        ControlFlujoApartar prueba = new ControlFlujoApartar();
+        //crear BD
         
-        prueba.valoresDefault();
+        EntityManager manejador = ConexionBD.getEntityManager();
+
+//        ControlFlujoApartar prueba = new ControlFlujoApartar();
+//        
+//        prueba.valoresDefault();
     }
 }

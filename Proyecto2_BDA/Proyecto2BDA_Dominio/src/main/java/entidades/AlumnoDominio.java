@@ -47,7 +47,8 @@ public class AlumnoDominio implements Serializable{
     private ComputadoraDominio computadora;
     
     //Atributos de la relacion con BloqueoAdminstradorAlumno (N:M) se creo Otra Clase para la relacion pq la relacion Bloquear tiene atributos
-   
+    @OneToMany(mappedBy ="alumnoBloqueado")
+    private List<BloqueoAdministradorAlumnoDominio> bloqueos;
    
     
     public AlumnoDominio() {

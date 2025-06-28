@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,7 +32,7 @@ public class BloqueoAdministradorAlumnoDominio implements Serializable {
     public Long getId() {
         return id;
     }
-    
+    //Atributos de la relacion Bloquea - adminstrador alumno
     @Column(name ="Motivo")
     private String motivo;
     
@@ -40,12 +42,15 @@ public class BloqueoAdministradorAlumnoDominio implements Serializable {
     @Column (name ="Fecha_Fin")
     private Calendar fechaFin;
     
-    //Atributos de la relacion adminstrador alumno
-    @Column (name ="BloueadoPor")
+    //llaves foraneas
+    @ManyToOne
+    @JoinColumn (name ="idAdministrador")
     private AdministradorDominio administrador;
     
-    @Column (name ="AlumnoBloqueado")
+    @ManyToOne
+    @JoinColumn (name ="idAlumno")
     private AlumnoDominio alumnoBloqueado;
+    
     
     public void setId(Long id) {
         this.id = id;
