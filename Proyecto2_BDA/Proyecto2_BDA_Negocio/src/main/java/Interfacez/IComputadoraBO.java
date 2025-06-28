@@ -4,10 +4,15 @@
  */
 package Interfacez;
 
+import entidades.ComputadoraDominio;
+import entidades.LaboratorioDominio;
+import java.util.List;
+
 /**
  *
  * @author jalt2
  */
 public interface IComputadoraBO {
+    public List<ComputadoraDominio> consultarComputadorasPorLaboratorio(LaboratorioDominio laboratorio);
     
 }

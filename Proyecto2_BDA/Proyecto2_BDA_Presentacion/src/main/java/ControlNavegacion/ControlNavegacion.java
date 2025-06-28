@@ -133,10 +133,10 @@ public class ControlNavegacion {
 //        seleccionLaboratorio = new SeleccionLaboratorio(this);
 //        cambiarPanel(seleccionLaboratorio);
 //    }
-    public void mostrarPantallaSeleccionComputadora(){
-        seleccionComputadora = new SeleccionComputadora(this);
-        cambiarPanel(seleccionComputadora);
-    }
+//    public void mostrarPantallaSeleccionComputadora(){
+//        seleccionComputadora = new SeleccionComputadora(this);
+//        cambiarPanel(seleccionComputadora);
+//    }
     public void mostrarPantallaTiempoApartado(){
         seleccionTiempoApartado = new SeleccionTiempoApartado(this);
         cambiarPanel(seleccionTiempoApartado);

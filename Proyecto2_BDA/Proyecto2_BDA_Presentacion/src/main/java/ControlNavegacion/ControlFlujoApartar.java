@@ -5,14 +5,17 @@
 package ControlNavegacion;
 
 import CasoAdministrador.CasoAdministrador;
+import DTOs.LaboratorioDTO;
 import DTOs.LoginAlumnoDTO;
 import FabricaBOs.FabricaObjetosNegocio;
 import Interfacez.IAlumnoBO;
 import Interfacez.IComputadoraBO;
 import Interfacez.ILaboratorioBO;
 import Paneles.PanelRegistroID;
+import PanelesApartar.SeleccionComputadora;
 import PanelesApartar.SeleccionLaboratorio;
 import entidades.AlumnoDominio;
+import entidades.LaboratorioDominio;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,17 +24,18 @@ import javax.swing.JPanel;
  *
  * @author jalt2
  */
-public class ControlLoginAlumno {
+public class ControlFlujoApartar {
     
     private IAlumnoBO alumnoBO;
     private ILaboratorioBO labBO;
     private IComputadoraBO compBO;
     private SeleccionLaboratorio frmSeleccionLaboratorio;
+    private SeleccionComputadora frmSeleccionComputadora;
     private PanelRegistroID login;
     private JFrame framePrincipal;
     private CasoAdministrador casoAdmin;
      
-    public ControlLoginAlumno() {
+    public ControlFlujoApartar() {
         this.alumnoBO = FabricaObjetosNegocio.crearAlumnoBO();
         this.labBO = FabricaObjetosNegocio.crearLaboratorioBO();
         this.compBO = FabricaObjetosNegocio.crearComputadoraBO();
@@ -63,6 +67,17 @@ public class ControlLoginAlumno {
     public void mostrarPantallaSeleccionLaboratorio(){
         frmSeleccionLaboratorio = new SeleccionLaboratorio(labBO,this);
         cambiarPanel(frmSeleccionLaboratorio);
+    }
+    
+    public void mostrarPantallaSeleccionComputadora(){
+        frmSeleccionComputadora = new SeleccionComputadora(compBO,this);
+        cambiarPanel(frmSeleccionComputadora);
+    }
+    
+    public LaboratorioDominio getLaboratorioActual(){
+        LaboratorioDominio laboratorio = new LaboratorioDominio();
+        laboratorio.setNombreLaboratorio(frmSeleccionLaboratorio.getLaboratorioActual().getNombre());
+        return laboratorio;
     }
     
     public void valoresDefault(){

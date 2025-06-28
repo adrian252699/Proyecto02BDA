@@ -20,6 +20,12 @@ public class AgregarLaboratorioDTO {
     public AgregarLaboratorioDTO() {
     }
 
+    public AgregarLaboratorioDTO(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    
     public AgregarLaboratorioDTO(UnidadAcademicaDominio UnidadAcademica, String nombre, Calendar horaInicio, Calendar horaFin) {
         this.UnidadAcademica = UnidadAcademica;
         this.nombre = nombre;

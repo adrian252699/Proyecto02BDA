@@ -14,6 +14,8 @@ import java.util.Calendar;
 public class LaboratorioDTO {
     private UnidadAcademicaDominio UnidadAcademica;
     private String nombre;
+    private Calendar horaFin;
+    
 
     public LaboratorioDTO() {
     }

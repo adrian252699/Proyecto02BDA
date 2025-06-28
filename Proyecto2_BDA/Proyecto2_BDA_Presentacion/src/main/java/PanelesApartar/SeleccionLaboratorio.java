@@ -4,10 +4,14 @@
  */
 package PanelesApartar;
 
-import ControlNavegacion.ControlLoginAlumno;
+import ControlNavegacion.ControlFlujoApartar;
+import DTOs.AgregarLaboratorioDTO;
 import DTOs.LaboratorioDTO;
 import Interfacez.ILaboratorioBO;
 import entidades.LaboratorioDominio;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -16,15 +20,33 @@ import javax.swing.table.DefaultTableModel;
  * @author HP
  */
 public class SeleccionLaboratorio extends javax.swing.JPanel {
-    private ControlLoginAlumno control;
+    private ControlFlujoApartar control;
     private ILaboratorioBO labBO;
+    private AgregarLaboratorioDTO laboratorioActual;
+    
+    
     /**
      * Creates new form SeleccionLaboratorio
      */
-    public SeleccionLaboratorio(ILaboratorioBO labBO,ControlLoginAlumno control) {
+    public SeleccionLaboratorio(ILaboratorioBO labBO,ControlFlujoApartar control) {
         initComponents();
         this.control = control;
         this.labBO=labBO;
+        tblLaboratorios.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int fila = tblLaboratorios.rowAtPoint(evt.getPoint());
+                    if (fila != -1) {
+                        String nombreLaboratorio = tblLaboratorios.getValueAt(fila, 0).toString();
+                        JOptionPane.showMessageDialog(BtnContinuar, "Laboratorio Seleccionado: "+nombreLaboratorio, "Laboratorio", JOptionPane.INFORMATION_MESSAGE);
+                        laboratorioActual = new AgregarLaboratorioDTO(nombreLaboratorio);
+                        control.mostrarPantallaSeleccionComputadora();
+                    }
+                }
+            }
+        });
         llenarTabla();
         
     }
@@ -40,6 +62,10 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
         }
     }
 
+    public AgregarLaboratorioDTO getLaboratorioActual() {
+        return laboratorioActual;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +79,7 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
         tblLaboratorios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         BtnContinuar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -66,10 +93,18 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
             new String [] {
                 "Nombre"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblLaboratorios);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 520, 460));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 520, 420));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Laboratorios");
@@ -82,7 +117,16 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
                 BtnContinuarMouseClicked(evt);
             }
         });
+        BtnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnContinuarActionPerformed(evt);
+            }
+        });
         add(BtnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 100, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("--Doble click para seleccionar un laboratorio--");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuarMouseClicked
@@ -90,10 +134,16 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
 //        control.mostrarPantallaSeleccionComputadora();
     }//GEN-LAST:event_BtnContinuarMouseClicked
 
+    private void BtnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContinuarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BtnContinuarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnContinuar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLaboratorios;
     // End of variables declaration//GEN-END:variables

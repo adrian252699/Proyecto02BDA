@@ -5,7 +5,7 @@
 package Paneles;
 
 
-import ControlNavegacion.ControlLoginAlumno;
+import ControlNavegacion.ControlFlujoApartar;
 import DTOs.LoginAlumnoDTO;
 import Interfacez.IAlumnoBO;
 import javax.swing.JButton;
@@ -18,12 +18,12 @@ import javax.swing.JTextField;
  * @author HP
  */
 public class PanelRegistroID extends javax.swing.JPanel {
-    private ControlLoginAlumno control;
+    private ControlFlujoApartar control;
     private IAlumnoBO alumnoBO;
     /**
      * Creates new form PanelRegistroID
      */
-    public PanelRegistroID(IAlumnoBO alumnoBO,ControlLoginAlumno control) {
+    public PanelRegistroID(IAlumnoBO alumnoBO,ControlFlujoApartar control) {
         this.control = control;
         this.alumnoBO = alumnoBO;
         initComponents();
@@ -69,7 +69,7 @@ public class PanelRegistroID extends javax.swing.JPanel {
                 BtnConfirmarActionPerformed(evt);
             }
         });
-        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 80, -1));
+        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 80, -1));
         add(CampoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

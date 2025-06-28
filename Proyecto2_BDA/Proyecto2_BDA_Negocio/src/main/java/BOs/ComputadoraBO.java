@@ -6,7 +6,10 @@
 package BOs;
 
 import Interfacez.IComputadoraBO;
+import entidades.ComputadoraDominio;
+import entidades.LaboratorioDominio;
 import interfaces.IComputadoraDAO;
+import java.util.List;
 
 /**
  *
@@ -17,6 +20,11 @@ public class ComputadoraBO implements IComputadoraBO{
 
     public ComputadoraBO(IComputadoraDAO daoComputadora) {
         this.daoComputadora = daoComputadora;
+    }
+
+    @Override
+    public List<ComputadoraDominio> consultarComputadorasPorLaboratorio(LaboratorioDominio laboratorio) {
+        return this.daoComputadora.consultarComputadorasPorLab(laboratorio);
     }
     
     

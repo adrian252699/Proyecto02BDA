@@ -7,7 +7,7 @@ Paneles\AgregarLaboratorioUnidad$1.class
 PanelesAdministrador\MenuAdministrador$1.class
 computadora\computadoraApartada.class
 PanelesApartar\SeleccionLaboratorio$1.class
-ControlNavegacion\ControlLoginAlumno.class
+ControlNavegacion\ControlFlujoApartar.class
 PanelesAdministrador\AgregarBloqueoPanel.class
 Paneles\AgregarLaboratorio.class
 PanelesApartar\SeleccionTiempoApartado$1.class
@@ -27,6 +27,7 @@ PanelesAdministrador\MenuAdministrador$5.class
 PanelesAdministrador\MenuAdministrador$2.class
 PanelesAdministrador\ResumenLaboratorio$1.class
 PanelesAdministrador\ListadoComputadorasAdmin$3.class
+PanelesApartar\SeleccionLaboratorio$2.class
 portero\catalogoComputadoras$1.class
 PanelesAdministrador\ListadoBloqueos$1.class
 PanelesAdministrador\ListadoLaboratoriosAdmin$2.class
@@ -39,8 +40,10 @@ Paneles\AgregarComputadoraSoftware.class
 portero\catalogoComputadoras$2.class
 PanelesAdministrador\ListadoLaboratoriosAdmin$6.class
 portero\IndicarTiempo.class
+PanelesApartar\SeleccionLaboratorio$3.class
 PanelesAdministrador\MenuAdministrador$3.class
 PanelesAdministrador\ListadoComputadorasAdmin$4.class
+PanelesApartar\SeleccionLaboratorio$4.class
 Paneles\PanelRegistroID$1.class
 PanelesApartar\ConfirmarApartado$1.class
 PanelesAdministrador\ListadoComputadorasAdmin$1.class

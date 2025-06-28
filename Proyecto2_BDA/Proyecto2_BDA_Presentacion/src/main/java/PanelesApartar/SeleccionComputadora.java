@@ -4,20 +4,42 @@
  */
 package PanelesApartar;
 
+import ControlNavegacion.ControlFlujoApartar;
 import ControlNavegacion.ControlNavegacion;
+import Interfacez.IComputadoraBO;
+import entidades.ComputadoraDominio;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author HP
  */
 public class SeleccionComputadora extends javax.swing.JPanel {
-    ControlNavegacion control;
+    private ControlFlujoApartar control;
+    private IComputadoraBO compBO;
     /**
      * Creates new form SeleccionComputadora
      */
-    public SeleccionComputadora(ControlNavegacion control) {
-        this.control = control;
+    public SeleccionComputadora(IComputadoraBO compBO,ControlFlujoApartar control) {
         initComponents();
+        this.control = control;
+        this.compBO=compBO;
+        this.lblLab.setText("Laboratorio: "+control.getLaboratorioActual().getNombreLaboratorio());
+        llenarTabla();
+        
+    }
+    
+    private void llenarTabla(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) this.tblComputadoras.getModel();
+        modelo.setRowCount(0);
+        
+        for(ComputadoraDominio c : compBO.consultarComputadorasPorLaboratorio(control.getLaboratorioActual())){
+            modelo.addRow(new Object[]{
+                c.getNumeroComputadora()
+            });
+        }
+        
     }
 
     /**
@@ -30,9 +52,9 @@ public class SeleccionComputadora extends javax.swing.JPanel {
     private void initComponents() {
 
         labelTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLab = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblComputadoras = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -41,11 +63,11 @@ public class SeleccionComputadora extends javax.swing.JPanel {
         labelTitulo.setText("Computadoras");
         add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Laboratorio: ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 220, -1));
+        lblLab.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblLab.setText("Laboratorio: ");
+        add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 220, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblComputadoras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -56,7 +78,7 @@ public class SeleccionComputadora extends javax.swing.JPanel {
                 "Numero", "Lista Softwares´s"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblComputadoras);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 440, -1));
 
@@ -71,15 +93,15 @@ public class SeleccionComputadora extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        control.mostrarPantallaTiempoApartado();
+        //control.mostrarPantallaTiempoApartado();
     }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel lblLab;
+    private javax.swing.JTable tblComputadoras;
     // End of variables declaration//GEN-END:variables
 }

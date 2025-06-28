@@ -4,7 +4,7 @@
 
 package Presentacion;
 
-import ControlNavegacion.ControlLoginAlumno;
+import ControlNavegacion.ControlFlujoApartar;
 import ControlNavegacion.ControlNavegacion;
 
 /**
@@ -14,7 +14,7 @@ import ControlNavegacion.ControlNavegacion;
 public class Proyecto2_BDA_Presentacion {
 
     public static void main(String[] args) {
-        ControlLoginAlumno prueba = new ControlLoginAlumno();
+        ControlFlujoApartar prueba = new ControlFlujoApartar();
         
         prueba.valoresDefault();
     }
