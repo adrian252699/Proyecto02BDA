@@ -135,8 +135,5 @@ public class LaboratorioDAO implements ILaboratorioDAO {
         List<LaboratorioDominio> laboratorios = typedQuery.getResultList();
         
         return laboratorios;
-    }
-
-
-    
+    }   
 }

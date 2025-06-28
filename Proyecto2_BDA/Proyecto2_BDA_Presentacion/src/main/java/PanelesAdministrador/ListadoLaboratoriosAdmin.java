@@ -191,31 +191,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnSalirMouseClicked
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
-        try {
-        // Seleccionar la ruta para guardar el PDF
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Guardar reporte como...");
-        int userSelection = fileChooser.showSaveDialog(this);
-
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
-
-            // Obtener los datos
-            LaboratorioDAO laboratorioDAO = LaboratorioDAO.getInstanciaDAO();
-            List<LaboratorioDominio> laboratorios = laboratorioDAO.consultarLaboratorios();
-
-            // Crear el reporte
-            PDFCentroComputo reporte = new PDFCentroComputo();
-            reporte.setLaboratoriosReporte(laboratorios);
-            reporte.generarReporte(ruta.endsWith(".pdf") ? ruta : ruta + ".pdf");
-
-            javax.swing.JOptionPane.showMessageDialog(this, "Reporte generado con éxito.");
-        }
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al generar el reporte:\n" + ex.getMessage(),
-                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-    }
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 

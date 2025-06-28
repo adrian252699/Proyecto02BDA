@@ -5,8 +5,19 @@
 package PanelesAdministrador;
 
 import ControlNavegacion.ControlNavegacion;
+import DAOs.BloqueoDAO;
+import DAOs.CarreraDAO;
+import DAOs.LaboratorioDAO;
+import entidades.BloqueoDominio;
+import entidades.CarreraDominio;
+import entidades.LaboratorioDominio;
 import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import reportes.PDFBloqueos;
+import reportes.PDFCarreras;
+import reportes.PDFCentroComputo;
 
 /**
  *
@@ -47,6 +58,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuDesbloquearAlumno = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        menuReportes = new javax.swing.JMenu();
+        menuCarreras = new javax.swing.JMenuItem();
+        menuCentroComputo = new javax.swing.JMenuItem();
+        menuBloqueos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,6 +135,34 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         menuBarAdmin.add(menuConfiguracion);
 
+        menuReportes.setText("Reportes");
+
+        menuCarreras.setText("Carreras");
+        menuCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCarrerasActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuCarreras);
+
+        menuCentroComputo.setText("Centro computo");
+        menuCentroComputo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCentroComputoActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuCentroComputo);
+
+        menuBloqueos.setText("Bloqueos");
+        menuBloqueos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBloqueosActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuBloqueos);
+
+        menuBarAdmin.add(menuReportes);
+
         setJMenuBar(menuBarAdmin);
 
         pack();
@@ -153,6 +196,87 @@ public class MenuAdministrador extends javax.swing.JFrame {
 //        control.iniciarSistema();
     }//GEN-LAST:event_menuConfiguracionActionPerformed
 
+    private void menuCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCarrerasActionPerformed
+    try {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar reporte de carreras...");
+    int userSelection = fileChooser.showSaveDialog(this);
+
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+
+        CarreraDAO carreraDAO = CarreraDAO.getInstanciaDAO();
+        List<CarreraDominio> carreras = carreraDAO.consultarCarreras();
+
+        PDFCarreras reporte = new PDFCarreras();
+        reporte.generarReporte(ruta.endsWith(".pdf") ? ruta : ruta + ".pdf");
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Reporte de carreras generado con éxito.");
+    }
+} catch (Exception ex) {
+    ex.printStackTrace();
+    javax.swing.JOptionPane.showMessageDialog(this, "Error al generar el reporte:\n" + ex.getMessage(),
+            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+}
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_menuCarrerasActionPerformed
+
+    private void menuCentroComputoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCentroComputoActionPerformed
+    try {
+        // Seleccionar la ruta para guardar el PDF
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar reporte como...");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+
+            // Obtener los datos
+            LaboratorioDAO laboratorioDAO = LaboratorioDAO.getInstanciaDAO();
+            List<LaboratorioDominio> laboratorios = laboratorioDAO.consultarLaboratorios();
+
+            // Crear el reporte
+            PDFCentroComputo reporte = new PDFCentroComputo();
+            reporte.setLaboratoriosReporte(laboratorios);
+            reporte.generarReporte(ruta.endsWith(".pdf") ? ruta : ruta + ".pdf");
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Reporte generado con éxito.");
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al generar el reporte:\n" + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+// TODO add your handling code here:
+    }//GEN-LAST:event_menuCentroComputoActionPerformed
+
+    private void menuBloqueosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBloqueosActionPerformed
+    try {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar reporte de bloqueos...");
+    int userSelection = fileChooser.showSaveDialog(this);
+
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+
+        BloqueoDAO bloqueoDAO = BloqueoDAO.getInstanciaDAO();
+        List<BloqueoDominio> bloqueos = bloqueoDAO.consultarBloqueos();
+
+        PDFBloqueos reporte = new PDFBloqueos();
+        reporte.generarReporte(ruta.endsWith(".pdf") ? ruta : ruta + ".pdf");
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Reporte de bloqueos generado con éxito.");
+    }
+} catch (Exception ex) {
+    ex.printStackTrace();
+    javax.swing.JOptionPane.showMessageDialog(this, "Error al generar el reporte:\n" + ex.getMessage(),
+            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+}
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_menuBloqueosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Laboratorios;
@@ -166,9 +290,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAgregarBloqueo;
     private javax.swing.JMenuItem menuAgregarLaboratorio;
     private javax.swing.JMenuBar menuBarAdmin;
+    private javax.swing.JMenuItem menuBloqueos;
+    private javax.swing.JMenuItem menuCarreras;
+    private javax.swing.JMenuItem menuCentroComputo;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenuItem menuDesbloquearAlumno;
     private javax.swing.JMenuItem menuEditarLaboratorio;
+    private javax.swing.JMenu menuReportes;
     // End of variables declaration//GEN-END:variables
     
     public void valoresDefault(){
