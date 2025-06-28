@@ -19,14 +19,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "computadorasLaboratorios")
 public class ComputadoraLaboratorioDominio implements Serializable {
-
+    //creo que esta clase no se oucpa porque la relacion es 1:N y no N:M
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "idComputadoraLaboratorio")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    //Relacion 0:N de computadora y laboratorio
+    //Relacion 1:N de computadora y laboratorio
     
     public Long getId() {
         return id;

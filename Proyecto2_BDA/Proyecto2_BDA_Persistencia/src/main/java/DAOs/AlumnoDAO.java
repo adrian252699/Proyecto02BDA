@@ -8,6 +8,7 @@ import Conexion.ConexionBD;
 import DTOs.NuevoAlumnoDTO;
 import DTOs.ReservarAlumnoComputadoraDTO;
 import entidades.AlumnoDominio;
+import entidades.ComputadoraAlumnoDominio;
 import entidades.ComputadoraDominio;
 import interfaces.IAlumnoDAO;
 import java.util.List;

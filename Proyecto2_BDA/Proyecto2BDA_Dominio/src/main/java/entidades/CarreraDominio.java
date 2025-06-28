@@ -35,7 +35,7 @@ public class CarreraDominio implements Serializable {
     private String nombreCarrera;
     
     @Column(name = "tiempoMax")
-    private Long tiempoMax;
+    private int tiempoMax;
     
     
     //Atributos de la relacion 1 a 1 con alumno
@@ -45,20 +45,20 @@ public class CarreraDominio implements Serializable {
     public CarreraDominio() {
     }
 
-    public CarreraDominio(String nombreCarrera, Long tiempoMax, List<AlumnoDominio> alumno) {
+    public CarreraDominio(String nombreCarrera, int tiempoMax, List<AlumnoDominio> alumno) {
         this.nombreCarrera = nombreCarrera;
         this.tiempoMax = tiempoMax;
         this.alumno = alumno;
     }
 
-    public CarreraDominio(String nombreCarrera, Long tiempoMax) {
+    public CarreraDominio(String nombreCarrera, int tiempoMax) {
         this.nombreCarrera = nombreCarrera;
         this.tiempoMax = tiempoMax;
     }
     
     
     
-    public CarreraDominio(Long id, String nombreCarrera, Long tiempoMax) {
+    public CarreraDominio(Long id, String nombreCarrera, int tiempoMax) {
         this.id = id;
         this.nombreCarrera = nombreCarrera;
         this.tiempoMax = tiempoMax;
@@ -80,11 +80,11 @@ public class CarreraDominio implements Serializable {
         this.nombreCarrera = nombreCarrera;
     }
 
-    public Long getTiempoMax() {
+    public int getTiempoMax() {
         return tiempoMax;
     }
 
-    public void setTiempoMax(Long tiempoMax) {
+    public void setTiempoMax(int tiempoMax) {
         this.tiempoMax = tiempoMax;
     }
 
