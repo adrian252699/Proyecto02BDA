@@ -1,5 +1,7 @@
 DAOs\ComputadoraDAO.class
+Conexion\ConexionBD.class
 DAOs\NewMain.class
+Exception\PersistenciaException.class
 DAOs\LaboratorioDAO.class
 interfaces\ILaboratorioDAO.class
 DAOs\AlumnoDAO.class

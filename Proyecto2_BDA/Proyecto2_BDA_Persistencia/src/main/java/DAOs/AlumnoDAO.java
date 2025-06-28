@@ -36,21 +36,20 @@ public class AlumnoDAO implements IAlumnoDAO{
     //en todas las daos Falta agregar las consultas con JPA
     @Override
     public AlumnoDominio consultarAlumnoId(Long idAlumno) {
-        //EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo"); esta linea esta en la clase ConexioBD
+        //EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo"); //esta linea esta en la clase ConexioBD
         
-        try{
-            EntityManager em = ConexionBD.crearConexion();
+ 
+            EntityManager em = ConexionBD.getEntityManager();
     //        AlumnoDominio alumno = em.find(AlumnoDominio.class, idAlumno);
             //ocupamos consultas con JPA
-            String comando = "Select a from AlumnoDominio a where a.id_Alumno = :id";
-            TypedQuery<AlumnoDominio> query = em.createQuery(comando, AlumnoDominio.class);
-            query.setParameter("id", idAlumno);
-            return query.getSingleResult();
-        }catch(Exception ex){
-            return null; //deberia tirar la excepcion aqui segun yooo
-        }finally{
-            ConexionBD.cerrar();
-        }
+//            String comando = "Select a from AlumnoDominio a where a.id_Alumno = :id";
+//            TypedQuery<AlumnoDominio> query = em.createQuery(comando, AlumnoDominio.class);
+//            query.setParameter("id", idAlumno);
+//            return query.getSingleResult();   
+        
+        AlumnoDominio alumno = em.find(AlumnoDominio.class, idAlumno);
+        
+        return alumno;
         
     }
     
@@ -113,6 +112,15 @@ public class AlumnoDAO implements IAlumnoDAO{
         fabrica.close();
         
         return alumnoReservar;
+    }
+
+    @Override
+    public AlumnoDominio consultarAlumnoIdJPA(Long idAlumno) {
+        EntityManager em = ConexionBD.getEntityManager();
+        
+        AlumnoDominio alumno = em.find(AlumnoDominio.class, idAlumno);
+        
+        return alumno;
     }
     
     

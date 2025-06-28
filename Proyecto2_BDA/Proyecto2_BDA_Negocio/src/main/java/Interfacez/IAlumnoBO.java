@@ -5,6 +5,8 @@
 package Interfacez;
 
 import DTOs.NuevoAlumnoDTO;
+import DTOs.ReservarAlumnoComputadoraDTO;
+import entidades.AlumnoDominio;
 import java.util.List;
 
 /**
@@ -12,8 +14,11 @@ import java.util.List;
  * @author HP
  */
 public interface IAlumnoBO {
-    public List<NuevoAlumnoDTO> consultarEstudiantePorId(Long id);
+    public AlumnoDominio consultarEstudiantePorId(Long id);
 //    public List<NuevoAlumnoDTO> consultarEstudianteConFiltro(FiltroDTO filtro); lo dejare para mas tarde primero el flujo de 
-//    public List<NuevoAlumnoDTO> consultarEstudiantePorId(Long id);
+    public List<AlumnoDominio> consultarEstudiantes();
+    
+    public AlumnoDominio agregarAlumno(NuevoAlumnoDTO nuevoAlumno);
+    public AlumnoDominio reservarComputadora(ReservarAlumnoComputadoraDTO alumnoComputadora);
     
 }

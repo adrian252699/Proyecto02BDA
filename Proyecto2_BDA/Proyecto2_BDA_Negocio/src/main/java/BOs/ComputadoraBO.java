@@ -5,10 +5,19 @@
 
 package BOs;
 
+import Interfacez.IComputadoraBO;
+import interfaces.IComputadoraDAO;
+
 /**
  *
  * @author $Luis Carlos Manjarrez Gonzalez
  */
-public class ComputadoraBO {
+public class ComputadoraBO implements IComputadoraBO{
+    IComputadoraDAO daoComputadora;
 
+    public ComputadoraBO(IComputadoraDAO daoComputadora) {
+        this.daoComputadora = daoComputadora;
+    }
+    
+    
 }

@@ -1,7 +1,13 @@
-com\mycompany\proyecto2_bda_negocio\Proyecto2_BDA_Negocio.class
-Interfacez\IEstudianteBO.class
+Excepciones\NegocioException.class
 BOs\ComputadoraBO.class
-BOs\EstudianteBO.class
+Facade\AlumnoFacade.class
+DTOs\LabortatorioDTO.class
+Interfacez\IComputadoraBO.class
+FabricaBOs\FabricaObjetosNegocio.class
+Facade\IAlumnoFacade.class
+com\mycompany\proyecto2_bda_negocio\Proyecto2_BDA_Negocio.class
+BOs\AlumnoBO.class
 BOs\LaboratorioBO.class
 DTOs\ComputadoraDTO.class
-DTOs\LabortatorioDTO.class
+Interfacez\IAlumnoBO.class
+Interfacez\ILaboratorioBO.class

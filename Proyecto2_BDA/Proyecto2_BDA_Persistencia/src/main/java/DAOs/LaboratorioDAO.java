@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -98,6 +99,7 @@ public class LaboratorioDAO implements ILaboratorioDAO {
         return laboratorio;
     }
 
+    @Override
     public LaboratorioDominio editarLaboratorio(Long idLaboratorio, AgregarLaboratorioDTO dto) {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("LaboratorioComputo");
         EntityManager em = fabrica.createEntityManager();
@@ -115,6 +117,24 @@ public class LaboratorioDAO implements ILaboratorioDAO {
         fabrica.close();
         
         return laboratorio;
+    }
+
+    @Override
+    public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica) {
+        EntityManager em = ConexionBD.getEntityManager();
+        
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        
+        CriteriaQuery<LaboratorioDominio> query = builder.createQuery(LaboratorioDominio.class);
+        
+        Root<LaboratorioDominio> root = query.from(LaboratorioDominio.class);
+        
+        query.select(root).where(builder.equal(root.get("idLaboratorio"),idUnidadAcademica));
+    
+        TypedQuery<LaboratorioDominio> typedQuery = em.createQuery(query);
+        List<LaboratorioDominio> laboratorios = typedQuery.getResultList();
+        
+        return laboratorios;
     }
 
 

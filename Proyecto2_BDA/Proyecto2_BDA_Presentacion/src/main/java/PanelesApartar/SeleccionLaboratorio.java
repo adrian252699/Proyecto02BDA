@@ -4,20 +4,40 @@
  */
 package PanelesApartar;
 
-import ControlNavegacion.ControlNavegacion;
+import ControlNavegacion.ControlLoginAlumno;
+import DTOs.LaboratorioDTO;
+import Interfacez.ILaboratorioBO;
+import entidades.LaboratorioDominio;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author HP
  */
 public class SeleccionLaboratorio extends javax.swing.JPanel {
-    ControlNavegacion control;
+    private ControlLoginAlumno control;
+    private ILaboratorioBO labBO;
     /**
      * Creates new form SeleccionLaboratorio
      */
-    public SeleccionLaboratorio(ControlNavegacion control) {
-        this.control = control;
+    public SeleccionLaboratorio(ILaboratorioBO labBO,ControlLoginAlumno control) {
         initComponents();
+        this.control = control;
+        this.labBO=labBO;
+        llenarTabla();
+        
+    }
+    
+    private void llenarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel) this.tblLaboratorios.getModel();
+        modelo.setRowCount(0);
+        
+        for(LaboratorioDominio l : labBO.consultarLaboratoriosUnidadAcademica(1L)){
+            modelo.addRow(new Object[]{
+                l.getNombreLaboratorio()
+            });
+        }
     }
 
     /**
@@ -30,13 +50,13 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblLaboratorios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         BtnContinuar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLaboratorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -47,7 +67,7 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
                 "Nombre"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblLaboratorios);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 520, 460));
 
@@ -67,7 +87,7 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
 
     private void BtnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuarMouseClicked
         // TODO add your handling code here:
-        control.mostrarPantallaSeleccionComputadora();
+//        control.mostrarPantallaSeleccionComputadora();
     }//GEN-LAST:event_BtnContinuarMouseClicked
 
 
@@ -75,6 +95,6 @@ public class SeleccionLaboratorio extends javax.swing.JPanel {
     private javax.swing.JButton BtnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblLaboratorios;
     // End of variables declaration//GEN-END:variables
 }

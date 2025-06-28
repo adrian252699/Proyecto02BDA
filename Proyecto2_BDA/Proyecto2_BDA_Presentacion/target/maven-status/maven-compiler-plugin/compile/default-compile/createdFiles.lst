@@ -1,11 +1,13 @@
 PanelesAdministrador\DesbloquearAlumno.class
 PanelesAdministrador\ListadoLaboratoriosAdmin$4.class
+Paneles\PanelRegistroID$2.class
 PanelesAdministrador\MenuAdministrador$4.class
 PanelesAdministrador\ListadoComputadorasAdmin$2.class
 Paneles\AgregarLaboratorioUnidad$1.class
 PanelesAdministrador\MenuAdministrador$1.class
 computadora\computadoraApartada.class
 PanelesApartar\SeleccionLaboratorio$1.class
+ControlNavegacion\ControlLoginAlumno.class
 PanelesAdministrador\AgregarBloqueoPanel.class
 Paneles\AgregarLaboratorio.class
 PanelesApartar\SeleccionTiempoApartado$1.class

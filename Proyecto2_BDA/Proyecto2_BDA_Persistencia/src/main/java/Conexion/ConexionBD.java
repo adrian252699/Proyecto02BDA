@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  */
 public class ConexionBD {
     //static para q sea solo una conexion en toda la aplicacion
-    private static final EntityManagerFactory manager = Persistence.createEntityManagerFactory("laboratrioComputo"); //aqui pondremos el nombre de la bd que tenemos en el pom
+    private static final EntityManagerFactory manager = Persistence.createEntityManagerFactory("LaboratorioComputo"); //aqui pondremos el nombre de la bd que tenemos en el pom
     
     public static EntityManager crearConexion() {
         return manager.createEntityManager();
@@ -25,5 +25,11 @@ public class ConexionBD {
         if (manager.isOpen()) {
             manager.close();
         }
+    }
+    
+    public static EntityManager getEntityManager(){
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("LaboratorioComputo");
+        EntityManager entityManager = emFactory.createEntityManager();
+        return entityManager;
     }
 }

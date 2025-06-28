@@ -4,19 +4,28 @@
  */
 package Paneles;
 
-import ControlNavegacion.ControlNavegacion;
+
+import ControlNavegacion.ControlLoginAlumno;
+import DTOs.LoginAlumnoDTO;
+import Interfacez.IAlumnoBO;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
  * @author HP
  */
 public class PanelRegistroID extends javax.swing.JPanel {
-    private ControlNavegacion control;
+    private ControlLoginAlumno control;
+    private IAlumnoBO alumnoBO;
     /**
      * Creates new form PanelRegistroID
      */
-    public PanelRegistroID(ControlNavegacion control) {
+    public PanelRegistroID(IAlumnoBO alumnoBO,ControlLoginAlumno control) {
         this.control = control;
+        this.alumnoBO = alumnoBO;
         initComponents();
     }
 
@@ -55,7 +64,12 @@ public class PanelRegistroID extends javax.swing.JPanel {
                 BtnConfirmarMouseClicked(evt);
             }
         });
-        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 80, -1));
+        BtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConfirmarActionPerformed(evt);
+            }
+        });
+        add(BtnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 80, -1));
         add(CampoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -68,20 +82,39 @@ public class PanelRegistroID extends javax.swing.JPanel {
         // TODO add your handling code here:
         System.out.println("ID que va a control    :" + CampoId.getText());
         System.out.println("Password que va a control    :" + CampoPassword.getText());
-        
-        if(control.validarCredenciales(CampoId.getText(),CampoPassword.getText())){
-            //como la implementacion de control.validarCredenciales no esta terminada regresa true
-            //esto manda directamente al menu administrador
-           control.mostrarPantallaAdminisrador();
-        }else{
-            //el validarCredenciales regresa false asi que entra el flujo de un estudiante
-            // esto se cambiara con las consultas para saber si es estudiante o administrador
+
+        Long id = Long.valueOf(this.CampoId.getText());
+        String password = this.CampoPassword.getText();
+                
+        LoginAlumnoDTO alumnoActual = new LoginAlumnoDTO(alumnoBO.consultarEstudiantePorId(id));
+        if (alumnoActual.getAlumnoActual().getPassword().equals(password)) {
+            JOptionPane.showMessageDialog(this, "Credenciales Correctas", "Inicio de sesion", JOptionPane.INFORMATION_MESSAGE);
             control.mostrarPantallaSeleccionLaboratorio();
+        }else{
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Inicio de sesion", JOptionPane.ERROR_MESSAGE);
         }
-        //control.errorCredenciales----- este sera un JOptionPane no se si ponerlo aqui o ya lo cubre el control.validarCredenciales
-        //diciendo q las credenciales son incorrectas
+        
+        
     }//GEN-LAST:event_BtnConfirmarMouseClicked
 
+    private void BtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BtnConfirmarActionPerformed
+
+    public JButton getBtnConfirmar() {
+        return BtnConfirmar;
+    }
+
+    public JTextField getCampoId() {
+        return CampoId;
+    }
+
+    public JPasswordField getCampoPassword() {
+        return CampoPassword;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirmar;

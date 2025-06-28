@@ -150,7 +150,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void menuConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConfiguracionActionPerformed
         // TODO add your handling code here:
-        control.iniciarSistema();
+//        control.iniciarSistema();
     }//GEN-LAST:event_menuConfiguracionActionPerformed
 
 

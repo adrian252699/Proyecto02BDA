@@ -31,7 +31,7 @@ public class LaboratorioDominio implements Serializable {
     @Id
     @Column(name = "idLaboratorio")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idLaboratorio;
     
     @Column(name = "nombreLaboratorio", nullable = false)
     private String nombreLaboratorio;
@@ -77,18 +77,18 @@ public class LaboratorioDominio implements Serializable {
     
     
     public LaboratorioDominio(Long id, String nombreLaboratorio, Calendar horaInicio, Calendar horaFin) {
-        this.id = id;
+        this.idLaboratorio = id;
         this.nombreLaboratorio = nombreLaboratorio;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
 
     public Long getId() {
-        return id;
+        return idLaboratorio;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idLaboratorio = id;
     }
 
     public String getNombreLaboratorio() {
@@ -136,18 +136,18 @@ public class LaboratorioDominio implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idLaboratorio != null ? idLaboratorio.hashCode() : 0);
         return hash;
     }
     
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idLaboratorio fields are not set
         if (!(object instanceof LaboratorioDominio)) {
             return false;
         }
         LaboratorioDominio other = (LaboratorioDominio) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idLaboratorio == null && other.idLaboratorio != null) || (this.idLaboratorio != null && !this.idLaboratorio.equals(other.idLaboratorio))) {
             return false;
         }
         return true;
@@ -155,7 +155,7 @@ public class LaboratorioDominio implements Serializable {
 
     @Override
     public String toString() {
-        return "LaboratorioDominio{" + "id=" + id + ", nombreLaboratorio=" + nombreLaboratorio + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", unidadAcademica=" + unidadAcademica + ", computadoras=" + computadoras + '}';
+        return "LaboratorioDominio{" + "id=" + idLaboratorio + ", nombreLaboratorio=" + nombreLaboratorio + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", unidadAcademica=" + unidadAcademica + ", computadoras=" + computadoras + '}';
     }
 
     

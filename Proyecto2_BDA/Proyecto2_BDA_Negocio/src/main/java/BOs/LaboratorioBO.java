@@ -5,10 +5,25 @@
 
 package BOs;
 
+import Interfacez.ILaboratorioBO;
+import entidades.LaboratorioDominio;
+import interfaces.ILaboratorioDAO;
+import java.util.List;
+
 /**
  *
  * @author $Luis Carlos Manjarrez Gonzalez
  */
-public class LaboratorioBO {
+public class LaboratorioBO implements ILaboratorioBO{
+    ILaboratorioDAO daoLaboratorio;
 
+    public LaboratorioBO(ILaboratorioDAO daoLaboratorio) {
+        this.daoLaboratorio = daoLaboratorio;
+    }
+
+    @Override
+    public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica) {
+        return this.daoLaboratorio.consultarLaboratoriosUnidadAcademica(idUnidadAcademica);
+    }
+    
 }

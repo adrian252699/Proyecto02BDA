@@ -5,9 +5,13 @@
 
 package BOs;
 
+import DAOs.AlumnoDAO;
 import DTOs.NuevoAlumnoDTO;
+import DTOs.ReservarAlumnoComputadoraDTO;
 import java.util.List;
 import Interfacez.IAlumnoBO;
+import entidades.AlumnoDominio;
+import interfaces.IAlumnoDAO;
 
 /**
  *
@@ -16,10 +20,36 @@ import Interfacez.IAlumnoBO;
 public class AlumnoBO implements IAlumnoBO{
     //ICreadorDAO creadorDAO = IAlumnoDAO;
     //
-    @Override
-    public List<NuevoAlumnoDTO> consultarEstudiantePorId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    private IAlumnoDAO daoAlumno;
+
+    public AlumnoBO(IAlumnoDAO daoAlumno) {
+        this.daoAlumno = daoAlumno;
     }
+    
+    
+    
+    @Override
+    public AlumnoDominio consultarEstudiantePorId(Long id) {
+        return daoAlumno.consultarAlumnoId(id);
+    }
+
+    @Override
+    public List<AlumnoDominio> consultarEstudiantes() {
+        return daoAlumno.consultarAlumnos();
+    }
+
+    @Override
+    public AlumnoDominio agregarAlumno(NuevoAlumnoDTO nuevoAlumno) {
+        return daoAlumno.agregarAlumno(nuevoAlumno);
+    }
+
+    @Override
+    public AlumnoDominio reservarComputadora(ReservarAlumnoComputadoraDTO alumnoComputadora) {
+        return daoAlumno.reservarComputadora(alumnoComputadora);
+    }
+    
+    
     
     
 }

@@ -50,9 +50,9 @@ public class ControlNavegacion {
     //Paneles Generales
     private JFrame framePrincipal;
     
-    public void iniciarSistema() {
-        valoresDefault();
-    }
+//    public void iniciarSistema() {
+//        valoresDefault();
+//    }
     //------------------------------------flujo Admin---------------------------------------
     public void mostrarListadoLaboratoriosAdmin(){
         listadoLaboratorio = new ListadoLaboratoriosAdmin(this);
@@ -129,10 +129,10 @@ public class ControlNavegacion {
     
     //------------------------------------flujo Apartar-------------------------------------
     
-    public void mostrarPantallaSeleccionLaboratorio(){
-        seleccionLaboratorio = new SeleccionLaboratorio(this);
-        cambiarPanel(seleccionLaboratorio);
-    }
+//    public void mostrarPantallaSeleccionLaboratorio(){
+//        seleccionLaboratorio = new SeleccionLaboratorio(this);
+//        cambiarPanel(seleccionLaboratorio);
+//    }
     public void mostrarPantallaSeleccionComputadora(){
         seleccionComputadora = new SeleccionComputadora(this);
         cambiarPanel(seleccionComputadora);
@@ -158,17 +158,17 @@ public class ControlNavegacion {
     
     
     //------------------------------------Metodos auxiliares------------------------------------
-    public void valoresDefault(){
-        framePrincipal = new JFrame();
-        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        framePrincipal.setSize(1050,650);
-        framePrincipal.setLocationRelativeTo(null);
-        PanelRegistroID login = new PanelRegistroID(this);
-        framePrincipal.add(login);
-        framePrincipal.setVisible(true);
-        casoAdmin = new CasoAdministrador();
-        
-    }
+//    public void valoresDefault(){
+//        framePrincipal = new JFrame();
+//        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        framePrincipal.setSize(1050,650);
+//        framePrincipal.setLocationRelativeTo(null);
+//        PanelRegistroID login = new PanelRegistroID(this);
+//        framePrincipal.add(login);
+//        framePrincipal.setVisible(true);
+//        casoAdmin = new CasoAdministrador();
+//        
+//    }
     
 //    public void cambiarPanel(JFrame frame, JPanel panelActual){
 //        frame.getContentPane().removeAll();
