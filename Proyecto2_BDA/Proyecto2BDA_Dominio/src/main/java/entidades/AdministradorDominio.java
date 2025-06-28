@@ -5,11 +5,13 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,6 +33,9 @@ public class AdministradorDominio implements Serializable {
     
     //atributos de la relacion N:M con estudiante
     //...
+    @OneToMany(mappedBy ="administrador")
+    private List<BloqueoAdministradorAlumnoDominio> bloqueosadmin;
+    
 
     public AdministradorDominio() {
     }
