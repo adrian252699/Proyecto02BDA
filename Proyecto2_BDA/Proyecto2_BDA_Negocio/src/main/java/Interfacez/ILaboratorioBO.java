@@ -16,4 +16,5 @@ public interface ILaboratorioBO {
     public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica);
     public List<LaboratorioDominio> consultarLaboratorios();
     public LaboratorioDominio agregarLaboratorio(AgregarLaboratorioDTO laboratorio);
+    public LaboratorioDominio buscarPorNombre(String Nombre);
 }

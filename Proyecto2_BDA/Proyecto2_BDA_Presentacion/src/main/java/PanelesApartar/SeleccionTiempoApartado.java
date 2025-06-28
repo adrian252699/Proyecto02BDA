@@ -5,18 +5,26 @@
 package PanelesApartar;
 
 import ControlNavegacion.ControlAdmin;
+import ControlNavegacion.ControlFlujoApartar;
+import Interfacez.IAlumnoBO;
+import Interfacez.IComputadoraBO;
 
 /**
  *
  * @author HP
  */
 public class SeleccionTiempoApartado extends javax.swing.JPanel {
-    private ControlAdmin control;  
+    private ControlFlujoApartar control;
+    private IAlumnoBO alumnoBO;
+    private IComputadoraBO compBO;
     /**
      * Creates new form SeleccionTiempoApartado
      */
-    public SeleccionTiempoApartado(ControlAdmin control) {
+    public SeleccionTiempoApartado(IComputadoraBO compBO,IAlumnoBO alumnoBO,ControlFlujoApartar control) {
         this.control = control;
+        this.alumnoBO = alumnoBO;
+        this.compBO = compBO;
+        
         initComponents();
     }
 
@@ -104,7 +112,7 @@ public class SeleccionTiempoApartado extends javax.swing.JPanel {
 
     private void BtnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuarMouseClicked
         // TODO add your handling code here:
-        control.mostrarPantallaConfirmarApartado();
+//        control.mostrarPantallaConfirmarApartado();
     }//GEN-LAST:event_BtnContinuarMouseClicked
 
 

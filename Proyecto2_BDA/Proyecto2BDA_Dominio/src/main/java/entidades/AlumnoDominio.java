@@ -41,11 +41,6 @@ public class AlumnoDominio implements Serializable{
     @OneToMany(mappedBy = "alumno")
     private List<ComputadoraAlumnoDominio> computadorasApartadas;
     
-    //Esta relacion creo q no deberia ir.
-    @OneToOne
-    @JoinColumn(name = "computadora_id")
-    private ComputadoraDominio computadora;
-    
     //Atributos de la relacion con BloqueoAdminstradorAlumno (N:M) se creo Otra Clase para la relacion pq la relacion Bloquear tiene atributos
     @OneToMany(mappedBy ="alumnoBloqueado")
     private List<BloqueoAdministradorAlumnoDominio> bloqueos;
@@ -64,7 +59,6 @@ public class AlumnoDominio implements Serializable{
         this.nombreCompleto = nombreCompleto;
         this.password = password;
         this.carrera = carrera;
-        this.computadora = computadora;
     }
     
     
@@ -105,15 +99,7 @@ public class AlumnoDominio implements Serializable{
     public void setCarrera(CarreraDominio carrera) {
         this.carrera = carrera;
     }
-    
-
-    public ComputadoraDominio getComputadora() {
-        return computadora;
-    }
-
-    public void setComputadora(ComputadoraDominio computadora) {
-        this.computadora = computadora;
-    }
+   
 
     public String getEstatus() {
         return estatus;
@@ -131,8 +117,4 @@ public class AlumnoDominio implements Serializable{
         this.computadorasApartadas = computadorasApartadas;
     }
 
-    @Override
-    public String toString() {
-        return "AlumnoDominio{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", password=" + password + ", estatus=" + estatus + ", carrera=" + carrera + ", computadorasApartadas=" + computadorasApartadas + ", computadora=" + computadora + '}';
-    }
 }

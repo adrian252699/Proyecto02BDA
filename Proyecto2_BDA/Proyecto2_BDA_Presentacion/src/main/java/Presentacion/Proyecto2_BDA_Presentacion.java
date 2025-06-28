@@ -20,8 +20,9 @@ public class Proyecto2_BDA_Presentacion {
         //crear BD
 //        EntityManager manejador = ConexionBD.getEntityManager();
         
-        ControlAdmin prueba = new ControlAdmin();
+//        ControlAdmin prueba = new ControlAdmin();
+        ControlFlujoApartar prueba = new ControlFlujoApartar();
         
-        prueba.iniciar();
+        prueba.valoresDefault();
     }
 }

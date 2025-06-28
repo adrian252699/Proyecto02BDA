@@ -17,5 +17,6 @@ public interface ILaboratorioDAO {
     public List<LaboratorioDominio> consultarLaboratorios();
     public LaboratorioDominio consultarLaboratorioId(Long idLaboratorio);
     public LaboratorioDominio editarLaboratorio(Long idLaboratorio, AgregarLaboratorioDTO dto);
-    public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica); 
+    public List<LaboratorioDominio> consultarLaboratoriosUnidadAcademica(Long idUnidadAcademica);
+    public LaboratorioDominio buscarPorNombre(String Nombre);
 }

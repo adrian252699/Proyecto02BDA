@@ -42,17 +42,14 @@ public class ComputadoraDominio implements Serializable {
 
     @Column(name="ListaSoftwares")
     private List<String> listaSoftwares;
-            
-    //Relacion 1:1 con alumno
-    @OneToOne
-    @JoinColumn(name = "alumno_id")
-    private AlumnoDominio alumno;
     
     //Relacion Reserva N:M con alumno
     @OneToMany(mappedBy ="computadora")
     private List<ComputadoraAlumnoDominio> computadorasApartadas;
     
-     
+     //Relacion 1:N con software
+    @OneToMany(mappedBy = "computadora")
+    private List<SoftwareComputadoraDominio> listaSoftware;
     
     //Realcion N:1 con laboratorio
     @ManyToOne
@@ -66,7 +63,18 @@ public class ComputadoraDominio implements Serializable {
         this.direccionIP = direccionIP;
         this.numeroComputadora = numeroComputadora;
         this.estatus = estatus;
-        this.alumno = alumno;
+
+        this.laboratorio = laboratorio;
+    }
+
+    public ComputadoraDominio(String direccionIP, String numeroComputadora, String estatus, List<String> listaSoftwares, AlumnoDominio alumno, List<ComputadoraAlumnoDominio> computadorasApartadas, List<SoftwareComputadoraDominio> computadoras, LaboratorioDominio laboratorio) {
+        this.direccionIP = direccionIP;
+        this.numeroComputadora = numeroComputadora;
+        this.estatus = estatus;
+        this.listaSoftwares = listaSoftwares;
+;
+        this.computadorasApartadas = computadorasApartadas;
+        this.listaSoftware = computadoras;
         this.laboratorio = laboratorio;
     }
     
@@ -118,13 +126,7 @@ public class ComputadoraDominio implements Serializable {
         this.estatus = estatus;
     }
 
-    public AlumnoDominio getAlumno() {
-        return alumno;
-    }
 
-    public void setAlumno(AlumnoDominio alumno) {
-        this.alumno = alumno;
-    }
 
     public LaboratorioDominio getLaboratorio() {
         return laboratorio;
@@ -149,6 +151,15 @@ public class ComputadoraDominio implements Serializable {
     public void setListaSoftwares(List<String> listaSoftwares) {
         this.listaSoftwares = listaSoftwares;
     }
+
+    public List<SoftwareComputadoraDominio> getSoftware() {
+        return listaSoftware;
+    }
+
+    public void getSoftware(List<SoftwareComputadoraDominio> computadoras) {
+        this.listaSoftware = computadoras;
+    }
+    
     
     @Override
     public int hashCode() {
@@ -169,9 +180,5 @@ public class ComputadoraDominio implements Serializable {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "ComputadoraDominio{" + "id=" + id + ", direccionIP=" + direccionIP + ", numeroComputadora=" + numeroComputadora + ", estatus=" + estatus + ", listaSoftwares=" + listaSoftwares + ", alumno=" + alumno + ", computadorasApartadas=" + computadorasApartadas + ", laboratorio=" + laboratorio + '}';
-    }   
+  
 }

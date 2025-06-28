@@ -14,6 +14,7 @@ import Interfacez.ILaboratorioBO;
 import Paneles.PanelRegistroID;
 import PanelesApartar.SeleccionComputadora;
 import PanelesApartar.SeleccionLaboratorio;
+import PanelesApartar.SeleccionTiempoApartado;
 import entidades.AlumnoDominio;
 import entidades.LaboratorioDominio;
 import javax.swing.JFrame;
@@ -31,6 +32,7 @@ public class ControlFlujoApartar {
     private IComputadoraBO compBO;
     private SeleccionLaboratorio frmSeleccionLaboratorio;
     private SeleccionComputadora frmSeleccionComputadora;
+    private SeleccionTiempoApartado frmSeleccionTiempoApartado;
     private PanelRegistroID login;
     private JFrame framePrincipal;
     private CasoAdministrador casoAdmin;
@@ -74,9 +76,13 @@ public class ControlFlujoApartar {
         cambiarPanel(frmSeleccionComputadora);
     }
     
+    public void mostrarPantallaTiempoApartado(){
+        frmSeleccionTiempoApartado = new SeleccionTiempoApartado(compBO,alumnoBO,this);
+        cambiarPanel(frmSeleccionTiempoApartado);
+    }
+    
     public LaboratorioDominio getLaboratorioActual(){
-        LaboratorioDominio laboratorio = new LaboratorioDominio();
-        laboratorio.setNombreLaboratorio(frmSeleccionLaboratorio.getLaboratorioActual().getNombre());
+        LaboratorioDominio laboratorio = labBO.buscarPorNombre(frmSeleccionLaboratorio.getLaboratorioActual().getNombre());
         return laboratorio;
     }
     

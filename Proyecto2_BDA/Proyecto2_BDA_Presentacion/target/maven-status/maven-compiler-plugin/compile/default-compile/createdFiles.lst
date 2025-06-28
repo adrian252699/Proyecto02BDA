@@ -45,6 +45,7 @@ PanelesAdministrador\MenuAdministrador.class
 PanelesAdministrador\ListadoBloqueos$4.class
 PanelesApartar\CasoApartar.class
 PanelesAdministrador\MenuAdministrador$6.class
+PanelesApartar\SeleccionComputadora$2.class
 Paneles\AgregarComputadoraSoftware.class
 PanelesAdministrador\MenuAdministrador$9.class
 PanelesAdministrador\SeleccionarUnidad$2.class
@@ -68,6 +69,7 @@ Paneles\AgregarComputadoraNumero.class
 PanelesAdministrador\ListadoBloqueos.class
 PanelesAdministrador\SeleccionarUnidad$3.class
 Paneles\AgregarLaboratorio$1.class
+PanelesApartar\SeleccionComputadora$3.class
 PanelesAdministrador\ResumenLaboratorio.class
 portero\catalogoComputadoras.class
 PanelesAdministrador\ListadoComputadorasAdmin$5.class

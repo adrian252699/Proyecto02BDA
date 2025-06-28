@@ -135,5 +135,24 @@ public class LaboratorioDAO implements ILaboratorioDAO {
         List<LaboratorioDominio> laboratorios = typedQuery.getResultList();
         
         return laboratorios;
-    }   
+    } 
+    
+    @Override
+    public LaboratorioDominio buscarPorNombre(String Nombre) {
+        EntityManager em = ConexionBD.getEntityManager();
+        
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        
+        CriteriaQuery<LaboratorioDominio> query = builder.createQuery(LaboratorioDominio.class);
+        
+        Root<LaboratorioDominio> root = query.from(LaboratorioDominio.class);
+        
+        query.select(root).where(builder.equal(root.get("nombreLaboratorio"),Nombre));
+    
+        TypedQuery<LaboratorioDominio> typedQuery = em.createQuery(query);
+        LaboratorioDominio laboratorio = typedQuery.getSingleResult();
+        
+        return laboratorio;
+    }
+    
 }

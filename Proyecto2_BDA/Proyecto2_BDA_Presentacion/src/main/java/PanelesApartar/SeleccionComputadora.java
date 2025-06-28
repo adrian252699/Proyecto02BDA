@@ -5,9 +5,12 @@
 package PanelesApartar;
 
 import ControlNavegacion.ControlFlujoApartar;
-import ControlNavegacion.ControlAdmin;
+import DTOs.AgregarComputadoraDTO;
 import Interfacez.IComputadoraBO;
 import entidades.ComputadoraDominio;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class SeleccionComputadora extends javax.swing.JPanel {
     private ControlFlujoApartar control;
     private IComputadoraBO compBO;
+    private AgregarComputadoraDTO computadoraActual;
     /**
      * Creates new form SeleccionComputadora
      */
@@ -25,6 +29,22 @@ public class SeleccionComputadora extends javax.swing.JPanel {
         this.control = control;
         this.compBO=compBO;
         this.lblLab.setText("Laboratorio: "+control.getLaboratorioActual().getNombreLaboratorio());
+        tblComputadoras.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int fila = tblComputadoras.rowAtPoint(evt.getPoint());
+                    if (fila != -1) {
+                        String numeroComputadora = tblComputadoras.getValueAt(fila, 0).toString();
+                        JOptionPane.showMessageDialog(btnContinuar, "Computadora Seleccionada: "+numeroComputadora, "Computadora", JOptionPane.INFORMATION_MESSAGE);
+                        computadoraActual = new AgregarComputadoraDTO();
+                        computadoraActual.setNumero(numeroComputadora);
+                        control.mostrarPantallaTiempoApartado();
+                    }
+                }
+            }
+        });
         llenarTabla();
         
     }
@@ -34,10 +54,12 @@ public class SeleccionComputadora extends javax.swing.JPanel {
         DefaultTableModel modelo = (DefaultTableModel) this.tblComputadoras.getModel();
         modelo.setRowCount(0);
         
+        System.out.println(control.getLaboratorioActual().getId());
         for(ComputadoraDominio c : compBO.consultarComputadorasPorLaboratorio(control.getLaboratorioActual())){
             modelo.addRow(new Object[]{
-                c.getNumeroComputadora()
+                c.getNumeroComputadora()   
             });
+            
         }
         
     }
@@ -55,7 +77,7 @@ public class SeleccionComputadora extends javax.swing.JPanel {
         lblLab = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblComputadoras = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,36 +91,44 @@ public class SeleccionComputadora extends javax.swing.JPanel {
 
         tblComputadoras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Numero", "Lista Softwares´s"
+                "Numero"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblComputadoras);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 440, -1));
 
-        jButton1.setText("Continuar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnContinuar.setText("Continuar");
+        btnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnContinuarMouseClicked(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 100, 30));
+        add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
         // TODO add your handling code here:
         //control.mostrarPantallaTiempoApartado();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnContinuarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lblLab;

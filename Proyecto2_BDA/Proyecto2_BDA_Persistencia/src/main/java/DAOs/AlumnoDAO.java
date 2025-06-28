@@ -102,9 +102,9 @@ public class AlumnoDAO implements IAlumnoDAO{
         AlumnoDominio alumnoReservar = em.find(AlumnoDominio.class, alumnoComputadora.getAlumno().getId());
         ComputadoraDominio computadoraReservar = em.find(ComputadoraDominio.class, alumnoComputadora.getComputadora().getId());
         if (alumnoReservar!=null) {
-            alumnoReservar.setComputadora(alumnoComputadora.getComputadora());
-            computadoraReservar.setAlumno(alumnoComputadora.getAlumno());
-            computadoraReservar.setEstatus("Apartada");
+//            alumnoReservar.setComputadora(alumnoComputadora.getComputadora());
+//            computadoraReservar.setAlumno(alumnoComputadora.getAlumno());
+//            computadoraReservar.setEstatus("Apartada");
             
             em.getTransaction().commit();
         }

@@ -37,5 +37,10 @@ public class LaboratorioBO implements ILaboratorioBO{
     public List<LaboratorioDominio> consultarLaboratorios(){
         return daoLaboratorio.consultarLaboratorios();
     }
+
+    @Override
+    public LaboratorioDominio buscarPorNombre(String Nombre) {
+        return daoLaboratorio.buscarPorNombre(Nombre);
+    }
     
 }

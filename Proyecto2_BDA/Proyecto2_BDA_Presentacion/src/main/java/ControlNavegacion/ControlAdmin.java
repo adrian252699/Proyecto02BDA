@@ -203,10 +203,10 @@ public class ControlAdmin {
 //        seleccionComputadora = new SeleccionComputadora(this);
 //        cambiarPanel(seleccionComputadora);
 //    }
-    public void mostrarPantallaTiempoApartado(){
-        seleccionTiempoApartado = new SeleccionTiempoApartado(this);
-        cambiarPanel(seleccionTiempoApartado);
-    }
+//    public void mostrarPantallaTiempoApartado(){
+//        seleccionTiempoApartado = new SeleccionTiempoApartado(this);
+//        cambiarPanel(seleccionTiempoApartado);
+//    }
     public void mostrarPantallaConfirmarApartado(){
         confirmarApartado = new ConfirmarApartado(this);
         cambiarPanel(confirmarApartado);
