@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,16 +40,23 @@ public class ComputadoraDominio implements Serializable {
     @Column(name = "estatus")
     private String estatus;
 
-    //Lista de softwares
-    
+    @Column(name="ListaSoftwares")
+    private List<String> listaSoftwares;
+            
     //Relacion 1:1 con alumno
     @OneToOne
     @JoinColumn(name = "alumno_id")
     private AlumnoDominio alumno;
     
+    //Relacion Reserva N:M con alumno
+    @OneToMany(mappedBy ="computadora")
+    private List<ComputadoraAlumnoDominio> computadorasApartadas;
+    
+     
+    
     //Realcion N:1 con laboratorio
     @ManyToOne
-    @JoinColumn(name = "laboratorio_id")
+    @JoinColumn(name = "idLaboratorio")
     private LaboratorioDominio laboratorio;
     
     public ComputadoraDominio() {
@@ -124,8 +133,22 @@ public class ComputadoraDominio implements Serializable {
     public void setLaboratorio(LaboratorioDominio laboratorio) {
         this.laboratorio = laboratorio;
     }
-    
-    
+
+    public List<ComputadoraAlumnoDominio> getComputadorasApartadas() {
+        return computadorasApartadas;
+    }
+
+    public void setComputadorasApartadas(List<ComputadoraAlumnoDominio> computadorasApartadas) {
+        this.computadorasApartadas = computadorasApartadas;
+    }
+
+    public List<String> getListaSoftwares() {
+        return listaSoftwares;
+    }
+
+    public void setListaSoftwares(List<String> listaSoftwares) {
+        this.listaSoftwares = listaSoftwares;
+    }
     
     @Override
     public int hashCode() {
@@ -149,8 +172,6 @@ public class ComputadoraDominio implements Serializable {
 
     @Override
     public String toString() {
-        return "ComputadoraDominio{" + "id=" + id + ", direccionIP=" + direccionIP + ", numeroComputadora=" + numeroComputadora + ", estatus=" + estatus + ", alumno=" + alumno + ", laboratorio=" + laboratorio + '}';
-    }
-
-      
+        return "ComputadoraDominio{" + "id=" + id + ", direccionIP=" + direccionIP + ", numeroComputadora=" + numeroComputadora + ", estatus=" + estatus + ", listaSoftwares=" + listaSoftwares + ", alumno=" + alumno + ", computadorasApartadas=" + computadorasApartadas + ", laboratorio=" + laboratorio + '}';
+    }   
 }

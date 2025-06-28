@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,11 +31,66 @@ public class BloqueoAdministradorAlumnoDominio implements Serializable {
         return id;
     }
     
+    @Column(name ="Motivo")
+    private String motivo;
+    
+    @Column (name ="Fecha_Inicio")
+    private Calendar fechaInicio;
+    
+    @Column (name ="Fecha_Fin")
+    private Calendar fechaFin;
+    
     //Atributos de la relacion adminstrador alumno
-
+    @Column (name ="BloueadoPor")
+    private AdministradorDominio administrador;
+    
+    @Column (name ="AlumnoBloqueado")
+    private AlumnoDominio alumnoBloqueado;
+    
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public Calendar getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Calendar fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Calendar getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Calendar fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public AdministradorDominio getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(AdministradorDominio administrador) {
+        this.administrador = administrador;
+    }
+
+    public AlumnoDominio getAlumnoBloqueado() {
+        return alumnoBloqueado;
+    }
+
+    public void setAlumnoBloqueado(AlumnoDominio alumnoBloqueado) {
+        this.alumnoBloqueado = alumnoBloqueado;
+    }
+    
 
     @Override
     public int hashCode() {

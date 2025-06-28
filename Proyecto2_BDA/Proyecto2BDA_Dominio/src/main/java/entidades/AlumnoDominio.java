@@ -1,12 +1,14 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,20 +29,25 @@ public class AlumnoDominio implements Serializable{
     @Column(name = "password")
     private String password;
     
-    //Atributos de la relacion con carrera (1 a 1)
+    @Column(name = "estatus")
+    private String estatus;
+    
+    //Atributos de la relacion con carrera (1 a N)
     @OneToOne
     @JoinColumn(name = "id_carrera", nullable = false)
     private CarreraDominio carrera;
     
-    //Atributos de la relacion con computadoras (1 a 1)
+    //Atributos de la relacion con computadoras (N a M)
+    @OneToMany(mappedBy = "alumno")
+    private List<ComputadoraAlumnoDominio> computadorasApartadas;
     
+    //Esta relacion creo q no deberia ir.
     @OneToOne
     @JoinColumn(name = "computadora_id")
     private ComputadoraDominio computadora;
     
-    //Atributos de la relacion con BloqueoAdminstradorAlumno (N:M)
-    
-   //@ManyToMany
+    //Atributos de la relacion con BloqueoAdminstradorAlumno (N:M) se creo Otra Clase para la relacion pq la relacion Bloquear tiene atributos
+   
    
     
     public AlumnoDominio() {
@@ -106,12 +113,25 @@ public class AlumnoDominio implements Serializable{
     public void setComputadora(ComputadoraDominio computadora) {
         this.computadora = computadora;
     }
-    
-    
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public List<ComputadoraAlumnoDominio> getComputadorasApartadas() {
+        return computadorasApartadas;
+    }
+
+    public void setComputadorasApartadas(List<ComputadoraAlumnoDominio> computadorasApartadas) {
+        this.computadorasApartadas = computadorasApartadas;
+    }
 
     @Override
     public String toString() {
-        return "AlumnoDominio{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", password=" + password + '}';
+        return "AlumnoDominio{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", password=" + password + ", estatus=" + estatus + ", carrera=" + carrera + ", computadorasApartadas=" + computadorasApartadas + ", computadora=" + computadora + '}';
     }
-
 }
