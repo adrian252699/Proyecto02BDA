@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author HP
  */
 public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
-    ControlAdmin control;
+    private ControlAdmin control;
     /**
      * Creates new form ListaComputadorasAdmin
      */
@@ -163,7 +163,7 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
 
     private void BtnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgregarMouseClicked
         // TODO add your handling code here:
-        control.mostrarPantallaAgregarLaboratorio();
+        control.mostrarPantallaFormularioLaboratorio();
     }//GEN-LAST:event_BtnAgregarMouseClicked
 
     private void BtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarMouseClicked
@@ -196,11 +196,6 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
     private javax.swing.JTable tablaLaboratorios;
     // End of variables declaration//GEN-END:variables
 
-    public List<LaboratorioDominio> cargarLaboratorios(){
-       return control.cargarLaboratrios(); 
-//    dudas con la unidad academica, la obtendremos cuando el admin inicie sesion o la seleccionara???
-        
-    }
     
      public void cargarTabla(){
         DefaultTableModel modeloTabla = (DefaultTableModel) tablaLaboratorios.getModel();
@@ -215,9 +210,6 @@ public class ListadoLaboratoriosAdmin extends javax.swing.JPanel {
             });
         }
      }
-        
-    //creo q no se ocupa aun
-   // public ArrayList<String>
     public void valoresDefault(){
         setSize(1030, 620);
         setVisible(true);

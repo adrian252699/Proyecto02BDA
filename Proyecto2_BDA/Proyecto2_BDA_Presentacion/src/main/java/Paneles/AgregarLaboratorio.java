@@ -63,7 +63,11 @@ public class AgregarLaboratorio extends javax.swing.JPanel {
 
         jLabel3.setText("Abierto desde");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, -1));
+
+        HoraInicio.setMaximumSize(new java.awt.Dimension(64, 22));
         add(HoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        MinInicio.setMaximumSize(new java.awt.Dimension(64, 22));
         add(MinInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
 
         jLabel4.setText("min");
@@ -85,7 +89,11 @@ public class AgregarLaboratorio extends javax.swing.JPanel {
 
         jLabel6.setText("Cierra");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, -1));
+
+        horaFin.setMaximumSize(new java.awt.Dimension(64, 22));
         add(horaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        MinFin.setMaximumSize(new java.awt.Dimension(64, 22));
         add(MinFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         jLabel7.setText("min");
@@ -138,6 +146,7 @@ public void obtenerDatosLab(){
     calendarFin.set(Calendar.MINUTE, minutoFinal);
     calendarFin.set(Calendar.SECOND, 0);
     calendarFin.set(Calendar.MILLISECOND, 0);
+    control.setNombreLab(nombreLab);
     control.setHorarioLab(calendarInicio,calendarFin);
 }
 

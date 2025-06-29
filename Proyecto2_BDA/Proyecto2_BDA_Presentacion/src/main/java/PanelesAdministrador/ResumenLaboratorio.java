@@ -23,6 +23,7 @@ public class ResumenLaboratorio extends javax.swing.JPanel {
         this.control = control;
         initComponents();
         valoresDefault();
+        laboratorioTemporal = this.control.getLaboratorioTemporal();
     }
 
     /**
@@ -117,7 +118,7 @@ public class ResumenLaboratorio extends javax.swing.JPanel {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        control.guardarLaboratorio();
+        control.guardarLaboratorio(laboratorioTemporal);
     }//GEN-LAST:event_jButton2MouseClicked
 
 
@@ -140,17 +141,18 @@ public class ResumenLaboratorio extends javax.swing.JPanel {
 
     public void valoresDefault(){
         laboratorioTemporal = control.getLaboratorioTemporal();
+        System.out.println("Laboratorio en resumenLab;   " + laboratorioTemporal.toString());
+        
         campoNombreLab.setText(laboratorioTemporal.getNombre());
         String horario = String.format("%02d:%02d - %02d:%02d",
         laboratorioTemporal.getHoraInicio().get(Calendar.HOUR_OF_DAY),
         laboratorioTemporal.getHoraInicio().get(Calendar.MINUTE),
-        laboratorioTemporal.getHoraInicio().get(Calendar.HOUR_OF_DAY),
-        laboratorioTemporal.getHoraInicio().get(Calendar.MINUTE));
+        laboratorioTemporal.getHoraFin().get(Calendar.HOUR_OF_DAY),
+        laboratorioTemporal.getHoraFin().get(Calendar.MINUTE));
         campoHorario.setText(horario);
         LocalDateTime fechaActual = LocalDateTime.now();
-        campoFechaCreacion.setText(fechaActual.toString());
-//        campoUnidad.setText(laboratorioTemporal.getUnidadAcademica()); falta metodo en BO para cargar los datos de las unidades y seleccionarlo em la primera pantalla,
-       
+        campoFechaCreacion.setText(fechaActual.toString());    
+        campoUnidad.setText(laboratorioTemporal.getUnidadAcademica().getNombreUnidad()); 
     }
 
 

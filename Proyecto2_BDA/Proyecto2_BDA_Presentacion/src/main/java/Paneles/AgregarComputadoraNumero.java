@@ -4,12 +4,14 @@
  */
 package Paneles;
 
+import ControlNavegacion.ControlAdmin;
+
 /**
  *
  * @author Sandra
  */
 public class AgregarComputadoraNumero extends javax.swing.JPanel {
-
+    private ControlAdmin control;
     /**
      * Creates new form AgregarComputadoraNumero
      */
@@ -52,7 +54,7 @@ public class AgregarComputadoraNumero extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 135, 201, 25));
         jLabel2.getAccessibleContext().setAccessibleName("Asigne un numero de \ncomputadora");
 
-        add(txtNumeroComputadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 166, -1, -1));
+        add(txtNumeroComputadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 166, 140, -1));
 
         jLabel3.setText("Lista computadoras");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 106, -1, -1));

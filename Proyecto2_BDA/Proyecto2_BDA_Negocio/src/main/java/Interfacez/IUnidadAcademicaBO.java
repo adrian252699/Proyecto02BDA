@@ -12,6 +12,6 @@ import java.util.List;
  * @author HP
  */
 public interface IUnidadAcademicaBO {
-//    public List<UnidadAcademicaDominio> consultarUnidadAcademica(Long idUnidadAcademica);
-    public List<UnidadAcademicaDominio> consultarLaboratorios();
+    public UnidadAcademicaDominio consultarUnidadAcademicaPorId(Long idUnidadAcademica);
+    public List<UnidadAcademicaDominio> consultarUnidades();
 }

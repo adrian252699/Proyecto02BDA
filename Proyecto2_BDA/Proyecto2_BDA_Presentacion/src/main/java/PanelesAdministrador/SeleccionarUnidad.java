@@ -6,8 +6,10 @@ package PanelesAdministrador;
 
 import ControlNavegacion.ControlAdmin;
 import entidades.UnidadAcademicaDominio;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.swing.table.TableModel;
 public class SeleccionarUnidad extends javax.swing.JPanel {
     private ControlAdmin control;
     private UnidadAcademicaDominio unidadTemporal;
+    int filaSeleccionada = 0;
     
     
     /**
@@ -25,6 +28,8 @@ public class SeleccionarUnidad extends javax.swing.JPanel {
         this.control = control;
         initComponents();
         cargarTabla();
+        valoresDefault();
+        
     }
 
     /**
@@ -118,7 +123,12 @@ public class SeleccionarUnidad extends javax.swing.JPanel {
 
     private void BtnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuarMouseClicked
         // TODO add your handling code here:
-        control.mostrarPantallaFormularioLaboratorio();
+        if(filaSeleccionada >= 0){
+            control.mostrarPantallaFormularioLaboratorio();
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila."); 
+        }
+        
     }//GEN-LAST:event_BtnContinuarMouseClicked
 
     private void BtnSigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSigMouseClicked
@@ -130,15 +140,8 @@ public class SeleccionarUnidad extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnAtrasMouseClicked
 
     private void tablaUnidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUnidadesMouseClicked
-        // TODO add your handling code here:
-        if(evt.getClickCount()==2){
-            int filaSeleccionada = tablaUnidades.getSelectedRow();
-            //para cuando agregue el filtro
-            int filaModelo = tablaUnidades.convertRowIndexToModel(filaSeleccionada);
-            unidadTemporal = control.cargarUnidadesAcademicas().get(filaModelo);
-            setUnidadAcademica();
-        }
-        System.out.println("unidad Seleccionada:  " + unidadTemporal.getNombreUnidad());
+        // TODO add your handling code here:      
+
     }//GEN-LAST:event_tablaUnidadesMouseClicked
 
 
@@ -167,8 +170,27 @@ public class SeleccionarUnidad extends javax.swing.JPanel {
         }
         
     }
-    public void setUnidadAcademica(){
-        control.setUnidadAcademica(unidadTemporal);
-        control.setUnidadLab(unidadTemporal.getNombreUnidad());
+    public void setUnidadAcademica(Long id){
+        unidadTemporal = control.getUnidadTemporal(id);
+        control.setUnidadLab(id);
+        control.setNombreLab(unidadTemporal.getNombreUnidad());
+    }
+    public void valoresDefault(){
+        tablaUnidades.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 1) {
+                int fila = tablaUnidades.rowAtPoint(e.getPoint());
+                if (fila >= 0) {
+                    int filaModelo = tablaUnidades.convertRowIndexToModel(fila);
+                    UnidadAcademicaDominio unidad = control.cargarUnidadesAcademicas().get(filaModelo);
+                    System.out.println("Unidad seleccionada: " + unidad.getNombreUnidad());
+                    setUnidadAcademica(unidad.getId());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona una fila");
+                }
+            }
+        }
+    });
     }
 }

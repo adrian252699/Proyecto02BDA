@@ -65,7 +65,9 @@ public class AgregarLaboratorioDTO {
         this.UnidadAcademica = UnidadAcademica;
     }
 
-    
-    
-    
+    @Override
+    public String toString() {
+        return "AgregarLaboratorioDTO{" + "UnidadAcademica=" + UnidadAcademica + ", nombre=" + nombre + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + '}';
+    }
+
 }

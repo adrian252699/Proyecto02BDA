@@ -76,7 +76,8 @@ public class AgregarLaboratorioUnidad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
-    public void setUnidadLaboratorio(){
-        control.setUnidadLab(comboBoxUnidad.getSelectedItem().toString());
-    }
+//    public void setUnidadLaboratorio(){
+//        control.set
+//        control.setUnidadLab(comboBoxUnidad.getSelectedItem());
+//    }
 }

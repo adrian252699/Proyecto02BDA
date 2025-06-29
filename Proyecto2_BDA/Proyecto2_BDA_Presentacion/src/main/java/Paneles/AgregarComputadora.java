@@ -9,6 +9,7 @@ import entidades.LaboratorioDominio;
 import entidades.UnidadAcademicaDominio;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +17,8 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class AgregarComputadora extends javax.swing.JPanel {
     private ControlAdmin control;
+    private UnidadAcademicaDominio unidadTemporal;
+    private LaboratorioDominio labTemporal;
     /**
      * Creates new form AgregarComputadora
      */
@@ -74,12 +77,23 @@ public class AgregarComputadora extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 206, -1, -1));
 
         btnContinuar.setText("Continuar");
+        btnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnContinuarMouseClicked(evt);
+            }
+        });
         add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 271, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUnidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxUnidadActionPerformed
+
+    private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
+        // TODO add your handling code here:
+        obtenerDatosPC();
+//        control.
+    }//GEN-LAST:event_btnContinuarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -101,16 +115,14 @@ public class AgregarComputadora extends javax.swing.JPanel {
             });
             comboBoxUnidad.setModel(modeloUnidad);
         }
-//         listenerComboUnidad();
      }
     
-    public void actualizarComboLaboratorio(List<UnidadAcademicaDominio> listaUnidades){
-        
-    }
     public void listenerComboUnidad(){
         comboBoxUnidad.addActionListener(e -> {
-            UnidadAcademicaDominio seleccionada = (UnidadAcademicaDominio) comboBoxUnidad.getSelectedItem();
-
+            UnidadAcademicaDominio seleccionada = (UnidadAcademicaDominio)control.cargarUnidadesAcademicas().get(comboBoxUnidad.getSelectedIndex());
+            seleccionada = control.consultarUnidadesAcademicasId(seleccionada.getId());
+            unidadTemporal = seleccionada;
+            
             if (seleccionada != null) {
                 // Consulta los laboratorios de esa unidad
                 List<LaboratorioDominio> laboratorios = control.consultarLaboratoriosUnidadAcademica(seleccionada.getId());
@@ -123,5 +135,21 @@ public class AgregarComputadora extends javax.swing.JPanel {
                 comboBoxLaboratorio.setModel(modelo);
             }
         });
-            }
+    }
+    
+    public void obtenerDatosPC(){
+        
+        LaboratorioDominio laboratorio = unidadTemporal.getLaboratorios().get(comboBoxLaboratorio.getSelectedIndex());
+        if (laboratorio != null) {
+            control.setLaboratorioPC(laboratorio);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el laboratorio seleccionado.");
+        }
+        String tipo = comboBoxTipoPC.getSelectedItem().toString();
+        if (tipo != null) {
+            control.setTipoPC(tipo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
 }

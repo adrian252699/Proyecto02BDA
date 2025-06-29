@@ -157,6 +157,7 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
 
     private void BtnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgregarMouseClicked
         // TODO add your handling code here:
+        control.mostrarPantallaAgregarComputadora();
     }//GEN-LAST:event_BtnAgregarMouseClicked
 
     private void BtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarMouseClicked
@@ -189,14 +190,6 @@ public class ListadoComputadorasAdmin extends javax.swing.JPanel {
     private javax.swing.JTable tablaComputadoras;
     // End of variables declaration//GEN-END:variables
 
-//    public ArrayList<String> cargarUnidadesAcademicas(){
-//       //control.cargarUnidadesAcademicas(); sin filtros aun
-//       ArrayList<String> listaUnidades = new ArrayList<>();
-//       listaUnidades.set(1, "Unidada Nainari");
-//       return 
-//    }
-    //creo q no se ocupa aun
-   // public ArrayList<String>
     public void cargarTabla(){
         DefaultTableModel modeloTabla = (DefaultTableModel) tablaComputadoras.getModel();
         modeloTabla.setRowCount(0); 

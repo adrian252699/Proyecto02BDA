@@ -6,6 +6,7 @@
 package CasoAdministrador;
 
 import DTOs.AgregarLaboratorioDTO;
+import entidades.UnidadAcademicaDominio;
 import java.util.Calendar;
 
 /**
@@ -21,28 +22,33 @@ public class CasoAdministrador {
         if(laboratorioTemporal == null){
             System.out.println("Constructo CasoADmin lab es null");
             laboratorioTemporal = new AgregarLaboratorioDTO();
-        }
-        System.out.println("Constructo CasoADmin lab no es null");
-    }
-    public AgregarLaboratorioDTO setUnidad(String unidadAcademica){
-        if(laboratorioTemporal == null){
-            System.out.println("SetUnidad CasoADmin lab si es null");
-            AgregarLaboratorioDTO nuevoLab = new AgregarLaboratorioDTO();
-            nuevoLab.setNombre(unidadAcademica);
-            return nuevoLab;
+            System.out.println("labTemporal no es null");
         }else{
-            System.out.println("SetUnidad CasoADmin lab no es null");
-            laboratorioTemporal.setNombre(unidadAcademica);
-            return laboratorioTemporal;
+            System.out.println("Constructo CasoADmin lab no es null");
         }
+        
+    }
+    public AgregarLaboratorioDTO setNombreLab(String nombre){
+            System.out.println("SetUnidad CasoADmin: lab si es null");
+            laboratorioTemporal.setNombre(nombre);
+            return laboratorioTemporal;     
+    }
+    public AgregarLaboratorioDTO setUnidadLab(UnidadAcademicaDominio unidadAcademica){
+            System.out.println("Unidad en CasoAdmin:  " + unidadAcademica.toString());
+            laboratorioTemporal.setUnidadAcademica(unidadAcademica);
+            return laboratorioTemporal;
+        
     }
     public AgregarLaboratorioDTO setHorarioLab(Calendar fechaInicioLab, Calendar fechaFinLab){
-        System.out.println("setHorarioLab CasoADmin lab:  " + laboratorioTemporal.toString());
         laboratorioTemporal.setHoraFin(fechaInicioLab);
         laboratorioTemporal.setHoraInicio(fechaFinLab);
         return laboratorioTemporal;
     }
+    
     public AgregarLaboratorioDTO getLaboratorioTemporal(){
         return laboratorioTemporal;
+    }
+    public void setLaboratorioTemporal(AgregarLaboratorioDTO lab){
+        this.laboratorioTemporal = lab;
     }
 }

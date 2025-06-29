@@ -23,8 +23,13 @@ public class UnidadesAcademicasBO implements IUnidadAcademicaBO{
     }
     
     @Override
-    public List<UnidadAcademicaDominio> consultarLaboratorios() {
+    public List<UnidadAcademicaDominio> consultarUnidades() {
         return unidadDAO.consultarUnidadesAcademicas();
+    }
+
+    @Override
+    public UnidadAcademicaDominio consultarUnidadAcademicaPorId(Long idUnidadAcademica) {
+        return unidadDAO.consultarUnidadesAcademicasId(idUnidadAcademica);
     }
 
 }

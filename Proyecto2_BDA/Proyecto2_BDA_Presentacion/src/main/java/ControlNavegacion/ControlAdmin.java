@@ -5,6 +5,7 @@
 package ControlNavegacion;
 
 import CasoAdministrador.CasoAdministrador;
+import DTOs.AgregarComputadoraDTO;
 import DTOs.AgregarLaboratorioDTO;
 import DTOs.NuevaUnidadAcademicaDTO;
 import FabricaBOs.FabricaObjetosNegocio;
@@ -14,7 +15,6 @@ import Interfacez.ILaboratorioBO;
 import Interfacez.IUnidadAcademicaBO;
 import Paneles.AgregarComputadora;
 import Paneles.AgregarLaboratorio;
-import Paneles.AgregarLaboratorioUnidad;
 import Paneles.PanelRegistroID;
 import PanelesApartar.SeleccionLaboratorio;
 import PanelesAdministrador.*;
@@ -24,6 +24,7 @@ import PanelesApartar.SeleccionTiempoApartado;
 import entidades.ComputadoraDominio;
 import entidades.LaboratorioDominio;
 import entidades.UnidadAcademicaDominio;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.JFrame;
@@ -62,7 +63,7 @@ public class ControlAdmin {
     //DTOs Temporales para creacion
     private AgregarLaboratorioDTO laboratorioTemporal;
     private NuevaUnidadAcademicaDTO unidadTemporal;
-    
+    private AgregarComputadoraDTO computadoraTemporal;
     
     //Paneles Apartar
     private SeleccionLaboratorio seleccionLaboratorio;
@@ -81,6 +82,7 @@ public class ControlAdmin {
         this.casoAdmin = new CasoAdministrador();
         menuAdmin = new MenuAdministrador(this);
         menuAdmin.setVisible(true);
+        menuAdmin.setLocationRelativeTo(null);
     }
     
     //------------------------------------flujo Admin---------------------------------------
@@ -103,12 +105,7 @@ public class ControlAdmin {
         menuAdmin = new MenuAdministrador(this);
         framePrincipal.dispose();
         menuAdmin.setVisible(true);
-    }
-    
-    public void mostrarPantallaAgregarLaboratorio() {
-        AgregarLaboratorioUnidad panel = new AgregarLaboratorioUnidad(this);
-        menuAdmin.cambiarPanel(panel);
-    }
+    }   
     
     public void mostrarPantallaSeleccionarUnidad() {
         listadoUnidades = new SeleccionarUnidad(this);
@@ -134,7 +131,10 @@ public class ControlAdmin {
         return laboratorioBO.consultarLaboratoriosUnidadAcademica(id);
     }
     public List<UnidadAcademicaDominio> cargarUnidadesAcademicas(){
-         return unidadAcademicaBO.consultarLaboratorios();
+         return unidadAcademicaBO.consultarUnidades();
+    }
+    public UnidadAcademicaDominio consultarUnidadesAcademicasId(Long id){
+         return unidadAcademicaBO.consultarUnidadAcademicaPorId(id);
     }
     
     public List<ComputadoraDominio> cargarComputadoras(){
@@ -148,34 +148,71 @@ public class ControlAdmin {
         this.laboratorioBO = FabricaObjetosNegocio.crearLaboratorioBO();
         this.computadoraBO = FabricaObjetosNegocio.crearComputadoraBO();
         this.unidadAcademicaBO = FabricaObjetosNegocio.crearUnidadAcademicaBO();
+//        valoresDefault();
     
     }
     
     //------------------------------------flujo Admin---------------------------------------
     
-    //------------------------------------crear Lab Admin---------------------------------------}
+    //------------------------------------crear Computadora Admin---------------------------------------
+    public void setNumeroPC(String numPC){
+        computadoraTemporal.setNumero(numPC);
+    }
+    public void setTipoPC(String tipo){
+//        computadoraTemporal.setTipo(tipo);
+    }
+    public void setLaboratorioPC(LaboratorioDominio lab){
+        computadoraTemporal.setLaboratorio(lab);
+    }
+    public void setDireccionIPPC(String direccionIP){
+        computadoraTemporal.setDireccionIP(direccionIP);
+    }
+    public void setListaSoftwares(ArrayList listaSoftwares){
+        computadoraTemporal.setListaSoftWare(listaSoftwares);
+    }
+    
+    public ComputadoraDominio agregarComputadora(AgregarComputadoraDTO pc){
+        return computadoraBO.agregarComputadora(pc);   
+    }
+//    public void setUnidadPC(UnidadAcademicaDominio unidad){
+//        
+//    }
+    
+    
+    //------------------------------------crear Computadora Admin---------------------------------------
+    //------------------------------------crear Lab Admin---------------------------------------
     
     public void setUnidadAcademica(UnidadAcademicaDominio unidadAcademica){
         NuevaUnidadAcademicaDTO unidadTemporal = new NuevaUnidadAcademicaDTO(unidadAcademica.getNombreUnidad());
         this.unidadTemporal= unidadTemporal;
+        UnidadAcademicaDominio unidadLab = new UnidadAcademicaDominio(unidadAcademica.getNombreUnidad());
+        casoAdmin.setUnidadLab(unidadLab);
+        setLaboratorioTemporal();
         
     }
-    public void setUnidadLab(String unidadAcademica){
-        if(casoAdmin!= null){
-            casoAdmin.setUnidad(unidadAcademica);
-            return;
-        }
-        casoAdmin = new CasoAdministrador();
-        casoAdmin.setUnidad(unidadAcademica);
+    public UnidadAcademicaDominio getUnidadTemporal(Long id){
+        return unidadAcademicaBO.consultarUnidadAcademicaPorId(id);
+        
+    }
+    public void setUnidadLab(Long id){       
+            System.out.println("unidad consultada en BO por ID(control):     "+ unidadAcademicaBO.consultarUnidadAcademicaPorId(id).toString() );           
+            casoAdmin.setUnidadLab(unidadAcademicaBO.consultarUnidadAcademicaPorId(id));
+           
+    }
+    public void setNombreLab(String nombre){
+        casoAdmin.setNombreLab(nombre);
+        setLaboratorioTemporal();
     }
     public void setHorarioLab(Calendar fechaInicioLab, Calendar fechaFinLab){
         casoAdmin.setHorarioLab(fechaInicioLab,fechaFinLab);
+        setLaboratorioTemporal();
     }
 //    public void setAdminCambios(){
 //        casoAdmin.setAdminCambios()
 //    }
-    public void guardarLaboratorio(){
+    public void guardarLaboratorio(AgregarLaboratorioDTO lab){
         mostrarExitoGuardarLab();
+        laboratorioBO.agregarLaboratorio(lab);
         mostrarListadoLaboratoriosAdmin();
     }
     public void setLaboratorioTemporal(){
@@ -266,7 +303,7 @@ public class ControlAdmin {
         }
         
     public void mostrarExitoGuardarLab(){
-        JOptionPane.showMessageDialog(menuAdmin, "laboratorio Guardado Con exito", "Exito", JOptionPane.YES_OPTION);
+        JOptionPane.showConfirmDialog(menuAdmin, "laboratorio Guardado Con exito", "Exito", JOptionPane.YES_OPTION);
     }
 
     public boolean mostrarErrorCredenciales() {
